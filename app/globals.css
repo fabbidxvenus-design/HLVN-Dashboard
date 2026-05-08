@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors */
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-light: #DBEAFE;
+  --success: #10B981;
+  --warning: #F59E0B;
+  --error: #EF4444;
+  --info: #3B82F6;
+
+  /* Background Tokens (Redesign Foundation) */
+  --background: #FFFFFF;
+  --background-app: #FAFAF9;
+  --background-elevated: #FFFFFF;
+  --background-muted: #F5F5F4;
+
+  /* Surface Tokens (Redesign Foundation) */
+  --surface: #F9FAFB;
+  --surface-elevated: #FFFFFF;
+  --surface-card: #FFFFFF;
+  --surface-dialog: #FFFFFF;
+
+  /* Border */
+  --border: #E5E7EB;
+  --border-muted: #F3F4F6;
+
+  /* Text Hierarchy (Redesign Foundation) */
+  --text-primary: #111827;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --text-heading: #0F172A;
+  --text-body: #1F2937;
+  --text-caption: #6B7280;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
+
+  /* Layout */
+  --sidebar-width: 240px;
+  --header-height: 64px;
+  --content-max-width: 1200px;
+
+  /* Shadows (Redesign Foundation) */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-card: var(--shadow-md);
+  --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-dialog: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  /* Transitions (Redesign Foundation) */
+  --transition-fast: 150ms ease-out;
+  --transition-normal: 300ms ease-out;
+  --duration-quick: 100ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Border Radius (Redesign Foundation) */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius: 6px;
+  --radius-lg: 8px;
+  --radius-card: 8px;
+  --radius-dialog: 12px;
+
+  /* Layout Spacing (Redesign Foundation) */
+  --space-section: 48px;
+  --space-card: 24px;
+  --space-inline: 16px;
+  --space-compact: 12px;
+  --space-tight: 8px;
+
+  /* Focus Ring (Redesign Foundation) */
+  --focus-ring: 2px solid #2563EB;
+  --focus-offset: 2px;
+}
+
+/* Tailwind shadow utilities using CSS variables */
+.shadow-variable { box-shadow: var(--shadow); }
+.shadow-variable-sm { box-shadow: var(--shadow-sm); }
+.shadow-variable-md { box-shadow: var(--shadow-md); }
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--text-primary);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --sidebar-width: var(--sidebar-width);
+  --header-height: var(--header-height);
+  --content-max-width: var(--content-max-width);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
