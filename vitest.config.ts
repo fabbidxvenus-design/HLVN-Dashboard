@@ -8,6 +8,7 @@ export default defineConfig({
       'coding-packs/plans/full-auto-pipeline-init/specs/**/*.test.ts',
       'coding-packs/plans/update-design/specs/**/*.test.ts',
       'coding-packs/plans/redesign/specs/**/*.test.ts',
+      'coding-packs/plans/redesign-v2/specs/**/*.test.ts',
     ],
     coverage: {
       provider: 'v8',

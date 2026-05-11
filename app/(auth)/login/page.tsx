@@ -173,6 +173,7 @@ export default function LoginPage() {
                 type="email"
                 placeholder="admin@hlvn.vn"
                 autoComplete="email"
+                aria-label="Email"
                 {...register('email')}
               />
               {errors.email && (
@@ -193,6 +194,7 @@ export default function LoginPage() {
                 type="password"
                 placeholder="Nhập mật khẩu"
                 autoComplete="current-password"
+                aria-label="Mật khẩu"
                 {...register('password')}
               />
               {errors.password && (

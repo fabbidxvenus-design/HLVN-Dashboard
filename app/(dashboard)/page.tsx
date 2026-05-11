@@ -6,6 +6,7 @@ import { DashboardShell } from '@/components/dashboard'
 import { KpiGrid } from '@/components/analytics/KpiGrid'
 import { ScanVolumeChart } from '@/components/analytics/ScanVolumeChart'
 import { TopProductsTable } from '@/components/analytics/TopProductsTable'
+import { TopUsersTable } from '@/components/analytics/TopUsersTable'
 import { useAnalyticsQuery } from '@/hooks/useAnalyticsQuery'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -15,6 +16,7 @@ export default function DashboardPage() {
     kpis,
     trends,
     topProducts,
+    topUsers,
     isLoading,
     error,
     refetch,
@@ -67,18 +69,31 @@ export default function DashboardPage() {
         {/* Trend Chart */}
         <ScanVolumeChart data={trends ?? undefined} isLoading={isLoading} />
 
-        {/* Top Products */}
-        <section>
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-6 h-6 rounded-[var(--radius-xs)] bg-[var(--primary)]/10 flex items-center justify-center">
-              <TrendingUp className="w-3.5 h-3.5 text-[var(--primary)]" />
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <section>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-6 rounded-[var(--radius-xs)] bg-[var(--primary)]/10 flex items-center justify-center">
+                <TrendingUp className="w-3.5 h-3.5 text-[var(--primary)]" />
+              </div>
+              <h3 className="text-base font-semibold text-[var(--text-heading)]">
+                Top sản phẩm scan nhiều nhất
+              </h3>
             </div>
-            <h3 className="text-base font-semibold text-[var(--text-heading)]">
-              Top sản phẩm scan nhiều nhất
-            </h3>
-          </div>
-          <TopProductsTable data={topProducts} isLoading={isLoading} limit={10} />
-        </section>
+            <TopProductsTable data={topProducts} isLoading={isLoading} limit={10} />
+          </section>
+
+          <section>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-6 h-6 rounded-[var(--radius-xs)] bg-[var(--primary)]/10 flex items-center justify-center">
+                <Users className="w-3.5 h-3.5 text-[var(--primary)]" />
+              </div>
+              <h3 className="text-base font-semibold text-[var(--text-heading)]">
+                Top người dùng hoạt động
+              </h3>
+            </div>
+            <TopUsersTable data={topUsers} isLoading={isLoading} limit={10} />
+          </section>
+        </div>
       </div>
     </DashboardShell>
   )
