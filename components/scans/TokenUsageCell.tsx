@@ -13,9 +13,9 @@ export function TokenUsageCell({ scan }: TokenUsageCellProps) {
 
   return (
     <div className="font-mono text-xs text-[var(--text-body)]">
-      <div>In: {input.toLocaleString()}</div>
-      <div>Out: {output.toLocaleString()}</div>
-      <div className="text-[var(--success)]">${cost.toFixed(4)}</div>
+      <div>In: {(input ?? 0).toLocaleString()}</div>
+      <div>Out: {(output ?? 0).toLocaleString()}</div>
+      <div className="text-[var(--success)]">${(cost ?? 0).toFixed(4)}</div>
     </div>
   )
 }

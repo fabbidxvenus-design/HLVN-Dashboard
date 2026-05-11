@@ -8,7 +8,7 @@ import type { AuthSession } from '@/types/auth';
 
 export const auth = {
   login: (email: string, password: string) =>
-    apiClient.post<AuthSession>('/api/auth/login', { email, password }),
+    apiClient.post<AuthSession>('/api/auth/login', { email, password, audience: 'dashboard' }),
 
   me: () => apiClient.get<UserProfile>('/api/auth/me'),
 

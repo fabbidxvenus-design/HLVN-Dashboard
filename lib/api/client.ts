@@ -42,9 +42,23 @@ async function apiFetch<T>(
     if (qs) url += `?${qs}`;
   }
 
+  // Auto-load token from localStorage if not provided
+  let token = accessToken;
+  if (!token && typeof window !== 'undefined') {
+    const stored = localStorage.getItem('hlvn_session');
+    if (stored) {
+      try {
+        const parsed = JSON.parse(stored);
+        token = parsed.accessToken ?? null;
+      } catch {
+        // ignore parse error
+      }
+    }
+  }
+
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
-    ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}),
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
     ...options.headers,
   };
 

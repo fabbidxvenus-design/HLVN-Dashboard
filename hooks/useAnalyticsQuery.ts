@@ -50,19 +50,30 @@ export function useAnalyticsQuery({ onError }: UseAnalyticsQueryOptions = {}) {
         setTrends(trendsRes.data)
       }
 
-      // Handle top products
+      // Handle top products — compute percentage if backend omits it
       if (productsRes.success && productsRes.data) {
-        setTopProducts(productsRes.data)
+        const rawProducts: TopProduct[] = Array.isArray(productsRes.data) ? productsRes.data : (productsRes.data as any).products ?? []
+        const totalProductScans = rawProducts.reduce((sum, p) => sum + (p.scanCount ?? 0), 0)
+        setTopProducts(rawProducts.map(p => ({
+          ...p,
+          percentage: p.percentage ?? (totalProductScans > 0 ? (p.scanCount / totalProductScans) * 100 : 0),
+        })))
       }
 
-      // Handle top users
+      // Handle top users — compute percentage if backend omits it
       if (usersRes.success && usersRes.data) {
-        setTopUsers(usersRes.data)
+        const rawUsers: TopUser[] = Array.isArray(usersRes.data) ? usersRes.data : (usersRes.data as any).users ?? []
+        const totalUserScans = rawUsers.reduce((sum, u) => sum + (u.scanCount ?? 0), 0)
+        setTopUsers(rawUsers.map(u => ({
+          ...u,
+          percentage: u.percentage ?? (totalUserScans > 0 ? (u.scanCount / totalUserScans) * 100 : 0),
+        })))
       }
 
       // Handle API usage
       if (usageRes.success && usageRes.data) {
-        setApiUsage(usageRes.data.byApiKey)
+        const keys = Array.isArray(usageRes.data) ? usageRes.data : (usageRes.data as any).keys ?? []
+        setApiUsage(keys)
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Đã xảy ra lỗi khi tải analytics.'

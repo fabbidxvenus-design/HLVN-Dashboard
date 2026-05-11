@@ -1,25 +1,26 @@
 // Formatting helpers for analytics display
 
-export function formatNumber(value: number): string {
-  return value.toLocaleString('vi-VN')
+export function formatNumber(value: number | undefined | null): string {
+  return (value ?? 0).toLocaleString('vi-VN')
 }
 
-export function formatCurrency(value: number): string {
-  return `$${value.toFixed(2)}`
+export function formatCurrency(value: number | undefined | null): string {
+  return `$${(value ?? 0).toFixed(2)}`
 }
 
-export function formatPercent(value: number): string {
-  return `${value.toFixed(1)}%`
+export function formatPercent(value: number | undefined | null): string {
+  return `${(value ?? 0).toFixed(1)}%`
 }
 
-export function formatCompactNumber(value: number): string {
-  if (value >= 1000000) {
-    return `${(value / 1000000).toFixed(1)}M`
+export function formatCompactNumber(value: number | undefined | null): string {
+  const v = value ?? 0
+  if (v >= 1000000) {
+    return `${(v / 1000000).toFixed(1)}M`
   }
-  if (value >= 1000) {
-    return `${(value / 1000).toFixed(1)}K`
+  if (v >= 1000) {
+    return `${(v / 1000).toFixed(1)}K`
   }
-  return value.toLocaleString('vi-VN')
+  return v.toLocaleString('vi-VN')
 }
 
 export function formatCompactDate(dateString: string): string {
