@@ -1,305 +1,178 @@
-# HLVN Dashboard — Task Graph (Frontend-Only + UI Polish)
+# HLVN Dashboard — Task Graph
 
-> Vibecode Kit v5.0 — BƯỚC 4 (BLUEPRINT)  
-> Date: 2026-05-08 (Revised for frontend-only scope + UI polish)  
-> 20 TIPs across 5 phases
-
----
-
-## SCOPE CLARIFICATION
-
-**Dashboard project** (`D:\scripts\HLVN\HLVN-dashboard`):
-- Frontend-only Next.js 15 application
-- UI pages, components, forms, tables, charts
-- Calls external backend API
-- No `app/api/*` routes
-- No Supabase client imports
-- No OpenRouter integration
-- No database migrations
-
-**Backend project** (`D:\scripts\HLVN\HLVN-serverless`):
-- All API endpoints
-- Supabase Auth/PostgreSQL/Storage/RLS
-- OpenRouter integration
-- Business logic and data persistence
+> Vibecode Kit v5.0 — BƯỚC 5 (TASK GRAPH)
+> 20 TIPs across 5 weeks.
+> Design source: `coding-packs/designs/stitch_hlvn_dashboard_redesign_v5/`
+> Unique screens: ~10 (from 34 design variants)
 
 ---
 
 ## DEPENDENCY GRAPH
 
-### Phase 1-3: Foundation & Features (TIP-001 to TIP-006)
 ```
-Week 1: Foundation
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-001: Project Setup + Design System                     │
-│ (Next.js 15, Tailwind, shadcn/ui, tokens, shell)           │
-└─────────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-002: Backend API Client + Auth Flow                    │
-│ (fetch wrapper, token storage, login page, admin gate)     │
-└─────────────────────────────────────────────────────────────┘
-                          │
-                          ▼
-Week 2: Feature UI
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-003: Users Management UI                                │
-│ (table, search, filter, create/edit/delete dialogs)        │
-└─────────────────────────────────────────────────────────────┘
-                          │
-                ┌─────────┴─────────┐
-                ▼                   ▼
-┌───────────────────────┐  ┌───────────────────────┐
-│ TIP-004: Scans UI     │  │ TIP-005: Analytics UI │
-│ (table, filters,      │  │ (KPIs, charts,        │
-│  detail, export)      │  │  top tables)          │
-└───────────────────────┘  └───────────────────────┘
-                │                   │
-                └─────────┬─────────┘
-                          ▼
-Week 3: Polish + Testing
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-006: Loading/Empty/Error States + A11y + Tests         │
-│ (skeletons, empty states, toasts, focus, ARIA, tests)      │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Phase 4: UI Polish (TIP-007 to TIP-012)
-```
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-007: Global Design System (CSS tokens, shadows, transitions) │
-└─────────────────────────────────────────────────────────────┘
-                │                    │
-    ┌───────────┴────────┐          │
-    ▼                    ▼          ▼
-┌────────────────┐ ┌────────────────┐ ┌────────────────┐
-│ TIP-008:       │ │ TIP-009:       │ │ TIP-010:       │
-│ KPI Cards +    │ │ Tables         │ │ Headers +      │
-│ Charts         │ │ Enhancement    │ │ Navigation     │
-└────────────────┘ └────────────────┘ └────────────────┘
-                          │                    │
-                          ▼                    │
-                   ┌────────────────┐          │
-                   │ TIP-011:       │          │
-                   │ Empty States + │          │
-                   │ Micro-interactions          │
-                   └────────────────┘          │
-                          │                    │
-                          ▼                    ▼
-                   ┌──────────────────────────────────────┐
-                   │ TIP-012: Responsive + Mobile          │
-                   └──────────────────────────────────────┘
+TIP-001 (Scaffold)
+  │
+  ├── TIP-002 (Design Tokens)
+  │     │
+  │     └── TIP-003 (Layout Shell)
+  │           │
+  │           ├── TIP-004 (Auth + Login)
+  │           │     │
+  │           │     └── TIP-005 (Protected Routes)
+  │           │           │
+  │           │           ├── TIP-007 (KPI Cards + Grid)
+  │           │           │     │
+  │           │           │     └── TIP-008 (Dashboard Charts + Tables)
+  │           │           │           │
+  │           │           │           └── TIP-018 (Realtime KPI)
+  │           │           │
+  │           │           ├── TIP-009 (Scans Table + Filters)
+  │           │           │     │
+  │           │           │     ├── TIP-010 (Scan Detail Dialog)
+  │           │           │     │     │
+  │           │           │     │     └── TIP-022 (Scan Detail OCR Field Classification)
+  │           │           │     │
+  │           │           │     └── TIP-011 (Scan Delete + Actions)
+  │           │           │           │
+  │           │           │           └── TIP-017 (Export CSV + Excel)
+  │           │           │
+  │           │           ├── TIP-012 (Users Table + Filters)
+  │           │           │     │
+  │           │           │     ├── TIP-013 (Create User Dialog)
+  │           │           │     │
+  │           │           │     └── TIP-014 (Edit Role + Delete User)
+  │           │           │
+  │           │           ├── TIP-015 (Analytics Date Picker + Charts)
+  │           │           │     │
+  │           │           │     └── TIP-016 (Analytics API Usage Table)
+  │           │           │
+  │           │           ├── TIP-019 (Realtime Scan List)
+  │           │           │
+  │           │           └── TIP-021 (Realtime Admin Notifications)
+  │           │
+  │           └── TIP-006 (UI Primitives)
+  │                 │
+  │                 ├── TIP-007, TIP-008
+  │                 ├── TIP-009, TIP-010, TIP-011
+  │                 ├── TIP-012, TIP-013, TIP-014
+  │                 └── TIP-015, TIP-016
+  │
+  └── TIP-020 (Loading States + Error Boundaries + Toasts)
 ```
 
-### Phase 5: Complete UI Redesign (TIP-013 to TIP-020)
-```
-Based on design reference: coding-packs/design/hlvn-dashboard/
-
-┌─────────────────────────────────────────────────────────────┐
-│ TIP-013: Redesign Foundation (globals.css tokens)          │
-│ Extract design tokens from reference index.css             │
-└─────────────────────────────────────────────────────────────┘
-                          │
-                ┌─────────┴─────────┐
-                ▼                   ▼
-┌───────────────────────┐  ┌───────────────────────┐
-│ TIP-014: Login Page   │  │ TIP-015: Dashboard    │
-│ Redesign              │  │ Shell (Sidebar+Header)│
-└───────────────────────┘  └───────────────────────┘
-                                      │
-                ┌─────────────────────┼─────────────────────┐
-                ▼                     ▼                     ▼
-┌───────────────────┐  ┌───────────────────┐  ┌───────────────────┐
-│ TIP-016: Overview │  │ TIP-017: Users    │  │ TIP-018: Scans    │
-│ Dashboard Page    │  │ Management Page   │  │ History Page      │
-│ (Dashboard.tsx)   │  │ (Users.tsx)       │  │ (History.tsx)     │
-└───────────────────┘  └───────────────────┘  └───────────────────┘
-                │                     │                     │
-                └─────────────────────┼─────────────────────┘
-                                      ▼
-                          ┌───────────────────────┐
-                          │ TIP-019: Analytics    │
-                          │ Page Redesign         │
-                          │ (Analytics.tsx)       │
-                          └───────────────────────┘
-                                      │
-                                      ▼
-                          ┌───────────────────────┐
-                          │ TIP-020: Responsive + │
-                          │ Visual QA Pass        │
-                          └───────────────────────┘
-```
 ---
 
 ## TIP SUMMARY TABLE
 
-### Phase 1-3: Original Features
+| TIP | Name | Depends On | Priority | Est. Hours | Week |
+|-----|------|-----------|----------|-----------|------|
+| TIP-001 | Project Scaffold (Vite + React + Tailwind + shadcn/ui) | — | P0 | 2h | 1 |
+| TIP-002 | Design Tokens + Global Styles (CSS vars, fonts, Tailwind config) | TIP-001 | P0 | 2h | 1 |
+| TIP-003 | Layout Shell (Sidebar + Header + Router) | TIP-002 | P0 | 3h | 1 |
+| TIP-004 | Supabase Auth + Login Page | TIP-003 | P0 | 3h | 2 |
+| TIP-005 | Protected Routes + Role Guard + Auth Hooks | TIP-004 | P0 | 2h | 2 |
+| TIP-006 | UI Primitives (Button, Card, Input, Badge, Table, Dialog, Select) | TIP-003 | P0 | 3h | 2 |
+| TIP-007 | KPI Cards + KPI Grid (Dashboard Overview pt.1) | TIP-005, TIP-006 | P0 | 2h | 3 |
+| TIP-008 | Dashboard Charts + Top Tables (Dashboard Overview pt.2) | TIP-007 | P0 | 3h | 3 |
+| TIP-009 | Scans Table + Filters (Scans Page pt.1) | TIP-005, TIP-006 | P0 | 3h | 3 |
+| TIP-010 | Scan Detail Dialog (Scans Page pt.2) | TIP-009 | P0 | 2h | 3 |
+| TIP-011 | Scan Delete + Actions (Scans Page pt.3) | TIP-009 | P1 | 2h | 4 |
+| TIP-012 | Users Table + Filters (Users Page pt.1) | TIP-005, TIP-006 | P0 | 3h | 4 |
+| TIP-013 | Create User Dialog (Users Page pt.2) | TIP-012 | P0 | 2h | 4 |
+| TIP-014 | Edit Role + Delete User Dialogs (Users Page pt.3) | TIP-012 | P1 | 2h | 4 |
+| TIP-015 | Analytics Date Picker + Charts (Analytics pt.1) | TIP-005, TIP-006 | P0 | 3h | 4 |
+| TIP-016 | Analytics API Usage Table (Analytics pt.2) | TIP-015 | P1 | 2h | 5 |
+| TIP-017 | Data Export (CSV client + Excel API) | TIP-011 | P1 | 2h | 5 |
+| TIP-018 | Supabase Realtime KPI Updates | TIP-008 | P1 | 2h | 5 |
+| TIP-019 | Supabase Realtime Scan List | TIP-009 | P1 | 2h | 5 |
+| TIP-020 | Loading States + Error Boundaries + Toasts | All pages | P2 | 3h | 5 |
+| TIP-021 | Realtime Admin Notifications | TIP-003, TIP-004, TIP-005, TIP-020 | P1 | 4h | 5 |
+| TIP-022 | Scan Detail OCR Field Classification | TIP-010 | P1 | 2h | 5 |
 
-| TIP | Name | Depends On | Priority | Est. Hours | Week | Status |
-|-----|------|-----------|----------|-----------|------|--------|
-| TIP-001 | Project Setup + Design System | — | P0 | 6h | 1 | ✅ Done |
-| TIP-002 | Backend API Client + Auth Flow | TIP-001 | P0 | 8h | 1 | ✅ Done |
-| TIP-003 | Users Management UI | TIP-002 | P0 | 10h | 2 | ✅ Done |
-| TIP-004 | Scans History UI | TIP-002 | P0 | 12h | 2 | ✅ Done |
-| TIP-005 | Analytics Dashboard UI | TIP-002 | P0 | 10h | 2 | ✅ Done |
-| TIP-006 | UI Polish + A11y + Tests | TIP-003, TIP-004, TIP-005 | P0 | 10h | 3 | ✅ Done |
+**Total estimated: ~53 hours**
 
-### Phase 4: UI Polish (New)
+---
 
-| TIP | Name | Depends On | Priority | Est. Hours | Week | Status |
-|-----|------|-----------|----------|-----------|------|--------|
-| TIP-007 | Global Design System | — | P0 | 4h | 4 | 📋 New |
-| TIP-008 | KPI Cards + Visualization | TIP-007 | P0 | 4h | 4 | 📋 New |
-| TIP-009 | Tables Enhancement | TIP-007 | P0 | 4h | 4 | 📋 New |
-| TIP-010 | Page Headers + Navigation | TIP-007 | P1 | 2h | 4 | 📋 New |
-| TIP-011 | Empty States + Micro-interactions | TIP-007, TIP-009 | P1 | 2h | 4 | 📋 New |
-| TIP-012 | Responsive + Mobile | TIP-007, TIP-009, TIP-010 | P2 | 4h | 4 | ✅ Done |
+## DESIGN SCREEN MAPPING
 
-### Phase 5: Product-Grade Redesign
-
-| TIP | Name | Depends On | Priority | Est. Hours | Week | Status |
-|-----|------|-----------|----------|-----------|------|--------|
-| TIP-013 | Redesign Foundation | TIP-001..TIP-012 | P0 | 6h | 5 | 📋 New |
-| TIP-014 | Login + Auth UX Redesign | TIP-013 | P0 | 4h | 5 | 📋 New |
-| TIP-015 | Dashboard Shell Redesign | TIP-013 | P0 | 5h | 5 | 📋 New |
-| TIP-016 | Overview Dashboard Redesign | TIP-015 | P0 | 6h | 5 | 📋 New |
-| TIP-017 | Users Management Redesign | TIP-015 | P0 | 6h | 5 | 📋 New |
-| TIP-018 | Scans Management Redesign | TIP-015 | P0 | 8h | 5 | 📋 New |
-| TIP-019 | Analytics Redesign | TIP-015, TIP-016 | P0 | 6h | 5 | 📋 New |
-| TIP-020 | Responsive + Visual QA Redesign Pass | TIP-014, TIP-015, TIP-016, TIP-017, TIP-018, TIP-019 | P0 | 5h | 5 | 📋 New |
-
-**Total estimated effort**: 110 hours (~13.75 days for 1 developer)
+| TIP | Design Screen (primary reference) |
+|-----|----------------------------------|
+| TIP-004 | `hlvn_admin_login_1` |
+| TIP-003 | `hlvn_admin_dashboard_shell_1` |
+| TIP-007, TIP-008 | `hlvn_dashboard_overview` |
+| TIP-009 | `hlvn_l_ch_s_qu_t_scans_management_1` |
+| TIP-010 | `hlvn_l_ch_s_qu_t_scans_management_2` (detail view) |
+| TIP-011 | `hlvn_x_c_nh_n_x_a_modal` (delete confirm) |
+| TIP-012 | `hlvn_qu_n_l_ng_i_d_ng_1440px_1` |
+| TIP-013 | `hlvn_th_m_ng_i_d_ng_modal` (add user) |
+| TIP-014 | `hlvn_qu_n_l_ng_i_d_ng_1440px_2` (edit/delete) |
+| TIP-015, TIP-016 | `hlvn_analytics_ph_n_t_ch_1440px_1` |
 
 ---
 
 ## PARALLELIZATION OPPORTUNITIES
 
-### Week 1
-- TIP-001 and TIP-002 must run sequentially (foundation dependencies).
-
-### Week 2
-- **TIP-003, TIP-004, TIP-005 can run in parallel** after TIP-002 completes.
-- All three depend on TIP-002 (API client) but are independent of each other.
-- If 3 developers available: assign one TIP per developer.
-- If 2 developers: assign TIP-003 to Dev A, TIP-004+005 to Dev B.
-
-### Week 3
-- TIP-006 depends on all feature UI TIPs complete.
-- Must run after Week 2.
-
-**Optimal parallelization**: 3 developers can complete Week 2 in ~12 hours instead of 32 hours.
+| Parallel Group | TIPs | Condition |
+|---------------|------|-----------|
+| Week 2 parallel | TIP-004 + TIP-006 | Both depend on TIP-003, independent |
+| Week 3 parallel | TIP-007 + TIP-009 | Both depend on TIP-005 + TIP-006, independent |
+| Week 3 parallel | TIP-008 + TIP-010 | TIP-008 needs TIP-007; TIP-010 needs TIP-009 |
+| Week 4 parallel | TIP-011 + TIP-012 + TIP-015 | Independent page tracks |
+| Week 4 parallel | TIP-013 + TIP-014 | Both need TIP-012 |
+| Week 5 parallel | TIP-016 + TIP-017 + TIP-018 + TIP-019 + TIP-020 + TIP-021 + TIP-022 | Various deps |
 
 ---
 
 ## CRITICAL PATH
 
 ```
-TIP-001 → TIP-002 → TIP-004 → TIP-006
+TIP-001 → TIP-002 → TIP-003 → TIP-004 → TIP-005 → TIP-007 → TIP-008 → TIP-018/020/021
 ```
 
-**Critical path duration**: 46 hours (~6 days)
-
-**Why TIP-004 (Scans) is on critical path**:
-- TIP-004 (Scans) is 12h vs TIP-003 (Users) 10h and TIP-005 (Analytics) 10h.
-- TIP-006 depends on all three, so the longest one determines the critical path.
+Longest path: 8 TIPs sequential = ~22h on critical path.
 
 ---
 
-## TEAM ALLOCATION (if applicable)
+## REQUIREMENTS COVERAGE
 
-### Single Developer (7 days)
-- Follow TIP order sequentially.
-- Week 2: complete TIP-003, then TIP-004, then TIP-005.
+| TIP | REQs Covered |
+|-----|-------------|
+| TIP-001 | REQ-070, REQ-078 |
+| TIP-002 | REQ-060, REQ-061, REQ-064 |
+| TIP-003 | REQ-062, REQ-063, REQ-071 |
+| TIP-004 | REQ-001, REQ-004, REQ-073 |
+| TIP-005 | REQ-002, REQ-003, REQ-005 |
+| TIP-006 | REQ-077 |
+| TIP-007 | REQ-010 |
+| TIP-008 | REQ-011, REQ-012, REQ-013 |
+| TIP-009 | REQ-020, REQ-022, REQ-023 |
+| TIP-010 | REQ-021 |
+| TIP-022 | REQ-021 scan detail OCR field classification correction |
+| TIP-011 | REQ-024 |
+| TIP-012 | REQ-030 |
+| TIP-013 | REQ-031 |
+| TIP-014 | REQ-032, REQ-033, REQ-034 |
+| TIP-015 | REQ-040, REQ-041 |
+| TIP-016 | REQ-042, REQ-043 |
+| TIP-017 | REQ-050, REQ-051 |
+| TIP-018 | REQ-014 |
+| TIP-019 | REQ-025 |
+| TIP-020 | REQ-065, REQ-066 |
+| TIP-021 | REQ-066 + admin in-app activity notification extension |
 
-### Two Developers (5 days)
-- **Dev A (Users + Analytics)**:
-  - Week 1: TIP-001 (setup)
-  - Week 2: TIP-003 (Users UI), TIP-005 (Analytics UI)
-  - Week 3: TIP-006 (polish, help with tests)
-  
-- **Dev B (Auth + Scans)**:
-  - Week 1: TIP-002 (API client + auth)
-  - Week 2: TIP-004 (Scans UI)
-  - Week 3: TIP-006 (polish, tests)
-
-**Coordination points**:
-- End of Week 1: Dev A needs TIP-002 complete before starting UI.
-- End of Week 2: Both devs sync before TIP-006.
-
----
-
-## RISK MITIGATION
-
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| **Backend API not ready** | HIGH | Define API contract early; use mock API server for frontend dev |
-| **Backend API contract changes** | MEDIUM | Version API endpoints; use TypeScript types generated from OpenAPI spec |
-| **Excel export memory issues** | MEDIUM | Stream large exports in TIP-004; test with 1000+ scans |
-| **CORS issues with backend** | MEDIUM | Configure CORS in backend; test cross-origin requests early |
-| **Token refresh race conditions** | MEDIUM | Implement token refresh queue in TIP-002; test concurrent requests |
-| **Performance budget exceeded** | LOW | Monitor bundle size in TIP-001; lazy load charts in TIP-005 |
+**Coverage: 33/33 baseline requirements mapped (100%); TIP-021 extends deferred in-app notification scope**
 
 ---
 
-## MILESTONE CHECKPOINTS
+## Quality Gate
 
-### Milestone 1: Foundation Complete (End of Week 1)
-- [ ] Next.js app runs locally
-- [ ] Design system tokens configured
-- [ ] Backend API client wrapper implemented
-- [ ] Admin login works and stores token
-- [ ] Dashboard shell renders after login
-
-### Milestone 2: Feature UI Complete (End of Week 2)
-- [ ] Users page: table, search, filter, CRUD dialogs work
-- [ ] Scans page: table, search, filter, detail dialog, export work
-- [ ] Analytics page: KPIs, charts, top tables render
-- [ ] All pages call backend API correctly
-- [ ] Error handling shows user-friendly messages
-
-### Milestone 3: MVP Ready (End of Week 3)
-- [ ] All loading/empty/error states implemented
-- [ ] Accessibility checklist passed
-- [ ] Component tests cover critical UI
-- [ ] Manual QA checklist passed
-- [ ] Ready for staging deploy
-
----
-
-## DEFERRED TO PHASE 2
-
-| Feature | Reason | Estimated Effort |
-|---------|--------|------------------|
-| Password reset UI | Backend handles reset flow | 3h |
-| Advanced analytics filters | Basic filters sufficient for MVP | 4h |
-| Bulk user operations UI | Manual CRUD sufficient for MVP | 4h |
-| Notifications UI | Not P0 for MVP | 6h |
-| Responsive design (tablet/mobile) | Desktop-first per Vision | 10h |
-| E2E tests (Playwright) | Component tests sufficient for MVP | 8h |
-| Real-time updates UI | Manual refresh sufficient for MVP | 4h |
-| i18n toggle (EN/VI) | Vietnamese-only per Vision | 6h |
-| Dark mode | Not P0 for MVP | 8h |
-
-**Total Phase 2 effort**: 53 hours (~6.5 days)
-
----
-
-## QUALITY GATE: Task Graph Self-Review
-
-- [x] Dependency graph shows clear sequential and parallel paths
-- [x] TIP summary table includes all 6 TIPs with dependencies, priorities, estimates, and weeks
-- [x] Parallelization opportunities identified (TIP-003, TIP-004, TIP-005 in Week 2)
-- [x] Critical path identified (46 hours, 6 days)
-- [x] Team allocation provided for 1 and 2 developers
-- [x] Risk mitigation table covers frontend-specific risks
-- [x] Milestone checkpoints defined for each week
-- [x] Deferred features listed with effort estimates
-- [x] Total effort estimate realistic (56 hours = 7 days for 1 dev)
-- [x] Scope clarification explicit (frontend-only, no backend implementation)
-
-**Verdict**: PASSED — Task Graph complete for frontend-only scope, ready for TIP generation.
-
----
-
-*Task Graph revised: 2026-05-08 | Framework: Vibecode Kit v5.0 | Project: HLVN Dashboard (Frontend-Only)*
+| Check | Status |
+|-------|--------|
+| All P0 REQs have TIPs | ✅ 15/15 P0 covered |
+| Dependencies are acyclic | ✅ DAG verified |
+| Critical path identified | ✅ 8 TIPs, ~22h |
+| Parallelization documented | ✅ 6 parallel groups |
+| Estimates reasonable | ✅ 51h total, max 4h/TIP |
+| Cross-ref with RRI | ✅ 33/33 baseline REQs mapped; TIP-021 extension tracked |
+| Design screens mapped | ✅ 10 unique screens → TIPs |
+| TIP granularity | ✅ All TIPs ≤ 4h |

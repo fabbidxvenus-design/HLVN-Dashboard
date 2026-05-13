@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700&amp;family=Public+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#abadaf",
+                    "on-surface": "#2c2f31",
+                    "on-tertiary-fixed-variant": "#00377b",
+                    "surface-dim": "#d0d5d8",
+                    "primary": "#006947",
+                    "primary-fixed-dim": "#58e7ab",
+                    "surface-variant": "#d9dde0",
+                    "on-tertiary-fixed": "#00163b",
+                    "surface-container": "#e5e9eb",
+                    "on-primary-fixed-variant": "#006544",
+                    "on-secondary": "#c0fff3",
+                    "outline": "#747779",
+                    "tertiary": "#0057bd",
+                    "primary-container": "#69f6b8",
+                    "primary-fixed": "#69f6b8",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#595c5e",
+                    "tertiary-dim": "#004ca6",
+                    "error-dim": "#9f0519",
+                    "surface-container-low": "#eef1f3",
+                    "on-error": "#ffefee",
+                    "on-primary-container": "#005a3c",
+                    "surface-container-highest": "#d9dde0",
+                    "surface-container-high": "#dfe3e6",
+                    "surface": "#f5f7f9",
+                    "error-container": "#fb5151",
+                    "tertiary-fixed": "#8ab0ff",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "inverse-on-surface": "#9a9d9f",
+                    "secondary": "#00675d",
+                    "inverse-surface": "#0b0f10",
+                    "tertiary-container": "#8ab0ff",
+                    "on-primary-fixed": "#00452d",
+                    "secondary-fixed": "#6df5e1",
+                    "secondary-fixed-dim": "#5de7d3",
+                    "on-primary": "#c8ffe0",
+                    "on-background": "#2c2f31",
+                    "on-secondary-fixed": "#00463e",
+                    "tertiary-fixed-dim": "#73a2ff",
+                    "on-error-container": "#570008",
+                    "error": "#b31b25",
+                    "surface-bright": "#f5f7f9",
+                    "inverse-primary": "#69f6b8",
+                    "primary-dim": "#005c3d",
+                    "secondary-container": "#6df5e1",
+                    "on-tertiary": "#f0f2ff",
+                    "surface-tint": "#006947",
+                    "on-secondary-container": "#005b51",
+                    "secondary-dim": "#005a50",
+                    "background": "#f5f7f9",
+                    "on-tertiary-container": "#002e6a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "16px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "8px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Public Sans"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Manrope"],
+                    "headline-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-input {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+        .glass-input:focus {
+            border-color: #10B981;
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+            outline: none;
+        }
+        .glass-modal {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Mocked Background Page (User Management Table) -->
+<div class="flex h-screen overflow-hidden">
+<!-- SideNavBar Anchor -->
+<aside class="bg-surface-container h-screen w-64 flex flex-col py-lg border-r border-outline-variant/20 shadow-lg">
+<div class="px-lg mb-xl">
+<div class="text-headline-xl font-headline-xl text-primary">HLVN Analytics</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">V5 Enterprise</div>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center px-lg py-sm text-on-surface-variant hover:text-on-surface mx-2 transition-all duration-200 ease-in-out cursor-pointer rounded-lg hover:bg-surface-variant">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</div>
+<!-- Active Item -->
+<div class="flex items-center px-lg py-sm bg-primary text-on-primary rounded-lg mx-2 transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-label-sm text-label-sm">User Management</span>
+</div>
+<div class="flex items-center px-lg py-sm text-on-surface-variant hover:text-on-surface mx-2 transition-all duration-200 ease-in-out cursor-pointer rounded-lg hover:bg-surface-variant">
+<span class="material-symbols-outlined mr-md">monitoring</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</div>
+<div class="flex items-center px-lg py-sm text-on-surface-variant hover:text-on-surface mx-2 transition-all duration-200 ease-in-out cursor-pointer rounded-lg hover:bg-surface-variant">
+<span class="material-symbols-outlined mr-md">description</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</div>
+<div class="flex items-center px-lg py-sm text-on-surface-variant hover:text-on-surface mx-2 transition-all duration-200 ease-in-out cursor-pointer rounded-lg hover:bg-surface-variant">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<div class="px-lg mt-auto pt-lg">
+<div class="bg-primary-container/20 p-md rounded-lg mb-md">
+<p class="font-label-sm text-label-sm text-on-primary-container">System Status: Healthy</p>
+</div>
+<div class="flex items-center py-sm text-on-surface-variant hover:text-on-surface transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined mr-md">help</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-auto flex flex-col">
+<!-- TopNavBar Anchor -->
+<header class="bg-surface/80 backdrop-blur-md sticky top-0 z-40 h-16 flex justify-between items-center w-full px-margin border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-md">
+<div class="text-headline-lg font-headline-lg text-primary">HLVN Dashboard</div>
+<div class="ml-xl flex items-center bg-surface-container-low px-md py-xs rounded-full border border-outline-variant/20">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-body-md text-body-md ml-xs w-64" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-colors hover:bg-primary-container/20 p-2 rounded-full">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 transition-colors hover:bg-primary-container/20 p-2 rounded-full">settings</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a business executive in a high-rise office environment. The lighting is bright and natural, reflecting a clean and modern corporate aesthetic. The background is softly blurred with hints of glass and steel architecture, emphasizing a professional, high-trust leadership persona with an approachable smile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxHSRTZX37jXpGTuF0EArlLcuf8yCjwgZbIDiDHw6drzpkyI_RrBAY8ODHuSc3KlcSbNHaeZngxXTuTeBg_v_GIj4WEXkRp7OBUdgJ2kU8WB5TN-QCYN6G0EI_1OAANU4Gq1oL8Sj0Pn4QuNEpQ7hCYrblCf5T2BCLd0MlEu_PQKkwwxGoKW0BUhzOXh8tqPohZPFoOdV4YkPp9kRHvMqbMOzXS6FvZCbbpnRjwButN7yK-WJtF_cPDqBn2_Ambu_Kz8_HhBtBla-4"/>
+</div>
+</div>
+</header>
+<div class="p-margin">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-1">User Management</h1>
+<p class="text-on-surface-variant">Control access levels and team permissions</p>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded-lg font-label-sm text-label-sm hover:opacity-90 transition-opacity">
+                        + Create New User
+                    </button>
+</div>
+<!-- Table Content (Blurred by Modal Overlay) -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/30">
+<th class="px-lg py-md font-label-sm text-label-sm text-on-surface-variant">USER</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-on-surface-variant">ROLE</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-on-surface-variant">STATUS</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-on-surface-variant">LAST ACTIVE</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-on-surface-variant">ACTIONS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/30 flex items-center justify-center font-bold text-tertiary">JD</div>
+<div>
+<div class="font-medium">Jane Doe</div>
+<div class="text-xs text-on-surface-variant">jane@hlvn.io</div>
+</div>
+</div>
+</td>
+<td class="px-lg py-md"><span class="bg-secondary-container/30 text-on-secondary-container px-sm py-xs rounded text-xs font-semibold">ADMIN</span></td>
+<td class="px-lg py-md"><span class="flex items-center gap-1 text-primary"><span class="w-2 h-2 rounded-full bg-primary"></span> Active</span></td>
+<td class="px-lg py-md text-on-surface-variant">2 mins ago</td>
+<td class="px-lg py-md"><span class="material-symbols-outlined text-outline cursor-pointer">more_horiz</span></td>
+</tr>
+<tr>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/30 flex items-center justify-center font-bold text-secondary">MS</div>
+<div>
+<div class="font-medium">Mark Smith</div>
+<div class="text-xs text-on-surface-variant">mark.s@hlvn.io</div>
+</div>
+</div>
+</td>
+<td class="px-lg py-md"><span class="bg-surface-variant text-on-surface-variant px-sm py-xs rounded text-xs font-semibold">VIEWER</span></td>
+<td class="px-lg py-md"><span class="flex items-center gap-1 text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-outline-variant"></span> Offline</span></td>
+<td class="px-lg py-md text-on-surface-variant">1 day ago</td>
+<td class="px-lg py-md"><span class="material-symbols-outlined text-outline cursor-pointer">more_horiz</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-[60] flex items-center justify-center p-margin">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-sm"></div>
+<!-- Modal Card -->
+<div class="glass-modal relative w-full max-w-lg rounded-xl shadow-2xl p-xl flex flex-col gap-lg">
+<!-- Header -->
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Create New User</h2>
+<p class="text-on-surface-variant font-body-md text-body-md mt-1">Add a team member to the HLVN enterprise workspace.</p>
+</div>
+<button class="p-xs hover:bg-on-surface-variant/10 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="name">Full Name</label>
+<input class="glass-input rounded-lg px-md py-md font-body-md text-body-md w-full" id="name" placeholder="e.g. Alexander Pierce" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="email">Email Address</label>
+<input class="glass-input rounded-lg px-md py-md font-body-md text-body-md w-full" id="email" placeholder="alex@hlvn.io" type="email"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="role">Access Role</label>
+<div class="relative">
+<select class="glass-input rounded-lg px-md py-md font-body-md text-body-md w-full appearance-none cursor-pointer" id="role">
+<option value="admin">Administrator (Full Access)</option>
+<option value="manager">Manager (Project Level)</option>
+<option value="analyst">Analyst (Data Access)</option>
+<option selected="" value="viewer">Viewer (Read Only)</option>
+</select>
+<div class="absolute right-md top-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant px-1" for="password">Password</label>
+<div class="relative">
+<input class="glass-input rounded-lg px-md py-md font-body-md text-body-md w-full" id="password" placeholder="••••••••••••" type="password"/>
+<div class="absolute right-md top-1/2 -translate-y-1/2 cursor-pointer">
+<span class="material-symbols-outlined text-outline">visibility</span>
+</div>
+</div>
+<p class="text-[10px] text-on-surface-variant/60 px-1 italic">Minimum 12 characters with at least one special character.</p>
+</div>
+</form>
+<!-- Actions -->
+<div class="flex items-center justify-end gap-md mt-lg">
+<button class="px-lg py-md rounded-lg font-label-sm text-label-sm text-on-surface hover:bg-on-surface-variant/10 transition-colors">
+                    Cancel
+                </button>
+<button class="px-xl py-md rounded-lg font-label-sm text-label-sm bg-[#10B981] text-white shadow-md hover:brightness-110 active:scale-95 transition-all">
+                    Create User
+                </button>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#eef1f3",
+                      "surface-bright": "#f5f7f9",
+                      "tertiary": "#0057bd",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "primary-container": "#69f6b8",
+                      "on-surface-variant": "#595c5e",
+                      "surface-container": "#e5e9eb",
+                      "on-secondary-fixed": "#00463e",
+                      "outline-variant": "#abadaf",
+                      "primary-dim": "#005c3d",
+                      "primary": "#006947",
+                      "on-secondary-container": "#005b51",
+                      "secondary-fixed": "#6df5e1",
+                      "background": "#f5f7f9",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "inverse-on-surface": "#9a9d9f",
+                      "on-tertiary": "#f0f2ff",
+                      "on-primary-fixed": "#00452d",
+                      "error": "#b31b25",
+                      "secondary-dim": "#005a50",
+                      "on-surface": "#2c2f31",
+                      "surface-tint": "#006947",
+                      "tertiary-container": "#8ab0ff",
+                      "surface-dim": "#d0d5d8",
+                      "on-primary-fixed-variant": "#006544",
+                      "error-dim": "#9f0519",
+                      "on-tertiary-fixed": "#00163b",
+                      "tertiary-fixed": "#8ab0ff",
+                      "on-primary-container": "#005a3c",
+                      "on-primary": "#c8ffe0",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "surface-variant": "#d9dde0",
+                      "inverse-surface": "#0b0f10",
+                      "on-tertiary-container": "#002e6a",
+                      "error-container": "#fb5151",
+                      "inverse-primary": "#69f6b8",
+                      "surface": "#f5f7f9",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "primary-fixed-dim": "#58e7ab",
+                      "on-error-container": "#570008",
+                      "on-background": "#2c2f31",
+                      "surface-container-high": "#dfe3e6",
+                      "outline": "#747779",
+                      "secondary": "#00675d",
+                      "tertiary-dim": "#004ca6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#c0fff3",
+                      "secondary-container": "#6df5e1",
+                      "surface-container-highest": "#d9dde0",
+                      "on-error": "#ffefee",
+                      "primary-fixed": "#69f6b8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "base": "8px",
+                      "xl": "32px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Public Sans"],
+                      "headline-xl": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface-bright font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar (Persistent) -->
+<aside class="fixed left-0 top-0 h-full z-40 flex flex-col py-6 bg-surface-container/80 dark:bg-inverse-surface/80 backdrop-blur-md w-64 border-r border-outline-variant shadow-sm transition-all">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<div>
+<h1 class="text-headline-lg font-headline-lg font-black text-primary">HLVN Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Enterprise v5.2</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-bold rounded-lg mx-2 px-4 py-2 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Team</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-2 space-y-1 border-t border-outline-variant/30 pt-4">
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+<a class="text-on-surface-variant hover:text-on-surface mx-2 px-4 py-2 flex items-center gap-3 transition-colors hover:bg-surface-container-high" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md">Sign Out</span>
+</a>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 z-30 flex justify-between items-center px-gutter py-md bg-surface-bright/90 dark:bg-surface-dim/90 backdrop-blur-sm border-b border-outline-variant shadow-sm h-16">
+<div class="flex items-center gap-8">
+<h2 class="text-headline-lg font-headline-lg font-bold text-primary">HLVN Dashboard</h2>
+<div class="hidden lg:flex items-center gap-6">
+<a class="text-primary border-b-2 border-primary pb-1 font-label-sm text-label-sm" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 font-label-sm text-label-sm" href="#">Resources</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors pb-1 font-label-sm text-label-sm" href="#">Docs</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-all rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-all rounded-full">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/50 mx-2"></div>
+<div class="flex items-center gap-3 cursor-pointer">
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full bg-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMpw2rkx9ZxsVkYo_JhX865MAxHMN5VOWtyj9TZ2YyKdQ0-t0nv374OT4WDDFyI-hpzoJXJ3_L1ULq3hWttIcxKAtlrMDHeoNfZzlIkvCzj_4q3mc-ha7-n4NqRKmSKaunaDuC6BMXlAjsiqKCrIIhtJN7fN1vvmlV1HiyZY_I78wjYK5XX2oeAUrKzpLuRQVM2cpZ2BssZvocLudTR-3Ks3WzYvtqe9nxPTNYsbP45eZnvxZhOJtV70gTXbFe761h-xfEy87PNSIi"/>
+<span class="font-label-sm text-label-sm text-on-surface hidden xl:inline">Admin User</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 pt-16 min-h-screen flex flex-col">
+<div class="p-margin flex-1">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<nav class="flex mb-2 gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span>Trang chủ</span>
+<span>/</span>
+<span class="text-primary">Lịch sử quét</span>
+</nav>
+<h1 class="text-headline-xl font-headline-xl text-on-surface">Lịch sử quét</h1>
+</div>
+<button class="bg-primary hover:bg-primary-dim text-white flex items-center gap-2 px-6 py-2.5 rounded-lg shadow-sm transition-all font-bold">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    Lượt quét mới
+                </button>
+</div>
+<!-- Filters -->
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant shadow-sm mb-6 flex flex-wrap gap-4 items-center">
+<div class="relative flex-1 min-w-[300px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg pl-10 pr-4 py-2 text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Tìm kiếm mã quét hoặc sản phẩm..." type="text"/>
+</div>
+<div class="relative min-w-[200px]">
+<select class="w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-2 text-body-md appearance-none focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all cursor-pointer">
+<option value="">Tất cả trạng thái</option>
+<option value="success">Thành công</option>
+<option value="pending">Đang chờ</option>
+<option value="failed">Thất bại</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-high hover:bg-surface-variant text-on-surface rounded-lg font-label-sm text-label-sm transition-all border border-outline-variant/30">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+                    Bộ lọc nâng cao
+                </button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Mã Quét (ID)</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Sản phẩm</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Trạng thái</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider text-center">Trường dữ liệu</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Độ chính xác</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Người thực hiện</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider">Ngày quét</th>
+<th class="px-6 py-4 font-headline-lg text-label-sm text-on-surface-variant uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4 font-bold text-primary">#SCAN-49210</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="Product Thumbnail" class="object-cover" data-alt="A macro studio photograph of high-quality organic green tea leaves and botanical extracts, presented in a minimalist glass laboratory dish. The lighting is soft and natural, emphasizing textures and deep verdant greens against a clean white background. Professional product photography style for a modern wellness brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdDRB-nsdgYcGwScdBCItabsVW0gmv3lrcsX_dtEqQ3gTCcxwyGXN_emJtbrlR9VBSWqtkXxIwr8zNtMgWXJSOSsgtriVq0n3RS04RFliINrL9uB-gADfR5qTZcKYU4L0o4guPicDbaqlKsPx-zMq63DZULOkvPH8zAUnTB2lHmKFVAKiPCMtGUQUihivyGwazSZk0fxpHHIsYBr9ZpDOV0avxB6x_4nPRYoYWqvgY7X2-YSu-J34zw9r-hp73FXmUGzP9FJ3k3HmB"/>
+</div>
+<span class="font-medium text-on-surface">Green Tea Extract</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Thành công
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center font-medium">24 trường</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">98.5%</span>
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 98.5%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User Avatar" class="w-6 h-6 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApwTIVLf3QTD2WuA3TFXQQ73d-ifvILEJmeM7ohHjqeDtL7A3NHJA9IPVNVeKTKNltjGeMmoheAqXu4zsBhkThn4Zf8whQnmAgiaG8yskQpT9OHma4XK6weHngHxiVDXvlRSntsaF7iAjtC_UinXXz2HQpTs0TC5lL1BuQ-tBlorHK-F6Xx5A90Iea65DZHkc-ihkgp6WDWDInKbEV77Iaj5WxNThbGaWNOnM1-dnhGQDQO-oaLVgwOCahfq55Z9reWu6fq7PDE_QI"/>
+<span class="text-on-surface-variant font-label-sm">John Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-label-sm">24 thg 10, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4 font-bold text-primary">#SCAN-49208</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="Product Thumbnail" class="object-cover" data-alt="A clinical, clean-room product shot of high-tech pharmaceutical capsules and specialized supplement containers. The composition is structured and scientific, using high-key lighting to eliminate harsh shadows. Subtle teal and emerald accents reflect a high-end biotech laboratory aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqbm3Ip8IX6_-5oyLymsyAMYfIRCEGRFlvsXpA8whyXl2D1Y9GlJeZnS-VZ9_ECvWsn_HG8XkwnExokva_BRBguxnrK2y6P4c3wLbX68tTqs7Ay6hWpYYfSd9JA6FuLU4kHeukBV_jZRK_ZX11BW7pS2ucXHJm9iMUDAA_VMtoCYoiRND5bRWUM3AC8RibIVkBGSCO958kBnFbQx0kLEFBbye5WJSzqED9KF6rfBolvrF-PpN6murPeHLl4mRj-C9Mdln7e5jxxk3-"/>
+</div>
+<span class="font-medium text-on-surface">Vitamin C Complex</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/30 text-on-tertiary-container text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                        Đang chờ
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center font-medium">18 trường</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">--</span>
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-tertiary h-full animate-pulse" style="width: 40%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User Avatar" class="w-6 h-6 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9hZl3p5p7toridnI7ejPtKp0wZpCnaH87KAaQ0M4lpYVtfSAllSIq6jOwJiby3voXo55nVlf4MqOnO5swPSKq6tz8xcXgy1mjm74XDfnHPzUVCHYesFydbqwGWpi15LwrnTChoD53TwYGxr1itDmxCILs8opxORLdzux2qQQXlwUHtK3HlEsygp-MazbXbtqVaVjHhWJwDsPNI8wFGRsreLIN0PJ1y7g7sd02PPioVRZLf5lATzDLTc0NSOrH6_f7pzDO2vJ1Ww9s"/>
+<span class="text-on-surface-variant font-label-sm">Anna Nguyen</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-label-sm">24 thg 10, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4 font-bold text-primary">#SCAN-49195</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="Product Thumbnail" class="object-cover" data-alt="Sophisticated product photography of organic skincare serum bottles. The glass bottles feature elegant minimalist labels. The background is a soft, out-of-focus wellness spa environment with gentle sunlight filtering through plants. Emerald green and cream white tones create a premium, natural brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhhFsCFBK6JLq58Jerm0h5cpjUquzUgYaQQ7L1FFJauYldTsg5_PG6s1kHAt8ZjYd_zefhMvJ8opRQFQYLIdJPK-sTMIj0NiestTTs8JSL73nGPRtfyHqcG4Lp0iNpw3eGQqNmsoxRf0ksx1oX-ZQu_Y_VGskyjyZl4AAaT88lVXgEvy3zGb__zdeaZMt57tXCgiSBLIek7R2R4SAqjC96EjxS938F2j2sPFg4_8AwwQ6fOOPiqo0cPLseHXt0SsaCnvcwYPkufQ5z"/>
+</div>
+<span class="font-medium text-on-surface">Hyaluronic Serum</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container/20 text-error-dim text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                        Thất bại
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center font-medium">12 trường</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">42.1%</span>
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-error h-full" style="width: 42.1%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User Avatar" class="w-6 h-6 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm1dC1BEUcvtKOzpYaB7WBYiyvoiCVAEO6Ne3LFiynTQh1SNhbH4dmmGWinRFWg2YkporYlRSnskxct1BDTPCCTTeNAswCzQuDPFVnrtib-mioEAxI51t0E0uHDLt2g7a9jrseWpcofQLNp4D3QM0mGGiYo-eK_i-xCbEbThzwzUZd62IgrnpD34HY733IxHBJEJOECAqOl_5NgUBPSbG74BfdV_f0c8swTN2ODv75tmFI00s9C3ptTLOS1jf7xE1-xddoCKbGOtAP"/>
+<span class="text-on-surface-variant font-label-sm">Tran Hoang</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-label-sm">23 thg 10, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-6 py-4 font-bold text-primary">#SCAN-49190</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant/30">
+<img alt="Product Thumbnail" class="object-cover" data-alt="Professional studio shot of high-quality distilled mineral water in a sustainable, high-density polyethylene container. Crystal clear water splashes captured with high-speed photography against a vibrant emerald green background. Bright, clinical lighting that emphasizes purity and precision for an enterprise analytics dashboard theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgY_Sp9ra-DkYe4omscaD96_o5g1eA_U3k0-D83r7bu5pMnOo9QDrnzmksNCqyh_UReqIgCvLqKPH55D2DpT3Az-UwiYQQnKYER-E6ckG8ozFBQajk10magVACwPlTwlam6fJ9bcuLgLRqi3EcO5zq5lDqC7zrZZBAPkX_m7J7ZDLuanaIcwmrhLkhGo3R-2_0PrvH6ml4mi49IQeoZV7bYrVfBnZUzu7p5pBjmPPiNIm9_VXpSBP1LY41n2xGbieJHf-Ja55USGge"/>
+</div>
+<span class="font-medium text-on-surface">Distilled Water 5L</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                        Thành công
+                                    </span>
+</td>
+<td class="px-6 py-4 text-center font-medium">10 trường</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-on-surface font-bold">100%</span>
+<div class="w-16 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User Avatar" class="w-6 h-6 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCU88LNxoHZYiQdI6viyqNu5ARioJXuYAgFyon81nQMIKY2o-NrfHBXyBc0cWXVcUeLV7UbEjia-ZWrmpEjNiyQiqpl795rNRIO-T6qOOFwfoe5eMBl0gdzn_j2vtSM0nyLDtMIULmxZnoAkxu281mCnh1GvP_1Wnj_jSNVPWtmg78uy1pdWxKkOCriVD24oVdHOb0f3PMzs9nFflgPfB_-RYEb8Xg_UdxwW4HQ8FgZAXeh5pI-ga6fKtiusIg8wTPbgp-tD2z-cB_"/>
+<span class="text-on-surface-variant font-label-sm">John Doe</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant text-label-sm">22 thg 10, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="p-2 opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-primary">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex items-center justify-between">
+<p class="text-label-sm text-on-surface-variant">Hiển thị 1 - 10 của 240 kết quả</p>
+<div class="flex items-center gap-1">
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant disabled:opacity-50 transition-all" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-label-sm">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-label-sm transition-all">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-label-sm transition-all">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-label-sm transition-all">24</button>
+<button class="p-2 rounded-lg hover:bg-surface-container-high text-on-surface-variant transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="ml-0 flex justify-between items-center px-gutter py-xl mt-auto bg-surface-container-lowest border-t border-outline-variant">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 HLVN Enterprise Solutions. All rights reserved.</p>
+</div>
+<div class="flex items-center gap-6">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Status</a>
+</div>
+</footer>
+</main>
+</body></html>

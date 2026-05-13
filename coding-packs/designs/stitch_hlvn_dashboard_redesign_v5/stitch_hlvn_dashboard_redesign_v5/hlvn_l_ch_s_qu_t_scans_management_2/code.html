@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics - Lịch sử quét</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=JetBrains+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#00463e",
+                      "surface-container-high": "#dfe3e6",
+                      "surface-container-highest": "#d9dde0",
+                      "primary-dim": "#005c3d",
+                      "on-tertiary-fixed": "#00163b",
+                      "on-surface-variant": "#595c5e",
+                      "surface-tint": "#006947",
+                      "inverse-surface": "#0b0f10",
+                      "surface-container": "#e5e9eb",
+                      "on-tertiary": "#f0f2ff",
+                      "outline": "#747779",
+                      "inverse-primary": "#69f6b8",
+                      "tertiary-dim": "#004ca6",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "surface": "#f5f7f9",
+                      "on-primary": "#c8ffe0",
+                      "surface-variant": "#d9dde0",
+                      "on-background": "#2c2f31",
+                      "on-primary-fixed": "#00452d",
+                      "secondary-container": "#6df5e1",
+                      "on-surface": "#2c2f31",
+                      "on-error-container": "#570008",
+                      "primary-fixed-dim": "#58e7ab",
+                      "outline-variant": "#abadaf",
+                      "on-secondary-container": "#005b51",
+                      "on-primary-container": "#005a3c",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "error": "#b31b25",
+                      "secondary-dim": "#005a50",
+                      "on-error": "#ffefee",
+                      "secondary-fixed": "#6df5e1",
+                      "secondary": "#00675d",
+                      "error-dim": "#9f0519",
+                      "primary-fixed": "#69f6b8",
+                      "primary": "#006947",
+                      "surface-dim": "#d0d5d8",
+                      "primary-container": "#69f6b8",
+                      "tertiary-fixed": "#8ab0ff",
+                      "surface-container-low": "#eef1f3",
+                      "surface-bright": "#f5f7f9",
+                      "tertiary": "#0057bd",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#9a9d9f",
+                      "tertiary-container": "#8ab0ff",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "on-secondary": "#c0fff3",
+                      "on-tertiary-container": "#002e6a",
+                      "on-primary-fixed-variant": "#006544",
+                      "error-container": "#fb5151",
+                      "background": "#f5f7f9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "4px",
+                      "sm": "8px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "base": "8px",
+                      "gutter": "16px",
+                      "margin": "24px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Public Sans"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f5f7f9; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .green-glow:hover {
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+        .zebra-row:nth-child(even) {
+            background-color: rgba(209, 250, 229, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar Anchor -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col py-margin bg-surface dark:bg-inverse-surface border-r border-outline-variant dark:border-outline shadow-sm z-50">
+<div class="px-lg mb-xl flex items-center gap-md">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<div>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary dark:text-primary-fixed leading-none">HLVN</h1>
+<p class="text-[10px] font-label-sm text-on-surface-variant uppercase tracking-wider">V5 Analytics</p>
+</div>
+</div>
+<nav class="flex-1 px-sm space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary dark:text-primary-fixed border-r-4 border-primary dark:border-primary-fixed bg-surface-container-low dark:bg-surface-container-highest transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="font-body-md font-semibold">Scan History</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-body-md">Fleet Status</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-sm pt-md border-t border-outline-variant">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md flex justify-between items-center px-lg border-b border-outline-variant dark:border-outline shadow-sm z-40">
+<div class="flex items-center gap-xl flex-1">
+<div class="relative w-96">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border-none rounded-full text-body-md focus:ring-2 focus:ring-primary/20" placeholder="Tìm kiếm hệ thống..." type="text"/>
+</div>
+<nav class="flex gap-lg">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Overview</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary font-body-md" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-body-md" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-sm px-md py-xs bg-primary text-on-primary rounded-lg font-label-sm hover:bg-primary-dim transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                Download Data
+            </button>
+<div class="flex gap-xs border-l border-outline-variant pl-md">
+<button class="p-sm hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm hover:bg-surface-container rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional close-up headshot of a smiling executive-level male with a clean-cut appearance. The background is a soft-focus office interior with emerald green accents and bright, natural sunlight filtering through windows. The overall lighting is warm and welcoming, reflecting a high-end corporate lifestyle and success in a technology-driven environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwaqaofIxE1lhxviM4OQQbGB4gg_lD1HT501Ko5qN0CNIJ_RtpehrKU83YpbByzeKJh7kUbgc41ai-6Y3fVh-i5rJjA1Tbi4xfbPW4SYsTHHZoUP185-qc2QYi8ghvMu_Iy_Th0dEWFAa7zDY7xYdNQFmBwH7th6klXz8BBO4jtsI98NyBiAVHVV2IvR5U7xnchhwGJC-ECFSRO1QV6sGDSV0glfyYST51F2M-00kb8uYlU9idFDuImJfCszuubvGBr8E8sZ8FWAaW"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-margin min-h-[calc(100vh-4rem)]">
+<!-- Header Section -->
+<section class="flex justify-between items-end mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">Lịch sử quét</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Quản lý và theo dõi các lần quét hệ thống của bạn theo thời gian thực.</p>
+</div>
+<button class="flex items-center gap-sm px-xl py-md bg-[#10B981] text-white rounded-[6px] font-semibold text-body-md green-glow transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add_circle</span>
+                New Scan
+            </button>
+</section>
+<!-- Filter Bar -->
+<section class="glass-card rounded-xl p-md mb-lg flex items-center gap-md">
+<div class="flex-1 relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-white/50 border border-outline-variant focus:border-[#10B981] focus:ring-4 focus:ring-[#10B981]/10 rounded-lg text-body-md outline-none transition-all placeholder:text-on-surface-variant/60" placeholder="Tìm kiếm theo ID, sản phẩm..." type="text"/>
+</div>
+<div class="relative min-w-[180px]">
+<select class="w-full pl-md pr-xl py-sm bg-white/50 border border-outline-variant rounded-lg text-body-md appearance-none focus:border-[#10B981] focus:ring-4 focus:ring-[#10B981]/10 outline-none cursor-pointer">
+<option value="">Trạng thái: Tất cả</option>
+<option value="success">Thành công</option>
+<option value="pending">Đang chờ</option>
+<option value="failed">Thất bại</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+<div class="flex bg-white/50 border border-outline-variant rounded-lg p-1">
+<button class="px-md py-xs rounded-md font-label-sm text-[#10B981] bg-[#10B981]/10 font-bold transition-all">24h qua</button>
+<button class="px-md py-xs rounded-md font-label-sm text-on-surface-variant hover:text-on-surface transition-all">7 ngày</button>
+<button class="px-md py-xs rounded-md font-label-sm text-on-surface-variant hover:text-on-surface transition-all">30 ngày</button>
+</div>
+<button class="flex items-center gap-xs px-md py-sm text-[#10B981] hover:bg-[#10B981]/10 rounded-lg transition-all font-body-md font-medium">
+<span class="material-symbols-outlined text-[18px]">filter_alt_off</span>
+                Xóa lọc
+            </button>
+</section>
+<!-- Table Container -->
+<section class="glass-card rounded-xl overflow-hidden shadow-xl border border-white/60">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant">
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">ID</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Product</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider text-center">Status</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider text-center">Total Fields</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Accuracy</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Scanned By</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/30">
+<!-- Row 1 -->
+<tr class="zebra-row hover:bg-[#D1FAE5]/30 transition-colors group">
+<td class="px-lg py-md font-mono text-[13px] text-on-surface-variant">#SCAN-49210</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">inventory_2</span>
+</div>
+<span class="font-body-md font-semibold">Green Tea Extract</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-[#10B981]/10 text-[#10B981] text-label-sm font-bold border border-[#10B981]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#10B981]"></span>
+                                Success
+                            </span>
+</td>
+<td class="px-lg py-md text-center font-body-md">24</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-full max-w-[60px] h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-[#10B981]" style="width: 98%;"></div>
+</div>
+<span class="text-label-sm font-bold text-[#10B981]">98.5%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="font-body-md">John Doe</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-sm">Oct 24, 2023 • 14:22</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-primary transition-all shadow-sm">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-error transition-all shadow-sm">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="zebra-row hover:bg-[#D1FAE5]/30 transition-colors group">
+<td class="px-lg py-md font-mono text-[13px] text-on-surface-variant">#SCAN-49209</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">medical_services</span>
+</div>
+<span class="font-body-md font-semibold">Omega Vitality Caps</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-[#F59E0B]/10 text-[#F59E0B] text-label-sm font-bold border border-[#F59E0B]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B]"></span>
+                                Pending
+                            </span>
+</td>
+<td class="px-lg py-md text-center font-body-md">18</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-full max-w-[60px] h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-[#F59E0B]" style="width: 45%;"></div>
+</div>
+<span class="text-label-sm font-bold text-[#F59E0B]">45.2%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="Sarah Smith" class="w-6 h-6 rounded-full object-cover" data-alt="A portrait of a young female professional with a radiant and confident smile, set against a modern office background with soft teal and emerald green accents. Her expression is approachable and bright, illuminated by soft cinematic lighting. The image captures a clean-tech corporate vibe, maintaining a cohesive aesthetic with the emerald green brand theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt3bqAOcORInlccpmE8SfFmkcQIBedmBc5SdxP1mXOCLqvYy_445YDZYo_levqXuBe9g_l_Ev55XY5odVBqVOcCBl_wtqVFJHfgM7SRFZl82_DCK_Olg681-unZo1FdrnuoYhyiQqgvDeGspUXTtZr4ZldxCum8OEMRxc0pBSjhkXiBun08WxTY-YwBVL8TA4NnhR05hC7ahkqczJrIADT5cuEPrRVDkVsl7pnPiAn1Eoj68lDwLFGRjtLuu_Bn94TxSr8wfZoHdt_"/>
+<span class="font-body-md">Sarah Smith</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-sm">Oct 24, 2023 • 12:45</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-primary transition-all shadow-sm">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-error transition-all shadow-sm">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="zebra-row hover:bg-[#D1FAE5]/30 transition-colors group">
+<td class="px-lg py-md font-mono text-[13px] text-on-surface-variant">#SCAN-49195</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[18px]">science</span>
+</div>
+<span class="font-body-md font-semibold">Whey Protein Iso</span>
+</div>
+</td>
+<td class="px-lg py-md text-center">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-[#EF4444]/10 text-[#EF4444] text-label-sm font-bold border border-[#EF4444]/20">
+<span class="w-1.5 h-1.5 rounded-full bg-[#EF4444]"></span>
+                                Failed
+                            </span>
+</td>
+<td class="px-lg py-md text-center font-body-md">0</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-full max-w-[60px] h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-[#EF4444]" style="width: 5%;"></div>
+</div>
+<span class="text-label-sm font-bold text-[#EF4444]">0.0%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-6 h-6 rounded-full bg-surface-container text-on-surface-variant flex items-center justify-center text-[10px] font-bold">AM</div>
+<span class="font-body-md">Auto Machine 4</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-sm">Oct 23, 2023 • 09:15</td>
+<td class="px-lg py-md text-right">
+<div class="flex justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-primary transition-all shadow-sm">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+<button class="p-sm hover:bg-white/60 rounded-lg text-on-surface-variant hover:text-error transition-all shadow-sm">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-lg py-md bg-white/40 border-t border-outline-variant flex justify-between items-center">
+<p class="text-label-sm text-on-surface-variant">Hiển thị 1 - 10 trên 2,492 lần quét</p>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/60 text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#10B981] text-white font-bold text-label-sm shadow-md shadow-[#10B981]/30">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/60 text-on-surface-variant font-medium text-label-sm transition-all">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/60 text-on-surface-variant font-medium text-label-sm transition-all">3</button>
+<span class="px-xs text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/60 text-on-surface-variant font-medium text-label-sm transition-all">24</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/60 text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Insights Bento Section -->
+<section class="mt-lg grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-lg flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<h4 class="text-label-sm font-bold text-on-surface-variant uppercase mb-sm">Accuracy Rate</h4>
+<p class="text-headline-xl font-headline-xl text-primary">94.8%</p>
+<div class="flex items-center gap-xs mt-xs text-[#10B981] font-medium text-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+2.4% so với tháng trước</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+<div class="col-span-12 md:col-span-8 glass-card rounded-xl p-lg flex items-center justify-between">
+<div class="flex-1">
+<h4 class="text-label-sm font-bold text-on-surface-variant uppercase mb-sm">Scan Velocity</h4>
+<div class="h-16 flex items-end gap-1">
+<div class="w-full bg-[#10B981]/20 rounded-t h-[40%]"></div>
+<div class="w-full bg-[#10B981]/20 rounded-t h-[60%]"></div>
+<div class="w-full bg-[#10B981]/20 rounded-t h-[30%]"></div>
+<div class="w-full bg-[#10B981]/20 rounded-t h-[80%]"></div>
+<div class="w-full bg-[#10B981]/60 rounded-t h-[70%]"></div>
+<div class="w-full bg-[#10B981]/40 rounded-t h-[90%]"></div>
+<div class="w-full bg-[#10B981] rounded-t h-[100%] shadow-lg shadow-primary/30"></div>
+<div class="w-full bg-[#10B981]/40 rounded-t h-[85%]"></div>
+<div class="w-full bg-[#10B981]/20 rounded-t h-[60%]"></div>
+</div>
+</div>
+<div class="ml-xl border-l border-outline-variant pl-xl">
+<p class="text-on-surface-variant text-sm mb-xs">Hoạt động trong ngày</p>
+<p class="text-headline-lg font-bold text-on-surface">1,204 Scans</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-lg right-lg w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined text-[32px]">qr_code_scanner</span>
+</button>
+</body></html>

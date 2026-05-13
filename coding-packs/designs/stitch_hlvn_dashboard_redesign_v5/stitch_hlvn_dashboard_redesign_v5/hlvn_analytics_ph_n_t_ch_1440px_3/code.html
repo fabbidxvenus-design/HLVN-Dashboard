@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Dashboard - Phân tích</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5e9eb",
+                    "secondary-fixed": "#6df5e1",
+                    "on-tertiary-fixed": "#00163b",
+                    "on-primary-fixed": "#00452d",
+                    "on-background": "#2c2f31",
+                    "error-dim": "#9f0519",
+                    "surface-container-high": "#dfe3e6",
+                    "tertiary-fixed": "#8ab0ff",
+                    "primary-fixed": "#69f6b8",
+                    "inverse-on-surface": "#9a9d9f",
+                    "primary-fixed-dim": "#58e7ab",
+                    "on-primary": "#c8ffe0",
+                    "error-container": "#fb5151",
+                    "secondary-container": "#6df5e1",
+                    "on-tertiary": "#f0f2ff",
+                    "on-tertiary-container": "#002e6a",
+                    "tertiary-dim": "#004ca6",
+                    "primary-dim": "#005c3d",
+                    "secondary-fixed-dim": "#5de7d3",
+                    "on-secondary-fixed": "#00463e",
+                    "inverse-surface": "#0b0f10",
+                    "surface-dim": "#d0d5d8",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "surface-container-highest": "#d9dde0",
+                    "secondary-dim": "#005a50",
+                    "on-tertiary-fixed-variant": "#00377b",
+                    "inverse-primary": "#69f6b8",
+                    "tertiary-fixed-dim": "#73a2ff",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#f5f7f9",
+                    "on-error": "#ffefee",
+                    "primary-container": "#69f6b8",
+                    "outline-variant": "#abadaf",
+                    "surface-variant": "#d9dde0",
+                    "tertiary": "#0057bd",
+                    "on-surface": "#2c2f31",
+                    "on-secondary-container": "#005b51",
+                    "on-secondary": "#c0fff3",
+                    "on-primary-fixed-variant": "#006544",
+                    "tertiary-container": "#8ab0ff",
+                    "on-primary-container": "#005a3c",
+                    "surface-container-low": "#eef1f3",
+                    "surface-bright": "#f5f7f9",
+                    "surface": "#f5f7f9",
+                    "outline": "#747779",
+                    "primary": "#10B981",
+                    "on-error-container": "#570008",
+                    "surface-tint": "#006947",
+                    "on-surface-variant": "#595c5e",
+                    "error": "#b31b25",
+                    "secondary": "#00675d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "base": "8px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Public Sans"],
+                    "headline-xl": ["Manrope"],
+                    "headline-lg": ["Manrope"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-full w-64 fixed left-0 top-0 bg-surface-container-low/80 backdrop-blur-xl border-r border-outline-variant flex flex-col p-md z-50">
+<div class="mb-xl px-sm">
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-primary">HLVN Dashboard</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">v5.0 Enterprise</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Dashboard Tab -->
+<a class="flex items-center gap-sm p-sm text-on-surface-variant font-body-md text-body-md hover:bg-surface-container-high transition-colors duration-200 rounded-lg active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Scans Tab -->
+<a class="flex items-center gap-sm p-sm text-on-surface-variant font-body-md text-body-md hover:bg-surface-container-high transition-colors duration-200 rounded-lg active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="security_update_good">security_update_good</span>
+<span>Scans</span>
+</a>
+<!-- Users Tab -->
+<a class="flex items-center gap-sm p-sm text-on-surface-variant font-body-md text-body-md hover:bg-surface-container-high transition-colors duration-200 rounded-lg active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<!-- Analytics Tab (Active) -->
+<a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container font-semibold font-body-md text-body-md rounded-lg active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="mt-auto space-y-xs border-t border-outline-variant pt-md">
+<button class="w-full text-left flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</button>
+<button class="w-full text-left flex items-center gap-sm p-sm text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-body-md text-body-md">Support</span>
+</button>
+<div class="mt-md px-sm py-xs bg-primary/10 rounded-lg">
+<p class="text-primary font-bold text-label-sm">System Status</p>
+<div class="flex items-center gap-xs mt-xs">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-label-sm text-on-surface-variant">All systems operational</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Shell -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface/90 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-margin h-xl">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-xl text-headline-xl text-primary font-bold">Phân tích</h2>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Segmented Control -->
+<div class="bg-surface-container flex p-xs rounded-lg border border-outline-variant">
+<button class="px-md py-xs font-label-sm text-label-sm rounded-md text-on-surface-variant hover:bg-surface-container-high transition-all">7D</button>
+<button class="px-md py-xs font-label-sm text-label-sm rounded-md bg-primary text-white shadow-sm font-bold">30D</button>
+<button class="px-md py-xs font-label-sm text-label-sm rounded-md text-on-surface-variant hover:bg-surface-container-high transition-all">90D</button>
+<div class="mx-xs w-[1px] bg-outline-variant"></div>
+<button class="flex items-center gap-xs px-md py-xs font-label-sm text-label-sm rounded-md text-on-surface-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="calendar_month">calendar_month</span>
+<span>Tùy chỉnh</span>
+</button>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate executive in a crisp navy blue suit, set against a blurred modern office background with soft daylight. The image has a clean, high-key aesthetic with vibrant natural skin tones and deep blue accents, fitting a premium SaaS dashboard profile identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmHt9y07GmMCVSED2evanq1LmtX7afoI9utix4D1fGFG1_5tFcGYCwTEe0Y1HdA-sAnyKy6unAjNYP4fIWsjalx39VRy4AFjBo1H8u4-e7tlKw4A8ryRn6qBIBCeDKvcrw1-0KH_yA93mJgWVk7fbvG-zAIqnLZkSll2w16fMFzUDjtYkyHsozvuqW1HU3pAI5OYMbN3pMrX6przH1k6J-6zFiyfpXNxwa_VfbL3IslDjLQuciZsbolEls5flP6EBkVhMy_kToq-GN"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Area -->
+<section class="mt-xl p-margin space-y-lg pt-24 max-w-[1440px] mx-auto">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Tổng số lượt quét</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">1,284,502</h3>
+</div>
+<div class="p-xs bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="search_check">search_check</span>
+</div>
+</div>
+<div class="mt-md flex items-center gap-xs">
+<span class="text-primary font-bold text-label-sm flex items-center">+12.5%</span>
+<span class="text-on-surface-variant text-label-sm">vs tháng trước</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Người dùng duy nhất</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">42,910</h3>
+</div>
+<div class="p-xs bg-tertiary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" data-icon="person_search">person_search</span>
+</div>
+</div>
+<div class="mt-md flex items-center gap-xs">
+<span class="text-primary font-bold text-label-sm flex items-center">+8.2%</span>
+<span class="text-on-surface-variant text-label-sm">vs tháng trước</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">API Calls</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">8,102,442</h3>
+</div>
+<div class="p-xs bg-secondary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="api">api</span>
+</div>
+</div>
+<div class="mt-md flex items-center gap-xs">
+<span class="text-error font-bold text-label-sm flex items-center">-2.1%</span>
+<span class="text-on-surface-variant text-label-sm">giảm tải hệ thống</span>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md shadow-sm hover:shadow-md transition-all">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Độ trễ trung bình</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">248ms</h3>
+</div>
+<div class="p-xs bg-surface-container-highest rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="timer">timer</span>
+</div>
+</div>
+<div class="mt-md flex items-center gap-xs">
+<span class="text-primary font-bold text-label-sm flex items-center">-14ms</span>
+<span class="text-on-surface-variant text-label-sm">tối ưu hóa 5%</span>
+</div>
+</div>
+</div>
+<!-- Charts Row -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Large Area Chart -->
+<div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-xl">API Usage Over Time</h4>
+<p class="text-label-sm text-on-surface-variant">Lưu lượng truy cập API theo thời gian thực (30 ngày qua)</p>
+</div>
+<button class="p-xs hover:bg-surface-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="relative h-64 w-full flex items-end gap-sm overflow-hidden pt-8">
+<!-- Simulated Chart Content (CSS Based Visualization) -->
+<div class="absolute inset-0 flex items-end">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 100">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#10B981" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#10B981" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,80 Q100,20 200,60 T400,30 T600,70 T800,20 L1000,40 L1000,100 L0,100 Z" fill="url(#chartGradient)"></path>
+<path d="M0,80 Q100,20 200,60 T400,30 T600,70 T800,20 L1000,40" fill="none" stroke="#10B981" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Axis Labels -->
+<div class="absolute bottom-0 left-0 right-0 flex justify-between text-label-sm text-on-surface-variant/60 font-medium px-xs">
+<span>01 May</span>
+<span>07 May</span>
+<span>14 May</span>
+<span>21 May</span>
+<span>28 May</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-xl mb-xs">Phân bổ mô hình</h4>
+<p class="text-label-sm text-on-surface-variant mb-xl">Tỷ lệ sử dụng theo LLM</p>
+<div class="flex flex-col items-center">
+<div class="relative w-48 h-48 mb-lg">
+<!-- Circular Progress Simulation -->
+<svg class="w-full h-full -rotate-90">
+<circle cx="96" cy="96" fill="transparent" r="80" stroke="#f1f5f9" stroke-width="16"></circle>
+<circle cx="96" cy="96" fill="transparent" r="80" stroke="#10B981" stroke-dasharray="502" stroke-dashoffset="150" stroke-width="16"></circle>
+<circle cx="96" cy="96" fill="transparent" r="80" stroke="#0057bd" stroke-dasharray="502" stroke-dashoffset="400" stroke-width="16"></circle>
+<circle cx="96" cy="96" fill="transparent" r="80" stroke="#6df5e1" stroke-dasharray="502" stroke-dashoffset="470" stroke-width="16"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-headline-lg text-on-surface">100%</span>
+<span class="text-label-sm text-on-surface-variant">Tổng cộng</span>
+</div>
+</div>
+<div class="w-full space-y-sm">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="font-body-md text-body-md text-on-surface">GPT-4o</span>
+</div>
+<span class="font-bold text-on-surface">54%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="font-body-md text-body-md text-on-surface">Claude 3.5</span>
+</div>
+<span class="font-bold text-on-surface">32%</span>
+</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-xs">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed"></div>
+<span class="font-body-md text-body-md text-on-surface">Gemini 1.5</span>
+</div>
+<span class="font-bold text-on-surface">14%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Data Table Row -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<div>
+<h4 class="font-headline-lg text-headline-lg text-on-surface text-xl">Chi tiết API</h4>
+<p class="text-label-sm text-on-surface-variant">Thống kê hiệu năng chi tiết theo từng mô hình</p>
+</div>
+<button class="flex items-center gap-xs border border-outline-variant px-md py-sm rounded-lg font-label-sm text-label-sm hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                        Xuất báo cáo
+                    </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="px-lg py-md font-bold">Model</th>
+<th class="px-lg py-md font-bold">Tổng số gọi</th>
+<th class="px-lg py-md font-bold">Độ trễ</th>
+<th class="px-lg py-md font-bold">Tỷ lệ thành công</th>
+<th class="px-lg py-md font-bold">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md text-on-surface divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-primary/10 flex items-center justify-center text-primary font-bold">G4</div>
+                                    GPT-4o (Standard)
+                                </td>
+<td class="px-lg py-md">4,375,102</td>
+<td class="px-lg py-md">312ms</td>
+<td class="px-lg py-md">99.8%</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        Healthy
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-tertiary/10 flex items-center justify-center text-tertiary font-bold">C3</div>
+                                    Claude 3.5 Sonnet
+                                </td>
+<td class="px-lg py-md">2,591,200</td>
+<td class="px-lg py-md">428ms</td>
+<td class="px-lg py-md">99.4%</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        Healthy
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-all">
+<td class="px-lg py-md flex items-center gap-md">
+<div class="w-8 h-8 rounded bg-secondary-fixed-dim/20 flex items-center justify-center text-secondary font-bold">G1</div>
+                                    Gemini 1.5 Flash
+                                </td>
+<td class="px-lg py-md">1,136,140</td>
+<td class="px-lg py-md">185ms</td>
+<td class="px-lg py-md">99.9%</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-sm py-xs bg-primary/10 text-primary text-xs font-bold rounded-full">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                        Healthy
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</body></html>

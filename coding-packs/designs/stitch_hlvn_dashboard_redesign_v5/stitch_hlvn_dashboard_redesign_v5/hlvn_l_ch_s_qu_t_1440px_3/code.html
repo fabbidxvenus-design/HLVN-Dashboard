@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lịch sử quét - HLVN Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary": "#c8ffe0",
+                      "on-primary-container": "#005a3c",
+                      "secondary-dim": "#005a50",
+                      "primary-fixed-dim": "#58e7ab",
+                      "surface-bright": "#f5f7f9",
+                      "secondary-container": "#6df5e1",
+                      "on-surface-variant": "#595c5e",
+                      "primary": "#006947",
+                      "outline": "#747779",
+                      "tertiary-fixed": "#8ab0ff",
+                      "error": "#b31b25",
+                      "tertiary-container": "#8ab0ff",
+                      "surface-container-high": "#dfe3e6",
+                      "primary-dim": "#005c3d",
+                      "on-secondary-fixed": "#00463e",
+                      "on-secondary-container": "#005b51",
+                      "inverse-on-surface": "#9a9d9f",
+                      "on-error-container": "#570008",
+                      "surface-container-low": "#eef1f3",
+                      "outline-variant": "#abadaf",
+                      "on-primary-fixed-variant": "#006544",
+                      "tertiary-dim": "#004ca6",
+                      "secondary-fixed": "#6df5e1",
+                      "inverse-surface": "#0b0f10",
+                      "on-tertiary": "#f0f2ff",
+                      "inverse-primary": "#69f6b8",
+                      "on-secondary": "#c0fff3",
+                      "on-error": "#ffefee",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "surface-container": "#e5e9eb",
+                      "surface-dim": "#d0d5d8",
+                      "tertiary": "#0057bd",
+                      "background": "#f5f7f9",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary": "#00675d",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "on-surface": "#2c2f31",
+                      "primary-fixed": "#69f6b8",
+                      "error-dim": "#9f0519",
+                      "on-background": "#2c2f31",
+                      "primary-container": "#69f6b8",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "on-primary-fixed": "#00452d",
+                      "on-tertiary-fixed": "#00163b",
+                      "on-tertiary-container": "#002e6a",
+                      "surface-tint": "#006947",
+                      "surface": "#f5f7f9",
+                      "error-container": "#fb5151",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "surface-container-highest": "#d9dde0",
+                      "surface-variant": "#d9dde0"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Manrope"],
+                      "label-sm": ["Public Sans"],
+                      "headline-xl": ["Manrope"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Sidebar Layout Container -->
+<div class="flex min-h-screen">
+<!-- SideNavBar (Shared Component Identity) -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-surface-container-lowest/80 backdrop-blur-xl border-r border-outline-variant/30 flex flex-col py-lg gap-sm z-40">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-headline-lg" data-icon="monitoring">monitoring</span>
+</div>
+<div>
+<h1 class="text-headline-lg font-bold text-primary leading-none">HLVN</h1>
+<p class="text-label-sm text-on-surface-variant">V5.0 Enterprise</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant mx-2 flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<!-- Active Navigation: Scans -->
+<a class="bg-primary-container text-on-primary-container rounded-lg mx-2 flex items-center gap-3 px-4 py-3 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+<span class="font-body-md font-bold">Analytics</span>
+</a>
+<a class="text-on-surface-variant mx-2 flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Team</span>
+</a>
+<a class="text-on-surface-variant mx-2 flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-body-md">Reports</span>
+</a>
+<a class="text-on-surface-variant mx-2 flex items-center gap-3 px-4 py-3 hover:bg-surface-container-high rounded-lg transition-all hover:translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<button class="w-full bg-primary text-white font-bold py-3 rounded-lg text-body-md shadow-md hover:opacity-90 active:scale-95 duration-200">
+                    Upgrade Plan
+                </button>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-64 min-w-0">
+<!-- TopNavBar -->
+<header class="bg-surface/95 backdrop-blur-sm sticky top-0 z-30 border-b border-outline-variant flex justify-between items-center h-16 px-margin w-full shadow-sm">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-body-md focus:ring-2 focus:ring-primary/20 outline-none" placeholder="Tìm kiếm mã quét hoặc sản phẩm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="h-8 w-px bg-outline-variant"></div>
+<div class="flex items-center gap-3 ml-2 group cursor-pointer">
+<div class="text-right hidden sm:block">
+<p class="text-label-sm font-bold text-on-surface">Alex Nguyen</p>
+<p class="text-[10px] text-on-surface-variant">Admin Level 4</p>
+</div>
+<img alt="User Avatar" class="w-9 h-9 rounded-full object-cover ring-2 ring-primary/10" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARBe0oBuwzQaaoxlohWB83zROkxTShX8ls_WganbR9r2-lrs89H2FtBVNJ2xu2e00PjxXwHj2XjEuRjxV1Yuq2hpAyeWWNKonNeifGuWlUILEIRjoc_45uvgzI8HWaiTWWfz4aJxuMWGxvKr2GcC0nxd4JbFpSceVloOnUp4N7rZ_jskG769FPX0rkG0oOfFkT6pboPWH8JerlF1s0fPFZJ5h92ce6PepozBbUaqnaG3iOMUc6c0UK4CFG3sjE2cE1jyzmjCAaJ77w"/>
+</div>
+</div>
+</header>
+<!-- Main Page Content Area -->
+<main class="p-margin max-w-7xl mx-auto space-y-gutter">
+<!-- Page Header & Action Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div>
+<h2 class="text-headline-xl font-bold text-on-surface">Lịch sử quét</h2>
+<p class="text-body-md text-on-surface-variant">Quản lý và giám sát tất cả các tương tác quét sản phẩm trong hệ thống.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center bg-white border border-outline-variant rounded-lg px-3 py-2 cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="filter_list">filter_list</span>
+<span class="text-body-md mr-4">Tất cả trạng thái</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<button class="bg-[#10b981] hover:bg-[#059669] text-white px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                            Lượt quét mới
+                        </button>
+</div>
+</div>
+<!-- Bento Style Grid / Table Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low/50 border-b border-outline-variant">
+<tr>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Mã Quét</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Sản Phẩm</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Trạng Thái</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider text-center">Trường Dữ Liệu</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Độ Chính Xác</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Người Thực Hiện</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Ngày Quét</th>
+<th class="px-6 py-4 text-label-sm font-bold text-on-surface-variant uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-label-sm text-primary font-bold">#SCAN-49210</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A macro photograph of high-quality organic green tea leaves drying in a traditional bamboo basket. The lighting is bright and natural, highlighting the rich textures and emerald green hues of the leaves. The aesthetic is clean and professional, focusing on agricultural precision and product quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW6CXrmPr8hQKQ1oAt3K6pSEIwAaDyEJD6vNY1zA4moi5O2i8oplTvgIhS7ro-rjSbOY19Ys8sDme7MiFpFRnEJaDS87vhdzEAWd14S-tFeZHylzuZaxu-QiE-_CLqDHV1xZ2CFSSKp8w86WgifoQWDMxqVVCWYs1JIfWMB7lAsohxwm7kXG_rPnmhFb49gtD8m4ejh4YDygPzOvLVLZ3EDHF0VfdqmwbY0L0z4VXps-GqBGQ5nfDoY33-1VneyA76r6adgG5jfV_r"/>
+</div>
+<span class="font-body-md font-semibold">Green Tea Extract</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span> Thành công
+                                        </span>
+</td>
+<td class="px-6 py-4 text-center font-body-md">24</td>
+<td class="px-6 py-4">
+<div class="w-full max-w-[100px]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold">98%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 98%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfiVHV_6BqxVPBP5y45vDDsqBJxNhof7J0vb3q63mzG-WahIdCezsb9rBKpmAyFEyye8Xrqf9cTtz6yNK7ccqv4rFYvgW4kM7DU5yNnW7gbLvopn1eXvHrnnArzjFsJa4sJ14RapFBu-tmXlHxRpTnjuiho3oXaMi4eDEkdEyYR2gvIfMS8J9Uqy703cmdUwovWSgHe_t1NEDmv-FQ73uA6vgCb_hcagq7vUnzUPlwUakUKF3YpvcOeiq7NxOugFdOe4UDRxBdpVks"/>
+<span class="text-body-md">Minh Tran</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant font-label-sm">Oct 24, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-label-sm text-primary font-bold">#SCAN-49195</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up professional food photography of a sleek, modern packaged product bottle against a minimalist white background. Soft shadows and high-key lighting create a sense of premium quality and medical-grade precision. The product features minimalist labeling with clean typography, fitting a high-end health and wellness brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE6OiRhXvDj9W2XiZHzokdVYwkuBmwccnRO9ctWM6d18uVIXnRX7ZfKBQ868EqpkJHo75_-LdjR4U_k6WTDi7yvaStQ9i4VNMcr72dyhs_yBfjYs3LKnmgHYl20CRoEpPW1O2Vcb5A-3c4K5N2Ebxo_nW9Fmw2_MgBG4McZskA_ZzRKIALNlokDW-yVyDtCRsgbSEi4ARaocnEAEgbtCF72bgzC8ymPjHPupPgbo5H6awQxWJr-NfeW0PfRs4nDYyoyHL08mVUUp33"/>
+</div>
+<span class="font-body-md font-semibold">Omega 3 Softgels</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-tertiary-container text-on-tertiary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary mr-2"></span> Đang xử lý
+                                        </span>
+</td>
+<td class="px-6 py-4 text-center font-body-md">18</td>
+<td class="px-6 py-4">
+<div class="w-full max-w-[100px]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold">45%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-tertiary h-1.5 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJZ8GtmjfpQaUecJv9NE87xmL2ZTg0emWxkCOHuEQcXyXl3DqhlpYnXC8HaTp_DPAOZ1xLaqAf1hqtMxA3CakrXZZiBCJ6bcIfTKuyRqvvDhA4Gqof1vxj4FGWvm2mN5KjjlTygNVBsecjzq3XeJtk7LCvpVom0XbZgbyOpGPYynn90N3j27YueyN6-1i48b5qrV1TSW3D3iOhPn7dFptD9-VRt7roV2uxVlwiySdVE5Q6ty9X5Y_JH6Uu5gErXQKOEKgMQJCpTixs"/>
+<span class="text-body-md">Linh Pham</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant font-label-sm">Oct 23, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-label-sm text-primary font-bold">#SCAN-49182</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Detailed shot of an industrial agricultural storage facility where fresh produce is being sorted and scanned. The scene is illuminated by cool, bright overhead warehouse lighting, creating a high-contrast and efficient atmosphere. The focus is on the precision of modern logistics and data tracking in a fast-paced supply chain environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR7qI7ESj7HSBy29FiilLeEa7-GresmJK5xaMwina3PC7XMBEs1xcPQEbcjxU3Au85CW7pJGUpcNcbwGfh6tdm6gY89RW355hqhjDnaDW3NYvIYiD2sybj4p0x6Kkxhhru2S0oIOeLEqc6DbOAmWX-vaAwaTtSvA4UdEpuhIKaVBMbnjcmY8-a4DlA3VQdVGvulGv3kgF2B0j2K-rIqUxlNRFNIk3yB_jV0jGtv3ijG9NA_bMs6ulZ3uLwFYfGvcaLPGZyPV1JV2kU"/>
+</div>
+<span class="font-body-md font-semibold">Fresh Logistics Tag</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-error-container text-on-error-container">
+<span class="w-1.5 h-1.5 rounded-full bg-error mr-2"></span> Lỗi dữ liệu
+                                        </span>
+</td>
+<td class="px-6 py-4 text-center font-body-md">12</td>
+<td class="px-6 py-4">
+<div class="w-full max-w-[100px]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold">12%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-error h-1.5 rounded-full" style="width: 12%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjvQR1vihGSht6K_lVktwSDeQW-84LA5yatXfOnOfka19JB6yacRBqDUcrIQG-05FSnMlUQCR290y0jLHlmGa2QHgpeaqbDO_XjtIZhqxh5eeex7RjtOdcemkfPKCd7iEuq0upySJmp0INt7ewu52QI3jzk-ZjyKHQ4LVPnk2_U9OvOgxI2-xkJj7CYb_X7WqxJk3vkO8U40mgoNbhb0jRqxs_qg0UboFTkMWxG1P1E_OpVxRTUKseCglc_6wVpVdxJmHMzlzPUQU8"/>
+<span class="text-body-md">Hoang Do</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant font-label-sm">Oct 23, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-label-sm text-primary font-bold">#SCAN-49177</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist composition of high-end cosmetic packaging on a polished stone surface. Soft, directional morning light creates long, elegant shadows. The color palette is composed of muted earth tones and emerald green accents, evoking a feeling of natural luxury and high-precision dermatological science." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYtocCyW5gg6PAK6ThEE0dXZ_b96FbedxfpBrBZmqsPISxjLndR6bvT-HR3ouYvlc2VudXj-105rFmsI9VSRmFH4D3L3VXw_SePO8TUu3-EkxIqiXEu0dyCGwyHnqQ93dki-pmKRDd6L3TY7eYQwa2v4Pseqb793CFakCf73gQUI2uIYHl617p9JdNefRPL3Rbh0SdciDg9Kg1p_dxPw1V7o2lR080h08on1zQKuFGS0Ny07sFKrNWyU7dTrc_dDvZEPOkZdzTs5yg"/>
+</div>
+<span class="font-body-md font-semibold">Vitamin C Serum</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span> Thành công
+                                        </span>
+</td>
+<td class="px-6 py-4 text-center font-body-md">31</td>
+<td class="px-6 py-4">
+<div class="w-full max-w-[100px]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold">92%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDp3M22rzY21v5-tB6km0xY4qZ9rpZHfQad-bMEtW8jUzMJ6f1BAlWsIAxPTKGs0IcT5dSt2UdclA67PZlT6SSHTIL0EUZrJ24md5sHOrkgCBCYF6YcOF8byNQV8O-3pkQfd9WzvPbTMSCgvhKG0K4HNP-2Py45ou5yTqXGJFsx8PFFzuRUJQ7_BZIMK1zK8uFScyweR7fccagr_wllqxEINujOT58-1GRx6Nk9NDV_ww-0u0nLDE3o1Rqw4eUrYp5JyhTO8jHgqHnY"/>
+<span class="text-body-md">Yen Vu</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant font-label-sm">Oct 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-4 font-label-sm text-primary font-bold">#SCAN-49162</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface overflow-hidden border border-outline-variant/30 flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of a high-tech lab setting with glass test tubes and analytical equipment. The lighting is sterile and blue-toned, emphasizing pharmaceutical research and data accuracy. The scene represents scientific excellence and the meticulous verification of product components in a laboratory environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzKSIwm1v_1C4kdyDE6HKOkC2LeNZoHftCx4j8PUok1xPPAGEUWmdFuOOXlFDckPGa6noKKFB29lPGWoUf3sklfmnhNnnFRJFChd1ElzCCHvxyZ6WVvbDz57mhuI71RKchXN7gNs3i-xhLSsfy7ysDYru8hViidtpeZb2Bd2DpXOqTe20_AKWsu6nGpk2l8ueY0xLk6iovSoVmp1huJ2g9CNSimNpQL5TF4i-79cc8D2JfOKekgTfhpB2ynuiq9WPN-hLvxW2ES7B_"/>
+</div>
+<span class="font-body-md font-semibold">Probiotic Complex</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-medium bg-secondary-container text-on-secondary-container">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary mr-2"></span> Thành công
+                                        </span>
+</td>
+<td class="px-6 py-4 text-center font-body-md">28</td>
+<td class="px-6 py-4">
+<div class="w-full max-w-[100px]">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-bold">85%</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<img alt="User" class="w-6 h-6 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDczDoKCnhjLaSNiO7ulIYZ-0V1eVjYaaKAjr82-tSXRENrAfw45kDEPnG1iwJRL_oqKogTmIkBUg_Oaqy4kkxETtlQyNOnFLInge40BzlZNdu5lnTq-4HUfJIJEgFegGgRATbloiPMOuT2M7WmmEmpeUiuW6CFj4fOH9OJlnSNwnqmPX3y7RN2Zp-jsBWWAK-fjGhBaidu5fxMIpKHEv5-q5rGcJioZC3U81-0IzXuV7H7NV6EC2Q8mY5cuJ1xL-OukQheuEcFJk4g"/>
+<span class="text-body-md">Kien Nguyen</span>
+</div>
+</td>
+<td class="px-6 py-4 text-on-surface-variant font-label-sm">Oct 22, 2023</td>
+<td class="px-6 py-4 text-right">
+<button class="opacity-0 group-hover:opacity-100 p-2 hover:bg-surface-container-high rounded-lg transition-all">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="flex flex-col md:flex-row justify-between items-center px-6 py-4 border-t border-outline-variant bg-surface-container-lowest">
+<p class="text-label-sm text-on-surface-variant mb-4 md:mb-0">Hiển thị 1 - 5 trong tổng số 120 lượt quét</p>
+<div class="flex items-center gap-2">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface transition-colors font-medium">2</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface transition-colors font-medium">3</button>
+<span class="text-on-surface-variant px-1">...</span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-low text-on-surface transition-colors font-medium">24</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Summary Footer (Shared Component Logic) -->
+<footer class="flex flex-col md:flex-row justify-between items-center py-md border-t border-outline-variant mt-xl">
+<p class="text-label-sm text-on-surface-variant">© 2024 HLVN Systems Inc. All rights reserved.</p>
+<div class="flex gap-lg mt-4 md:mt-0">
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</main>
+</div>
+</div>
+</body></html>

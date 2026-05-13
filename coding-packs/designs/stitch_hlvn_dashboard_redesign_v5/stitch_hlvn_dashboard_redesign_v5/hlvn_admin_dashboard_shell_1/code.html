@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Dashboard Shell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#dfe3e6",
+                    "primary-fixed": "#69f6b8",
+                    "primary-dim": "#005c3d",
+                    "on-secondary-fixed": "#00463e",
+                    "error-container": "#fb5151",
+                    "on-primary-fixed": "#00452d",
+                    "secondary": "#00675d",
+                    "secondary-dim": "#005a50",
+                    "on-tertiary-container": "#002e6a",
+                    "tertiary-dim": "#004ca6",
+                    "inverse-primary": "#69f6b8",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#8ab0ff",
+                    "on-tertiary-fixed": "#00163b",
+                    "on-background": "#2c2f31",
+                    "primary-container": "#69f6b8",
+                    "inverse-on-surface": "#9a9d9f",
+                    "secondary-container": "#6df5e1",
+                    "on-secondary": "#c0fff3",
+                    "error": "#b31b25",
+                    "on-error": "#ffefee",
+                    "surface-container": "#e5e9eb",
+                    "primary-fixed-dim": "#58e7ab",
+                    "outline-variant": "#abadaf",
+                    "on-surface-variant": "#595c5e",
+                    "on-primary-container": "#005a3c",
+                    "on-primary-fixed-variant": "#006544",
+                    "on-surface": "#2c2f31",
+                    "tertiary": "#0057bd",
+                    "secondary-fixed": "#6df5e1",
+                    "on-tertiary": "#f0f2ff",
+                    "tertiary-fixed-dim": "#73a2ff",
+                    "inverse-surface": "#0b0f10",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "surface-bright": "#f5f7f9",
+                    "background": "#f5f7f9",
+                    "primary": "#006947",
+                    "secondary-fixed-dim": "#5de7d3",
+                    "tertiary-container": "#8ab0ff",
+                    "surface-container-highest": "#d9dde0",
+                    "surface-variant": "#d9dde0",
+                    "on-tertiary-fixed-variant": "#00377b",
+                    "surface": "#f5f7f9",
+                    "error-dim": "#9f0519",
+                    "on-error-container": "#570008",
+                    "surface-tint": "#006947",
+                    "outline": "#747779",
+                    "surface-dim": "#d0d5d8",
+                    "on-secondary-container": "#005b51",
+                    "surface-container-low": "#eef1f3",
+                    "on-primary": "#c8ffe0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "base": "8px",
+                    "sm": "8px",
+                    "margin": "24px",
+                    "xs": "4px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Public Sans"],
+                    "headline-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Manrope"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-shadow {
+            box-shadow: 0 0 15px 2px rgba(16, 185, 129, 0.2);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-[#F8FAFC] text-on-surface font-body-md min-h-screen">
+<!-- Fixed Left Sidebar (240px) -->
+<aside class="fixed left-0 top-0 h-screen w-60 glass-panel border-r border-outline-variant z-50 flex flex-col py-xl px-md space-y-2">
+<div class="px-md mb-xl">
+<span class="font-headline-xl text-headline-xl font-bold text-primary flex items-center gap-2">
+                HLVN
+                <span class="w-3 h-3 rounded-full bg-[#10B981] inline-block"></span>
+</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">v5.0.2 Corporate</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 bg-[#D1FAE5] text-on-primary-container rounded-lg px-4 py-3 font-bold relative active:scale-95 transition-all" href="#">
+<div class="absolute left-0 top-1/4 bottom-1/4 w-1 bg-[#10B981] rounded-r-full"></div>
+<span class="material-symbols-outlined text-[#10B981] active-nav-shadow" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<!-- Analytics/Scans -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<!-- Inventory/Scans Proxy -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<!-- Customers/Users -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Customers</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-body-md">Reports</span>
+</a>
+</nav>
+<div class="pt-xl border-t border-outline-variant space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high transition-all rounded-lg active:scale-95" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+<div class="mt-4 px-4 py-3 rounded-xl bg-surface-container flex items-center gap-3">
+<img alt="Alex Rivera" class="w-10 h-10 rounded-full object-cover border-2 border-white shadow-sm" data-alt="A professional corporate headshot of a Hispanic male executive named Alex Rivera, wearing a sharp charcoal suit and a light blue shirt. He has a friendly, confident expression, set against a blurred modern office background with soft daylight filtering through large windows. The lighting is crisp and high-end, matching a premium business dashboard aesthetic with cool undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlFW9WMr9vuddTa7VdX9WcSteFfWLYeOJw-WSS2PCVYCWSSj_bfEC0PTf16ewUUVEZjbm5BoTenZUXcNVt9JrHyKoPU8brv4J6WgjD9Xm62BFbiykeFj7Dkx5wERTxEftGXoEsdxghBnx-fZ7BPhNGRS6sH6MpSM4q0pYgk2mEUlpbfe9qAtsypBvZ5UPhAvITWr1CGRLy3GUzXXG6l7E0GhE-LFKKxdaPnlMoXI0uhnX7wvXDB3DkySx3Sa84O1BtShwnNbx6-Xvu"/>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-on-surface">Alex Rivera</span>
+<span class="font-label-sm text-on-surface-variant">Admin Account</span>
+</div>
+</div>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-error/10 hover:text-error transition-all rounded-lg mt-2" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="ml-60 flex flex-col min-h-screen">
+<!-- Sticky Top Header -->
+<header class="sticky top-0 z-40 w-full h-16 glass-panel border-b border-outline-variant px-margin flex justify-between items-center">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Tổng quan</h1>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Date Range Picker Mock -->
+<div class="flex items-center gap-base px-md py-xs bg-surface-container rounded-lg border border-outline-variant cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">calendar_today</span>
+<span class="font-label-sm text-on-surface">Last 30 Days</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]">expand_more</span>
+</div>
+<!-- Notifications -->
+<button class="relative p-2 text-on-surface-variant hover:bg-surface-container rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-[#10B981] border border-white rounded-full"></span>
+</button>
+<!-- Profile Action -->
+<div class="flex items-center gap-md pl-lg border-l border-outline-variant">
+<button class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-sm flex items-center gap-base hover:bg-primary-dim transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Generate Report
+                    </button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="p-xl flex-1">
+<!-- Asymmetric Bento Grid Mock Structure -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Large Featured Card Placeholder -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm min-h-[400px] flex flex-col items-center justify-center border-dashed">
+<div class="text-center space-y-md">
+<div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-primary text-[32px]">analytics</span>
+</div>
+<h3 class="font-headline-lg text-on-surface">Analytics Engine Ready</h3>
+<p class="text-on-surface-variant max-w-md mx-auto">Upload your dataset to begin processing advanced metrics. The HLVN v5 engine supports real-time synchronization and automated trend detection.</p>
+</div>
+</div>
+<!-- Right Sidebar Widget Placeholder -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm h-[192px] flex items-center justify-center border-dashed">
+<span class="font-label-sm text-outline">Widget Area: Activity Stream</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm h-[192px] flex items-center justify-center border-dashed">
+<span class="font-label-sm text-outline">Widget Area: Quick Actions</span>
+</div>
+</div>
+<!-- Bottom Row Bento Blocks -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm h-[280px] flex items-center justify-center border-dashed">
+<span class="font-label-sm text-outline">Data Block A</span>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm h-[280px] flex items-center justify-center border-dashed">
+<span class="font-label-sm text-outline">Data Block B</span>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm h-[280px] flex items-center justify-center border-dashed">
+<span class="font-label-sm text-outline">Data Block C</span>
+</div>
+</div>
+</main>
+<!-- Footer Overlay Info -->
+<footer class="p-lg mt-auto text-center">
+<p class="font-label-sm text-on-surface-variant/60">© 2024 HLVN Corporation. All analytics data is encrypted and secured.</p>
+</footer>
+</div>
+</body></html>

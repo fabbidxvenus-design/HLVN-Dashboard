@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #dfe3e6;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#6df5e1",
+                        "surface": "#f5f7f9",
+                        "secondary-fixed": "#6df5e1",
+                        "error-dim": "#9f0519",
+                        "on-secondary-fixed-variant": "#00655b",
+                        "surface-container-high": "#dfe3e6",
+                        "surface-bright": "#f5f7f9",
+                        "on-tertiary": "#f0f2ff",
+                        "surface-container": "#e5e9eb",
+                        "tertiary-dim": "#004ca6",
+                        "surface-container-low": "#eef1f3",
+                        "outline-variant": "#abadaf",
+                        "on-error": "#ffefee",
+                        "inverse-on-surface": "#9a9d9f",
+                        "error-container": "#fb5151",
+                        "on-tertiary-fixed": "#00163b",
+                        "surface-tint": "#006947",
+                        "on-primary": "#c8ffe0",
+                        "error": "#b31b25",
+                        "outline": "#747779",
+                        "primary-container": "#69f6b8",
+                        "on-secondary": "#c0fff3",
+                        "on-primary-fixed-variant": "#006544",
+                        "surface-dim": "#d0d5d8",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d9dde0",
+                        "primary": "#006947",
+                        "on-background": "#2c2f31",
+                        "secondary-fixed-dim": "#5de7d3",
+                        "on-error-container": "#570008",
+                        "tertiary-fixed": "#8ab0ff",
+                        "on-secondary-fixed": "#00463e",
+                        "on-tertiary-fixed-variant": "#00377b",
+                        "primary-fixed-dim": "#58e7ab",
+                        "on-surface-variant": "#595c5e",
+                        "surface-variant": "#d9dde0",
+                        "background": "#f5f7f9",
+                        "secondary": "#00675d",
+                        "tertiary-container": "#8ab0ff",
+                        "on-primary-container": "#005a3c",
+                        "on-tertiary-container": "#002e6a",
+                        "on-primary-fixed": "#00452d",
+                        "primary-dim": "#005c3d",
+                        "inverse-primary": "#69f6b8",
+                        "on-surface": "#2c2f31",
+                        "primary-fixed": "#69f6b8",
+                        "tertiary": "#0057bd",
+                        "inverse-surface": "#0b0f10",
+                        "secondary-dim": "#005a50",
+                        "on-secondary-container": "#005b51",
+                        "tertiary-fixed-dim": "#73a2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "margin": "24px",
+                        "xs": "4px",
+                        "base": "8px",
+                        "md": "16px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "label-sm": ["Public Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "headline-xl": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- Sidebar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full py-margin px-md bg-surface-container/80 dark:bg-surface-dim/80 backdrop-blur-md border-r border-outline-variant/30 shadow-sm z-50">
+<div class="mb-xl px-sm">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim">HLVN Dashboard</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">v5.0 Corporate</div>
+</div>
+<nav class="flex-1 space-y-sm">
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 ease-in-out text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 ease-in-out text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+<span class="font-body-md text-body-md">Scans</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 ease-in-out text-primary font-bold border-r-2 border-primary bg-primary-container/20 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 ease-in-out text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm transition-all duration-200 ease-in-out text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant/20 flex items-center gap-md px-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="HLVN Logo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOBda-xMIoTG66g8IbIOhVgJEaBFNnpxjCLpWCL7gk2WI6XkFo9qyUsJicdX4pdPZ4iUxheTOvd1f5WbjCqmNN31nR4MnefX3-wzxPaPzEPIo481CafluI3uU_Z4FrR8vTCH6vJfmhN6aOMO6h9gtI52rqONBgGn6K_q3dxXt0Ve-eo60iwNqEfwPwf-eGYl0Ibddl5byRWTrDUO4VS4GOk_LFLkcmcVG7P8PM-lMHPK416qquRhewyY5VG0x0WLLgfD5rMXZVJ2AD"/>
+</div>
+<div>
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Alex Nguyen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">Admin Level 4</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center w-full px-margin py-base sticky top-0 z-40 bg-surface/95 dark:bg-background/95 backdrop-blur-sm shadow-sm">
+<div class="flex items-center gap-lg">
+<h1 class="font-headline-xl text-headline-xl text-primary font-black">Phân tích</h1>
+<div class="flex bg-surface-container-low rounded-lg p-xs">
+<button class="px-md py-xs text-on-surface-variant font-label-sm text-label-sm hover:text-primary-dim transition-colors active:scale-95 duration-150">7D</button>
+<button class="px-md py-xs text-primary font-bold border-b-2 border-primary pb-1 font-label-sm text-label-sm active:scale-95 duration-150">30D</button>
+<button class="px-md py-xs text-on-surface-variant font-label-sm text-label-sm hover:text-primary-dim transition-colors active:scale-95 duration-150">90D</button>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-lg pl-xl pr-md py-base text-body-md focus:ring-2 focus:ring-primary-container w-64" placeholder="Tìm kiếm dữ liệu..." type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+</div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-base rounded-lg font-bold shadow-sm active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+<span>Download Report</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container p-0.5">
+<img alt="User Profile" class="w-full h-full rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRnZimI_dzUYEedjTXeBTgkrn8mTe7jPjUMTSUo4ojeUqRy8kzhXNlmPg1vVjIv9VwTK1QrQmgT4_R7PhYsXbQ-kZq8xH2lbd0i4V-5-8JIzlPKRO-8hP789AG2Mtc2OhZ1LKBAJO1kZGRvCej_oglD5WBQEGks1y2Yf7NT7eyhhlgcBXqpDAXK7HGWQRribKLlzXBxWF6o6fKcq2RXG3-VDXb9VXzBF2Dsu8_Wc6PHpdOPeuqh-WgC77jF_gwkjnvzS4u_aSDKpk5"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="p-margin space-y-lg">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-base bg-primary-container/20 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span> 12%
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Total Scans</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">1,284,092</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-base bg-secondary-container/20 rounded-lg text-secondary">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span> 8.4%
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Unique Users</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">84,201</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-base bg-tertiary-container/20 rounded-lg text-tertiary">
+<span class="material-symbols-outlined" data-icon="api">api</span>
+</div>
+<span class="text-error font-label-sm text-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_down">trending_down</span> 2.1%
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">API Calls</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">12.8M</h3>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-md">
+<div class="p-base bg-primary-container/20 rounded-lg text-primary">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+<span class="text-secondary font-label-sm text-label-sm flex items-center gap-xs">
+                            -4ms
+                        </span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm text-label-sm mb-xs">Avg Latency</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">142ms</h3>
+</div>
+</div>
+</div>
+<!-- Main Charts Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Area Chart -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h4 class="font-headline-lg text-[20px] text-on-surface">API Usage Over Time</h4>
+<p class="text-on-surface-variant text-label-sm">Total throughput across all endpoints</p>
+</div>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container rounded-lg">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="h-64 w-full relative">
+<!-- Chart Mockup Background -->
+<div class="absolute inset-0 flex items-end justify-between px-md pb-md">
+<div class="w-full h-full bg-gradient-to-t from-primary/10 to-transparent rounded-t-xl overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 200">
+<path d="M0,150 C100,140 150,180 200,120 C250,60 300,100 400,80 C500,60 600,140 700,50 L800,20 L800,200 L0,200 Z" fill="url(#greenGradient)"></path>
+<path d="M0,150 C100,140 150,180 200,120 C250,60 300,100 400,80 C500,60 600,140 700,50 L800,20" fill="none" stroke="#10b981" stroke-width="3"></path>
+<defs>
+<lineargradient id="greenGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#10b981" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#10b981" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+</div>
+</div>
+<!-- Axis Labels -->
+<div class="absolute bottom-0 w-full flex justify-between text-on-surface-variant text-[10px] font-label-sm pt-xs">
+<span>01 May</span><span>05 May</span><span>10 May</span><span>15 May</span><span>20 May</span><span>25 May</span><span>30 May</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="mb-lg">
+<h4 class="font-headline-lg text-[20px] text-on-surface">Model Distribution</h4>
+<p class="text-on-surface-variant text-label-sm">Usage share by model type</p>
+</div>
+<div class="flex flex-col items-center justify-center h-48 relative mb-lg">
+<!-- Mock Donut -->
+<div class="w-36 h-36 rounded-full border-[16px] border-primary-container relative flex items-center justify-center">
+<div class="absolute inset-[-16px] rounded-full border-[16px] border-secondary border-t-transparent border-r-transparent border-b-transparent rotate-[45deg]"></div>
+<div class="absolute inset-[-16px] rounded-full border-[16px] border-tertiary border-t-transparent border-r-transparent border-l-transparent rotate-[160deg]"></div>
+<div class="text-center">
+<span class="block text-headline-lg font-bold text-on-surface">12</span>
+<span class="block text-label-sm text-on-surface-variant">Active Models</span>
+</div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-base">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-body-md text-on-surface-variant">HLVN-Prime v4</span>
+</div>
+<span class="font-bold text-on-surface">62%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-base">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-body-md text-on-surface-variant">Vision-Core</span>
+</div>
+<span class="font-bold text-on-surface">24%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-base">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-body-md text-on-surface-variant">Legacy Edge</span>
+</div>
+<span class="font-bold text-on-surface">14%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- API Usage Table Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-low/30">
+<h4 class="font-headline-lg text-[20px] text-on-surface">API Usage Table</h4>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-md py-xs bg-surface border border-outline-variant/30 rounded-lg text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="filter_list">filter_list</span> Filter
+                        </button>
+<button class="flex items-center gap-xs px-md py-xs bg-surface border border-outline-variant/30 rounded-lg text-label-sm font-label-sm hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="sort">sort</span> Sort
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/20">
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Model Name</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Total Calls</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Avg Latency</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider">Success Rate</th>
+<th class="px-lg py-md text-label-sm font-bold text-on-surface-variant uppercase tracking-wider text-right">Last Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary font-bold">P</div>
+<span class="font-bold text-on-surface">HLVN-Prime v4</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">8,241,002</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">112ms</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full border border-primary/20">99.9% High</span>
+</td>
+<td class="px-lg py-md text-right text-on-surface-variant font-label-sm">2 mins ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary font-bold">V</div>
+<span class="font-bold text-on-surface">Vision-Core Large</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">3,120,554</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">245ms</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full border border-primary/20">99.7% High</span>
+</td>
+<td class="px-lg py-md text-right text-on-surface-variant font-label-sm">12 mins ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary font-bold">E</div>
+<span class="font-bold text-on-surface">Edge-Optimized-V2</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">1,402,119</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">42ms</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full border border-primary/20">99.9% High</span>
+</td>
+<td class="px-lg py-md text-right text-on-surface-variant font-label-sm">45 mins ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low/10 transition-colors">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold">L</div>
+<span class="font-bold text-on-surface">Legacy-Text-Gen</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">84,102</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md">312ms</td>
+<td class="px-lg py-md">
+<span class="px-md py-xs bg-error-container text-on-error-container text-[11px] font-bold rounded-full border border-error/20">92.4% Warning</span>
+</td>
+<td class="px-lg py-md text-right text-on-surface-variant font-label-sm">1 hour ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-lg border-t border-outline-variant/20 flex items-center justify-between">
+<p class="text-on-surface-variant font-label-sm text-label-sm">Showing 4 of 12 active models</p>
+<div class="flex gap-sm">
+<button class="p-xs text-on-surface-variant hover:text-primary active:scale-90 transition-all"><span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span></button>
+<button class="px-sm text-primary font-bold">1</button>
+<button class="px-sm text-on-surface-variant hover:text-primary">2</button>
+<button class="px-sm text-on-surface-variant hover:text-primary">3</button>
+<button class="p-xs text-on-surface-variant hover:text-primary active:scale-90 transition-all"><span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Footer-like Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter pb-xl">
+<div class="relative rounded-xl overflow-hidden h-48 group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic laboratory command center showing large holographic data displays. The room is sleek and professional with a deep emerald green lighting scheme and minimalist workstations. High-resolution screens display complex network nodes and growth charts, emphasizing a data-driven and highly technical atmosphere in a modern corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNjjzCUq8itVEAwtXBdMrGjQ_w8mh6jN991W0dQLwsrclc_3MWnRF89gYPFGTWv4Ud3XOEjI8u1GwGqZ3SnABA38_8LaBS7gkUCYlCP1tcrJM9KMDnK0HEeJF43LpiZ67aM77mdpQpglcMEzRSU5C38f5cepZao5RNKtFaehJMIvmyjw-Z8_zfYujOZZB3x9k_x8sPVUXt6aGqyyB3XR_h3-tGc7mD6gYUIFQWENFJBZ4tgm7P7u4u6LApJFzKwZXawgAnnb-Q4z83"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-lg">
+<h5 class="text-white font-headline-lg text-[18px]">Security &amp; Compliance</h5>
+<p class="text-white/80 text-label-sm">Review your 256-bit encryption logs and data sovereignty reports.</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden h-48 group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A digital abstraction representing a worldwide neural network. Glowing connections bridge continents on a dark digital globe with primary emerald green and secondary teal highlights. The aesthetic is sophisticated and high-tech, evoking global reach and massive data processing power in a pristine, professional visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5yDQi6fXjzOuuYays5DKrPlVmtzfTmufjJHq7n8qTzWSoudjyv9w_QmOProGS_Kr6xQixJTCmWyFjLPpldcbi8FtqTfsk32t_9HpFV6vRGZlfdXuX3zfo1nOe-sD_690WFltfdEupN67kEUsxh6XdTB_P9jYzX52ljKMpeWz04_ClJIBQk94dTlZAhI2fsxA4G9GZ2Z7KboU-CYUVthQGCvNNR7wJNhlxXncXgW2u7RR7Is8tqz4VI5sNj1I6hOPM3Za3VqxZgOhs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 to-transparent flex flex-col justify-end p-lg">
+<h5 class="text-white font-headline-lg text-[18px]">Global Infrastructure</h5>
+<p class="text-white/80 text-label-sm">Active nodes in 24 regions. All systems operational with 99.99% uptime.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

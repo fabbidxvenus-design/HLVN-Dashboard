@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý người dùng - HLVN Dashboard v5</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5e9eb",
+                    "on-secondary": "#c0fff3",
+                    "surface-container-low": "#eef1f3",
+                    "surface-container-highest": "#d9dde0",
+                    "primary-fixed": "#69f6b8",
+                    "secondary-fixed": "#6df5e1",
+                    "on-secondary-container": "#005b51",
+                    "secondary": "#00675d",
+                    "inverse-surface": "#0b0f10",
+                    "on-surface": "#2c2f31",
+                    "secondary-container": "#6df5e1",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f5f7f9",
+                    "background": "#f5f7f9",
+                    "surface": "#f5f7f9",
+                    "error-container": "#fb5151",
+                    "primary-fixed-dim": "#58e7ab",
+                    "surface-tint": "#006947",
+                    "on-secondary-fixed": "#00463e",
+                    "on-tertiary-fixed-variant": "#00377b",
+                    "on-surface-variant": "#595c5e",
+                    "tertiary-dim": "#004ca6",
+                    "on-background": "#2c2f31",
+                    "surface-variant": "#d9dde0",
+                    "on-tertiary-fixed": "#00163b",
+                    "surface-dim": "#d0d5d8",
+                    "secondary-fixed-dim": "#5de7d3",
+                    "primary": "#006947",
+                    "on-primary-fixed-variant": "#006544",
+                    "inverse-primary": "#69f6b8",
+                    "error": "#b31b25",
+                    "primary-dim": "#005c3d",
+                    "tertiary-fixed": "#8ab0ff",
+                    "tertiary-container": "#8ab0ff",
+                    "on-error": "#ffefee",
+                    "surface-container-high": "#dfe3e6",
+                    "on-primary-container": "#005a3c",
+                    "tertiary": "#0057bd",
+                    "on-primary-fixed": "#00452d",
+                    "on-primary": "#c8ffe0",
+                    "secondary-dim": "#005a50",
+                    "outline-variant": "#abadaf",
+                    "on-error-container": "#570008",
+                    "on-tertiary-container": "#002e6a",
+                    "outline": "#747779",
+                    "primary-container": "#69f6b8",
+                    "inverse-on-surface": "#9a9d9f",
+                    "tertiary-fixed-dim": "#73a2ff",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "error-dim": "#9f0519",
+                    "on-tertiary": "#f0f2ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "margin": "24px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "base": "8px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Public Sans"],
+                    "headline-lg": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-sidebar {
+            background: rgba(238, 241, 243, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="glass-sidebar fixed left-0 top-0 h-full z-40 flex flex-col p-md border-r border-outline-variant w-64 shadow-md">
+<div class="mb-xl px-4">
+<h1 class="text-headline-lg font-headline-lg font-extrabold text-primary">HLVN Admin</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">V5.0.1 Enterprise</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-lg px-4 py-3 scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium">Team</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium">Inventory</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-medium">Reports</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto space-y-2 pt-md border-t border-outline-variant">
+<div class="bg-surface-container-highest/50 rounded-lg p-3 mb-4">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant">System Status</span>
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-4/5"></div>
+</div>
+</div>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-medium">Support</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-30 bg-surface-container-lowest/80 backdrop-blur-md shadow-sm px-margin py-sm flex justify-between items-center w-full">
+<div class="flex flex-col">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Quản lý người dùng</h2>
+<nav class="flex items-center gap-xs text-label-sm text-on-surface-variant">
+<span>Admin</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary font-semibold">Quản lý người dùng</span>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-sm mr-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-error rounded-full border-2 border-surface-container-lowest"></span>
+</button>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg flex items-center gap-sm font-semibold hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined">add</span>
+<span>Add User</span>
+</button>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="p-margin max-w-[1440px] mx-auto w-full">
+<!-- Filters & Stats Section -->
+<div class="grid grid-cols-12 gap-gutter mb-xl">
+<!-- Search and Filters Card -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-md shadow-sm">
+<div class="flex flex-col md:flex-row gap-md items-center">
+<div class="relative flex-1 w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-bright border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all text-body-md" placeholder="Search by name, email or role..." type="text"/>
+</div>
+<div class="flex gap-md w-full md:w-auto">
+<div class="relative min-w-[160px]">
+<select class="appearance-none w-full bg-surface-bright border border-outline-variant rounded-lg px-4 py-2.5 pr-10 focus:ring-2 focus:ring-primary outline-none text-body-md font-medium text-on-surface cursor-pointer">
+<option value="">All Roles</option>
+<option value="admin">Admin</option>
+<option value="member">Member</option>
+<option value="viewer">Viewer</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
+</div>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2.5 rounded-lg flex items-center gap-sm hover:bg-surface-container-highest transition-colors font-medium">
+<span class="material-symbols-outlined">filter_list</span>
+<span>More Filters</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Stats Card -->
+<div class="col-span-12 lg:col-span-4 bg-primary text-on-primary rounded-xl p-md shadow-sm flex items-center justify-between">
+<div>
+<p class="text-label-sm font-label-sm opacity-80 mb-1">Total Active Users</p>
+<h3 class="text-headline-xl font-headline-xl">2,482</h3>
+</div>
+<div class="p-3 bg-primary-container/20 rounded-full">
+<span class="material-symbols-outlined text-[32px]">trending_up</span>
+</div>
+</div>
+</div>
+<!-- Table Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider">User Profile</th>
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider">Email Address</th>
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider">Role</th>
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider">Status</th>
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider">Last Login</th>
+<th class="px-lg py-4 font-semibold text-on-surface-variant text-label-sm uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- User Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A professional headshot avatar of a young entrepreneur with a clean-cut look, wearing a modern emerald green blazer. The lighting is soft and high-key, reflecting a corporate modern aesthetic with a clean white background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5yH3GBgOeSXIh3IfRxWuvPnsaVM6st_mOwmUuH-T5okytr93gOXDtCeAwSCWKsv2tQA30L3qNh8NidiMZ9P5rhZePKnUu2IHXnLkNCrOMNJL6_NuzmnqeE8MJQsGLMoHI8qNFAvuZYoCuDoxUb63mc_uJ-TfPvn3Fd6g7uzvY83OrAKqGvjzPfRhAex-CdcS8YCKBBZRbBRVU4_J-8Sxcv8ILpyIWtv2UMNOQ2wwjwVP__wmjA7RNHXGczSvDMWA4Hi5OdbE3TXWu"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Alex Nguyen</p>
+<p class="text-label-sm text-on-surface-variant">ID: #HL-0921</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">alex.nguyen@hlvn.tech</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-bold bg-primary-container text-on-primary-container">
+                                        Admin
+                                    </span>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary-container/30"></span>
+<span class="text-body-md font-medium text-primary">Active</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant italic">2 mins ago</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/10 rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container overflow-hidden shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A portrait of a cheerful female professional with glasses, wearing a sleek teal turtleneck. The style is modern SaaS-inspired, featuring high-quality digital lighting and a minimalist, slightly out-of-focus office background in soft grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALtdTnocYR951FzRTZdsMx0SOOtLrX24Jt0v9Ii2ja7yCifhcHDv2Dro5Tfl5R0KFQYFKmsoJB9fy2X_z0yKRr7XUl1rGr6698y0gkwQzuWxkZVTk5a1xyS-GrEcrpZn4h0dLHcOZ7lmvIuhIUdDlN2OmEXvHZZbvrhXsSZuT-92Dq1i-EENkXIBLnT3wGbOsMMf3zPciO2TSAPs2CB3wHgsPm-0nV3dMc45UCEpbcYGHgWtR1ZtsFWn4Xsx67Fh3ReDXDlw6v20wr"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Minh Tran</p>
+<p class="text-label-sm text-on-surface-variant">ID: #HL-0944</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">minh.tran@hlvn.tech</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-bold bg-secondary-container text-on-secondary-container">
+                                        Member
+                                    </span>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="text-body-md font-medium text-outline">Offline</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant italic">1 hour ago</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/10 rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container overflow-hidden shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="A studio-lit portrait of a senior developer with a friendly expression. He is wearing a dark navy polo shirt. The overall color palette uses deep blues and crisp whites to emphasize a professional, growth-oriented dashboard environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOJTYmJAD_t87E7S4oVvVj8J7YxBWEimhxYVFFy5p7R7eqmLBnSY3_gVlzim_8U3qxvxMdrUETtrgdevfTvr0-dI92s9hmgyxlQ7wvYvnbA-BB57TNrLAkXp_OjIUxjPR9658apHelEfilbqa-j89C0--neQdr7j2WsmZfVqiA9aMA4pnwDQqYYjhgQpAaAfAX6MBekYxMHQchnFEh_DHwbzTZpQnbdML52rp1O5O8g1Vdto_Ido_Sw0ao4BR6T-2n121562RtVywB"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Quang Le</p>
+<p class="text-label-sm text-on-surface-variant">ID: #HL-1102</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">quang.le@hlvn.tech</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-bold bg-secondary-container text-on-secondary-container">
+                                        Member
+                                    </span>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary-container/30"></span>
+<span class="text-body-md font-medium text-primary">Active</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant italic">5 mins ago</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/10 rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- User Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border-2 border-secondary-container overflow-hidden shrink-0">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="Close-up avatar of a young digital artist with a bright, energetic smile. Stylish and modern with a focus on vibrant emerald accents in the apparel. Lighting is diffuse and natural, set in a clean, minimalist studio environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjbP0sEvUWh2qAckXTxKxkCaSd6uPu4XCzF40qTfzIwwujSF1sZpZvlbLqMaUvfpzCHklDRKBIzPArlmzHsQjdUJmA_sqC3jWirJdn7fv1lH5pL1TYunsQCN_sOkwqHZ3l99IsiZ0s62XMZpqVsLLgOka2ixNwn8_ZB7WuffjiRSoU-fxFfcLkQ3XBG3QTBOrCgkZr-zAHa9NvP2bqj5-mvbHKNLui2ZhegZ8m6YjL2qMeMaYkf3h1EdeYfaX9DnkYyMnNQpN0WAdX"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Hieu Nguyen</p>
+<p class="text-label-sm text-on-surface-variant">ID: #HL-2033</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">hieu.n@hlvn.tech</td>
+<td class="px-lg py-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full text-label-sm font-bold bg-secondary-container text-on-secondary-container">
+                                        Member
+                                    </span>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="text-body-md font-medium text-outline">Offline</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant italic">3 hours ago</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-surface-container rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">edit</span>
+</button>
+<button class="p-2 hover:bg-error-container/10 rounded-lg text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination footer -->
+<div class="px-lg py-md border-t border-outline-variant bg-surface-bright flex flex-col md:flex-row items-center justify-between gap-md">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Showing <span class="font-semibold text-on-surface">1-10</span> of <span class="font-semibold text-on-surface">24</span> users</p>
+<div class="flex items-center gap-sm">
+<button class="p-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-1">
+<button class="w-10 h-10 rounded-lg bg-primary text-on-primary font-bold shadow-sm">1</button>
+<button class="w-10 h-10 rounded-lg border border-transparent text-on-surface-variant hover:bg-surface-container transition-colors">2</button>
+<button class="w-10 h-10 rounded-lg border border-transparent text-on-surface-variant hover:bg-surface-container transition-colors">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-10 h-10 rounded-lg border border-transparent text-on-surface-variant hover:bg-surface-container transition-colors">8</button>
+</div>
+<button class="p-2 rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-xl text-center">
+<p class="text-label-sm text-on-surface-variant italic">HLVN Dashboard v5 • Enterprise User Management Module • Last Sync: Today at 09:42 AM</p>
+</footer>
+</div>
+</main>
+</body></html>

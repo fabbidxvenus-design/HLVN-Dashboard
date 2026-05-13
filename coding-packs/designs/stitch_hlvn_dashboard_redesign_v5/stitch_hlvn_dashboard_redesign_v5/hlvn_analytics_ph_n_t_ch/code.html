@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics - Phân tích</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#595c5e",
+                        "inverse-surface": "#0b0f10",
+                        "inverse-primary": "#69f6b8",
+                        "surface-bright": "#f5f7f9",
+                        "surface-dim": "#d0d5d8",
+                        "primary-container": "#69f6b8",
+                        "secondary": "#00675d",
+                        "outline": "#747779",
+                        "primary-fixed": "#69f6b8",
+                        "primary-fixed-dim": "#58e7ab",
+                        "primary-dim": "#005c3d",
+                        "on-background": "#2c2f31",
+                        "on-primary-fixed-variant": "#006544",
+                        "inverse-on-surface": "#9a9d9f",
+                        "tertiary-dim": "#004ca6",
+                        "on-tertiary-container": "#002e6a",
+                        "tertiary-fixed-dim": "#73a2ff",
+                        "secondary-dim": "#005a50",
+                        "background": "#f5f7f9",
+                        "tertiary-container": "#8ab0ff",
+                        "primary": "#006947",
+                        "secondary-fixed": "#6df5e1",
+                        "surface-container": "#e5e9eb",
+                        "on-primary": "#c8ffe0",
+                        "on-secondary": "#c0fff3",
+                        "surface-tint": "#006947",
+                        "on-tertiary-fixed-variant": "#00377b",
+                        "on-error-container": "#570008",
+                        "tertiary-fixed": "#8ab0ff",
+                        "tertiary": "#0057bd",
+                        "secondary-fixed-dim": "#5de7d3",
+                        "surface-container-high": "#dfe3e6",
+                        "on-surface": "#2c2f31",
+                        "on-tertiary": "#f0f2ff",
+                        "on-primary-fixed": "#00452d",
+                        "surface": "#f5f7f9",
+                        "error-dim": "#9f0519",
+                        "surface-variant": "#d9dde0",
+                        "on-primary-container": "#005a3c",
+                        "outline-variant": "#abadaf",
+                        "on-tertiary-fixed": "#00163b",
+                        "on-error": "#ffefee",
+                        "error-container": "#fb5151",
+                        "on-secondary-container": "#005b51",
+                        "surface-container-low": "#eef1f3",
+                        "secondary-container": "#6df5e1",
+                        "on-secondary-fixed-variant": "#00655b",
+                        "on-secondary-fixed": "#00463e",
+                        "error": "#b31b25",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d9dde0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "margin": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Public Sans"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .green-glow-hover:hover {
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.15);
+            transform: translateY(-2px);
+        }
+        .active-glow {
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface flex flex-col py-margin border-r border-outline-variant shadow-sm z-50">
+<div class="px-lg mb-xl">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">HLVN Dashboard</h1>
+<p class="text-label-sm text-on-surface-variant">V5 Analytics</p>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary border-r-4 border-primary bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md">Scan History</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings_input_component</span>
+<span class="font-body-md">Fleet Status</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-xl">
+<button class="w-full bg-primary text-on-primary py-sm rounded-lg font-bold hover:opacity-90 transition-opacity">
+                New Scan
+            </button>
+</div>
+<div class="px-sm mt-auto space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body-md">Help Center</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-16rem)] h-16 bg-surface/80 backdrop-blur-md flex justify-between items-center px-lg border-b border-outline-variant shadow-sm z-40">
+<div class="flex items-center gap-lg">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-xl pr-md py-xs bg-surface-container rounded-full border-none focus:ring-2 focus:ring-primary w-64 text-sm" placeholder="Search analytics..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-md">
+<a class="text-primary font-bold border-b-2 border-primary" href="#">Overview</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Team</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-xs bg-primary-container text-on-primary-container rounded-lg font-bold hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">download</span>
+                Download Data
+            </button>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full cursor-pointer">notifications</span>
+<span class="material-symbols-outlined p-xs hover:bg-surface-container rounded-full cursor-pointer">dark_mode</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD79gRJu9mp73P71tv6ant3dPx0oDglC9e349OaScWoTJcbeoHlU_pK60shX3-EaNgH7B3PWo2aMUE4MSEW8xoPYN7HS6J3C04Za16DpJMKNnxzhHBiRm4ofTrVQdQhdfDXubcNLXenfRYnqlmHAx1I6l5yReshSUOEX3MBXoJxdOr7lCo4a3PCeBaUE5pI7AXijLR5LHUxdbHfqyD-1QdmpfBfajdLrXz6phyyEbfMmp1XyotYPVcJIII2r8EwRYtbIM2c5Kbc5B5P"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="ml-64 pt-24 px-margin pb-margin min-h-screen">
+<!-- Page Header -->
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="text-headline-lg font-headline-lg font-bold text-on-surface">Phân tích</h2>
+<p class="text-on-surface-variant">Theo dõi hiệu suất và xu hướng sử dụng</p>
+</div>
+<!-- Date Range Picker -->
+<div class="glass-card p-xs rounded-xl flex items-center shadow-sm">
+<button class="px-md py-xs text-sm font-semibold rounded-lg text-on-surface-variant hover:text-primary transition-all">7D</button>
+<button class="px-md py-xs text-sm font-semibold rounded-lg bg-primary text-white active-glow transition-all">30D</button>
+<button class="px-md py-xs text-sm font-semibold rounded-lg text-on-surface-variant hover:text-primary transition-all">90D</button>
+<div class="w-px h-4 bg-outline-variant mx-xs"></div>
+<button class="px-md py-xs text-sm font-semibold rounded-lg text-on-surface-variant flex items-center gap-xs hover:text-primary transition-all">
+                    Custom <span class="material-symbols-outlined text-sm">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-xl">
+<!-- Total Scans -->
+<div class="glass-card p-lg rounded-xl green-glow-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary">qr_code_scanner</span>
+</div>
+<span class="flex items-center text-primary text-xs font-bold bg-primary/10 px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12.5%
+                    </span>
+</div>
+<h3 class="text-on-surface-variant text-sm font-semibold mb-xs">Total Scans</h3>
+<div class="text-headline-lg font-bold text-on-surface">1,284,592</div>
+</div>
+<!-- Unique Users -->
+<div class="glass-card p-lg rounded-xl green-glow-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary">group</span>
+</div>
+<span class="flex items-center text-primary text-xs font-bold bg-primary/10 px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-xs">trending_up</span> +5.2%
+                    </span>
+</div>
+<h3 class="text-on-surface-variant text-sm font-semibold mb-xs">Unique Users</h3>
+<div class="text-headline-lg font-bold text-on-surface">42,801</div>
+</div>
+<!-- API Calls -->
+<div class="glass-card p-lg rounded-xl green-glow-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-tertiary/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">api</span>
+</div>
+<span class="flex items-center text-error text-xs font-bold bg-error-container/20 px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-xs">trending_down</span> -2.4%
+                    </span>
+</div>
+<h3 class="text-on-surface-variant text-sm font-semibold mb-xs">API Calls</h3>
+<div class="text-headline-lg font-bold text-on-surface">8.4M</div>
+</div>
+<!-- Avg Latency -->
+<div class="glass-card p-lg rounded-xl green-glow-hover transition-all duration-300">
+<div class="flex justify-between items-start mb-md">
+<div class="p-sm bg-primary-container/30 rounded-lg">
+<span class="material-symbols-outlined text-primary">speed</span>
+</div>
+<span class="flex items-center text-primary text-xs font-bold bg-primary/10 px-xs py-[2px] rounded">
+<span class="material-symbols-outlined text-xs">bolt</span> Optimizing
+                    </span>
+</div>
+<h3 class="text-on-surface-variant text-sm font-semibold mb-xs">Avg Latency</h3>
+<div class="text-headline-lg font-bold text-on-surface">124ms</div>
+</div>
+</div>
+<!-- Bento Grid Charts Section -->
+<div class="grid grid-cols-12 gap-gutter mb-xl">
+<!-- API Usage Area Chart -->
+<div class="col-span-12 lg:col-span-8 glass-card rounded-xl p-lg h-[400px] flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h3 class="font-headline-lg text-lg font-bold text-on-surface">API Usage Trends</h3>
+<p class="text-on-surface-variant text-sm">Daily calls vs previous period</p>
+</div>
+<div class="flex gap-md text-xs font-semibold">
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-primary"></span> Current</div>
+<div class="flex items-center gap-xs"><span class="w-3 h-3 rounded-full bg-secondary"></span> Comparison</div>
+</div>
+</div>
+<!-- Chart Mockup -->
+<div class="flex-1 w-full relative">
+<div class="absolute inset-0 flex items-end gap-1 opacity-20">
+<!-- Simplified representation of a background grid -->
+<div class="flex-1 h-full border-r border-outline-variant"></div>
+<div class="flex-1 h-full border-r border-outline-variant"></div>
+<div class="flex-1 h-full border-r border-outline-variant"></div>
+<div class="flex-1 h-full border-r border-outline-variant"></div>
+<div class="flex-1 h-full"></div>
+</div>
+<!-- Area Chart Visual Representation -->
+<svg class="w-full h-full drop-shadow-lg" preserveaspectratio="none" viewbox="0 0 800 200">
+<defs>
+<lineargradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#10B981" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#10B981" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Comparison Line -->
+<path d="M0,150 Q100,160 200,140 T400,130 T600,150 T800,140" fill="none" stroke="#14B8A6" stroke-dasharray="4,4" stroke-width="2"></path>
+<!-- Main Area -->
+<path d="M0,130 Q100,100 200,140 T400,80 T600,110 T800,90 L800,200 L0,200 Z" fill="url(#areaGradient)"></path>
+<!-- Main Line -->
+<path d="M0,130 Q100,100 200,140 T400,80 T600,110 T800,90" fill="none" stroke="#10B981" stroke-width="3"></path>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-sm text-xs text-on-surface-variant font-medium">
+<span>01 May</span><span>07 May</span><span>14 May</span><span>21 May</span><span>28 May</span>
+</div>
+</div>
+</div>
+<!-- Model Distribution Donut Chart -->
+<div class="col-span-12 lg:col-span-4 glass-card rounded-xl p-lg h-[400px] flex flex-col">
+<h3 class="font-headline-lg text-lg font-bold text-on-surface mb-lg">Model Distribution</h3>
+<div class="flex-1 flex flex-col items-center justify-center">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#E2E8F0" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#10B981" stroke-dasharray="251.2" stroke-dashoffset="100" stroke-width="12"></circle>
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#059669" stroke-dasharray="251.2" stroke-dashoffset="200" stroke-width="12"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-headline-lg font-bold text-on-surface">100%</span>
+<span class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Total</span>
+</div>
+</div>
+<div class="mt-lg w-full space-y-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-sm font-medium">GPT-4o Vision</span>
+</div>
+<span class="text-sm font-bold">58%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-sm font-medium">Claude 3.5 Sonnet</span>
+</div>
+<span class="text-sm font-bold">32%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-surface-dim"></span>
+<span class="text-sm font-medium">Other Models</span>
+</div>
+<span class="text-sm font-bold">10%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- API Usage Table Section -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="p-lg flex justify-between items-center border-b border-outline-variant bg-surface-container-low/30">
+<div>
+<h3 class="font-headline-lg text-lg font-bold text-on-surface">API Usage Breakdown</h3>
+<p class="text-on-surface-variant text-sm">Detailed performance metrics by model instance</p>
+</div>
+<button class="flex items-center gap-sm px-md py-sm glass-card rounded-lg font-bold text-primary hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined">download</span>
+                    Export CSV
+                </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low/50 text-on-surface-variant text-sm font-semibold uppercase tracking-wider">
+<tr>
+<th class="px-lg py-md">Model</th>
+<th class="px-lg py-md text-right">Total Calls</th>
+<th class="px-lg py-md text-right">Avg Latency</th>
+<th class="px-lg py-md">Success Rate</th>
+<th class="px-lg py-md">Last Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-on-surface">gpt-4o-2024-05-13</td>
+<td class="px-lg py-md text-right font-medium">4,529,102</td>
+<td class="px-lg py-md text-right text-on-surface-variant">92ms</td>
+<td class="px-lg py-md">
+<span class="bg-primary/10 text-primary px-sm py-[2px] rounded-full text-xs font-bold border border-primary/20">99.9% High</span>
+</td>
+<td class="px-lg py-md text-on-surface-variant text-sm">May 24, 2024</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-on-surface">claude-3-5-sonnet</td>
+<td class="px-lg py-md text-right font-medium">2,841,050</td>
+<td class="px-lg py-md text-right text-on-surface-variant">154ms</td>
+<td class="px-lg py-md">
+<span class="bg-primary/10 text-primary px-sm py-[2px] rounded-full text-xs font-bold border border-primary/20">98.5% High</span>
+</td>
+<td class="px-lg py-md text-on-surface-variant text-sm">May 24, 2024</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-on-surface">stable-diffusion-xl-turbo</td>
+<td class="px-lg py-md text-right font-medium">842,100</td>
+<td class="px-lg py-md text-right text-on-surface-variant">412ms</td>
+<td class="px-lg py-md">
+<span class="bg-amber-100 text-amber-700 px-sm py-[2px] rounded-full text-xs font-bold border border-amber-200">92.1% Medium</span>
+</td>
+<td class="px-lg py-md text-on-surface-variant text-sm">May 23, 2024</td>
+</tr>
+<tr class="hover:bg-surface-container-low/30 transition-colors">
+<td class="px-lg py-md font-bold text-on-surface">whisper-large-v3</td>
+<td class="px-lg py-md text-right font-medium">124,500</td>
+<td class="px-lg py-md text-right text-on-surface-variant">850ms</td>
+<td class="px-lg py-md">
+<span class="bg-error-container/20 text-error px-sm py-[2px] rounded-full text-xs font-bold border border-error-container/30">84.2% Low</span>
+</td>
+<td class="px-lg py-md text-on-surface-variant text-sm">May 22, 2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-lg py-md border-t border-outline-variant flex items-center justify-between">
+<span class="text-sm text-on-surface-variant">Showing 1 to 4 of 24 entries</span>
+<div class="flex gap-xs">
+<button class="p-xs glass-card rounded-lg text-on-surface-variant hover:text-primary transition-all disabled:opacity-50">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-sm py-xs bg-primary text-white rounded-lg text-sm font-bold active-glow">1</button>
+<button class="px-sm py-xs hover:bg-surface-container rounded-lg text-sm font-bold text-on-surface-variant">2</button>
+<button class="px-sm py-xs hover:bg-surface-container rounded-lg text-sm font-bold text-on-surface-variant">3</button>
+<button class="p-xs glass-card rounded-lg text-on-surface-variant hover:text-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

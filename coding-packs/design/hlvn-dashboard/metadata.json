@@ -1,6 +1,0 @@
-{
-  "name": "HLVN Dashboard",
-  "description": "A desktop-first admin dashboard for managing an OCR mobile app with user management, scan history, and analytics.",
-  "requestFramePermissions": [],
-  "majorCapabilities": []
-}

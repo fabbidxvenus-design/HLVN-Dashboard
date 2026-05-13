@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d9dde0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #abadaf;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#002e6a",
+                        "on-secondary-container": "#005b51",
+                        "on-tertiary": "#f0f2ff",
+                        "inverse-primary": "#69f6b8",
+                        "on-primary-container": "#005a3c",
+                        "primary": "#006947",
+                        "on-error": "#ffefee",
+                        "tertiary-fixed": "#8ab0ff",
+                        "secondary-dim": "#005a50",
+                        "surface": "#f5f7f9",
+                        "on-background": "#2c2f31",
+                        "surface-container-low": "#eef1f3",
+                        "inverse-on-surface": "#9a9d9f",
+                        "secondary-fixed": "#6df5e1",
+                        "outline": "#747779",
+                        "surface-dim": "#d0d5d8",
+                        "primary-fixed": "#69f6b8",
+                        "on-primary": "#c8ffe0",
+                        "outline-variant": "#abadaf",
+                        "on-secondary-fixed-variant": "#00655b",
+                        "surface-container": "#e5e9eb",
+                        "error-container": "#fb5151",
+                        "tertiary": "#0057bd",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#00163b",
+                        "surface-bright": "#f5f7f9",
+                        "primary-fixed-dim": "#58e7ab",
+                        "on-primary-fixed": "#00452d",
+                        "inverse-surface": "#0b0f10",
+                        "primary-container": "#69f6b8",
+                        "surface-variant": "#d9dde0",
+                        "secondary-fixed-dim": "#5de7d3",
+                        "on-tertiary-fixed-variant": "#00377b",
+                        "tertiary-dim": "#004ca6",
+                        "error": "#b31b25",
+                        "on-secondary-fixed": "#00463e",
+                        "surface-tint": "#006947",
+                        "on-error-container": "#570008",
+                        "secondary": "#00675d",
+                        "primary-dim": "#005c3d",
+                        "on-surface-variant": "#595c5e",
+                        "surface-container-high": "#dfe3e6",
+                        "on-primary-fixed-variant": "#006544",
+                        "error-dim": "#9f0519",
+                        "background": "#f5f7f9",
+                        "tertiary-container": "#8ab0ff",
+                        "on-secondary": "#c0fff3",
+                        "on-surface": "#2c2f31",
+                        "surface-container-highest": "#d9dde0",
+                        "secondary-container": "#6df5e1",
+                        "tertiary-fixed-dim": "#73a2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "margin": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Manrope"],
+                        "headline-lg": ["Manrope"],
+                        "label-sm": ["Public Sans"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Sidebar (Shared Component SideNavBar) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-low/80 backdrop-blur-md border-r border-outline-variant/30 shadow-sm flex flex-col py-lg px-md z-50">
+<div class="mb-xl px-sm flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary text-headline-lg" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">HLVN Dashboard</h1>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">v5.0 Analytics</p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary font-bold border-r-4 border-primary bg-primary-container/10 transition-colors group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+<span class="font-body-md">Scans</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
+<span class="font-body-md">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-colors group" href="#">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary text-on-primary py-sm px-md rounded-lg font-bold flex items-center justify-center gap-xs Active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">add</span>
+<span>New Scan</span>
+</button>
+</div>
+</aside>
+<!-- Header (Shared Component TopAppBar) -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-surface/90 backdrop-blur-sm flex items-center justify-between px-margin w-full z-40">
+<div class="flex items-center gap-lg w-1/2">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-none rounded-lg py-2 pl-10 pr-md text-sm focus:ring-2 focus:ring-primary/50 transition-all" placeholder="Tìm kiếm theo ID, sản phẩm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-sm rounded-full text-on-surface-variant hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/30 mx-xs"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container rounded-lg p-xs transition-all">
+<img alt="Avatar" class="w-8 h-8 rounded-full border border-outline-variant/50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgfJO-Id6K1NGEoTiV1nkQLRozcbdeM3eM3m-tbf2WfKcNTMiGcuFMLNKBr9K4pbvh5QRTpzJSILonfJmbNokZA-5LcDTkK_RF7IBmPx7ZiROhEvkYOX4e9bSoYuHqlq3s59oF2AVkN_DfXrZPLpBhWpU3TiB_h2E9ItByQJ9cUaVHKH99KaTp-dnq7TxJF6hwCgh3a2Gma4yyt1bDgJVGRPbdMBl3ZRnGdXRz9NFyFkN47sMQrl2-ufmsYqda2AMuQsmmOfm86cO8"/>
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pl-64 pt-16 min-h-screen">
+<div class="p-margin max-w-[1440px] mx-auto">
+<!-- Page Header Area -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-lg gap-md">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-background">Lịch sử quét</h2>
+<p class="text-on-surface-variant font-body-md">Quản lý và theo dõi độ chính xác của các lần quét dữ liệu.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="bg-surface-container-highest px-sm py-xs rounded-lg flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-xs font-label-sm text-on-surface">1,248 Tổng số quét</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-lg font-bold flex items-center gap-sm shadow-lg shadow-primary/20 hover:shadow-xl hover:translate-y-[-2px] transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                        New Scan
+                    </button>
+</div>
+</div>
+<!-- Filter Bar -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-md mb-lg flex flex-wrap items-center gap-md shadow-sm">
+<div class="flex items-center gap-sm bg-surface-container px-sm py-xs rounded-lg border border-outline-variant/30">
+<span class="text-xs font-label-sm text-on-surface-variant">Trạng thái:</span>
+<select class="bg-transparent border-none text-sm font-bold text-on-surface focus:ring-0 cursor-pointer py-0">
+<option>Tất cả</option>
+<option>Thành công</option>
+<option>Đang chờ</option>
+<option>Thất bại</option>
+</select>
+</div>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-xs p-xs bg-surface-container rounded-lg">
+<button class="px-md py-xs rounded-md text-xs font-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">24h qua</button>
+<button class="px-md py-xs rounded-md text-xs font-label-sm bg-surface-container-lowest text-primary font-bold shadow-sm">7 ngày</button>
+<button class="px-md py-xs rounded-md text-xs font-label-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">30 ngày</button>
+</div>
+<div class="flex-1"></div>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors text-sm font-label-sm">
+<span class="material-symbols-outlined text-md">filter_list</span>
+                    Bộ lọc nâng cao
+                </button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors text-sm font-label-sm">
+<span class="material-symbols-outlined text-md">download</span>
+                    Xuất CSV
+                </button>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/20">
+<tr>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">ID</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Sản phẩm</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Trạng thái</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider text-center">Trường</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Độ chính xác</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Người thực hiện</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider">Ngày quét</th>
+<th class="px-lg py-md text-xs font-bold text-on-surface-variant uppercase tracking-wider"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md text-sm font-bold text-primary">#SCAN-49210</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-md bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-lg">inventory_2</span>
+</div>
+<span class="text-sm font-bold text-on-surface">Pate Cột Đèn</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-sm bg-primary-container text-on-primary-container">
+                                    Success
+                                </span>
+</td>
+<td class="px-lg py-md text-center text-sm font-bold text-on-surface">12</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-primary" style="width: 98%;"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">98%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="User" class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcnLbCx9vSJmfkCjeJ-sXWB9SKl9zm7wAByH-nX8pteOVQ7-m6xSSuEsymONj24PDlt3K9xnp7XEHSLJKWVL3LoGr4C3rcMx07tUpyXz5QMq0V3CvWQyP5NruNjF-Hq8bjofGJ3WRPvyaCS5JAdnIwGHFRTV9HMiJNu2L0jYVglZ2jkj_QbK0ZaqVmYk6dCvXvkQebiAVKVaWKI6Uc6P9Bt-fnP3r9nEQAUDKvmrlp_bdJGRKXwRjdYUWEI51amNk749BxjQrXYsMD"/>
+<span class="text-sm text-on-surface-variant">Anh Tuấn</span>
+</div>
+</td>
+<td class="px-lg py-md text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs rounded hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md text-sm font-bold text-primary">#SCAN-49209</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-md bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-lg">medical_services</span>
+</div>
+<span class="text-sm font-bold text-on-surface">Sữa bột Ensure</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-sm bg-secondary-container text-on-secondary-container">
+                                    Pending
+                                </span>
+</td>
+<td class="px-lg py-md text-center text-sm font-bold text-on-surface">8</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-secondary" style="width: 45%;"></div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">45%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="User" class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUW9ZLbpffatdeymGkdLWChmf8NvW_BTHYIbFFGNlplKaDfgjqruQgFm-rfGcNGqFClijEyZ0K1blkeMdrNwkMyiXC8NtZRpogvEZRION7MG8WfiLYkOYlr2of9YgFyqegYQ5H2eqKEsugn0tTEiO-6axgYpgSgB83z8pclefQ9Gyvpu5yIYT2oNABaGimNjf2gv2WPXnrzCyYULFp7MrGqAp0yPppxLEGYFudD1kXYN1slDmobB6FE8PM8k2RUdB30kb-UjdNqGtJ"/>
+<span class="text-sm text-on-surface-variant">Minh Hằng</span>
+</div>
+</td>
+<td class="px-lg py-md text-sm text-on-surface-variant">Oct 24, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs rounded hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md text-sm font-bold text-primary">#SCAN-49195</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-md bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">category</span>
+</div>
+<span class="text-sm font-bold text-on-surface">Gạo ST25 5kg</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-sm bg-error-container/20 text-error">
+                                    Failed
+                                </span>
+</td>
+<td class="px-lg py-md text-center text-sm font-bold text-on-surface">15</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-error" style="width: 12%;"></div>
+</div>
+<span class="text-xs font-bold text-error">12%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="User" class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9nadQf0ruFa8PvgeKflgZQMQWVJ4uKRELEI0kXMwVa8p-tqVdMTiS3BjEQtkhM32JVpJI51JE52hEdxGnW65KaiwpvEo88zIl5z8hioNH-_hp3TB-p9vVw1WbTXuuLUupVue06q6nEmXW0KlK0n1tJbUfxOaODU6l3KZVSNEFbHhdrqfNf27YbCSLJL4-4U-eec_6iQaqr1dX9s5qnibTc2XUuakYKP63vMy4tgRUh4IUg6kq_rKhfxI1sAUzFlR3hX_2a1X39mRv"/>
+<span class="text-sm text-on-surface-variant">Hoàng Nam</span>
+</div>
+</td>
+<td class="px-lg py-md text-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs rounded hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- More rows for high density look -->
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md text-sm font-bold text-primary">#SCAN-49190</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-md bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-lg">set_meal</span>
+</div>
+<span class="text-sm font-bold text-on-surface">Cá hồi Nauy</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-sm bg-primary-container text-on-primary-container">
+                                    Success
+                                </span>
+</td>
+<td class="px-lg py-md text-center text-sm font-bold text-on-surface">24</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-primary" style="width: 100%;"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">100%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="User" class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGvbrk4U5829Buhd8nO1YwInR2mJ5oAfkwNkOe8QJwQXSDFeAvTUrT_3YyykFCNL6PYs14doTEbegKvDHxxVh2LokASifvRyWA56HzK_wvyHQ1VGAe-NUOPW6HBmkmSp7IKsK-oeUDBe9_AWn4qaAiP8FyXAHCQhTMoj1sgxHuxbBDNKkBC76a4n_ae2alu0oMhA-XL6esA3QLD9TNVNG0-MwIH0kyjqgIlmXdfbdnxoiFbq3LCQ4dMNq1iMTHtCXoQsA9JZwnyXS_"/>
+<span class="text-sm text-on-surface-variant">Thanh Thảo</span>
+</div>
+</td>
+<td class="px-lg py-md text-sm text-on-surface-variant">Oct 23, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs rounded hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/5 transition-colors group">
+<td class="px-lg py-md text-sm font-bold text-primary">#SCAN-49182</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-md bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container text-lg">local_cafe</span>
+</div>
+<span class="text-sm font-bold text-on-surface">Cà phê Trung Nguyên</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-label-sm bg-primary-container text-on-primary-container">
+                                    Success
+                                </span>
+</td>
+<td class="px-lg py-md text-center text-sm font-bold text-on-surface">5</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container rounded-full overflow-hidden min-w-[60px]">
+<div class="h-full bg-primary" style="width: 95%;"></div>
+</div>
+<span class="text-xs font-bold text-on-surface">95%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<img alt="User" class="w-6 h-6 rounded-full grayscale group-hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxizSZ0eT13XvtIOICJrStr4MFVd6ojOeLSdAaBKEis9nvdi0kJstc0jyey3z-3nMtqaHqE4aCtit-hsgUmWYu8Tz5hqg1qBgq4AGtwgOxpInQbZOnIvXxlKHhotRP8YVMQNx5YJZPDfr1xVaJry_hPPGYEeCP4P2rJ6tl4ZwyfTmlMaFjn10sknbGHL8NS4UzJVnUkcGtCoqmJsoqpX07nlO8s1UaSdUz4yptvi6bBDTEvwLdBD3Rz_z-ZSIDfDNevZFakUipJL3l"/>
+<span class="text-sm text-on-surface-variant">Quốc Bảo</span>
+</div>
+</td>
+<td class="px-lg py-md text-sm text-on-surface-variant">Oct 22, 2023</td>
+<td class="px-lg py-md text-right">
+<button class="p-xs rounded hover:bg-surface-container transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination -->
+<div class="px-lg py-md bg-surface-container-low flex items-center justify-between border-t border-outline-variant/20">
+<p class="text-sm text-on-surface-variant font-label-sm">
+                        Showing <span class="font-bold text-on-surface">1-10</span> of <span class="font-bold text-on-surface">1,248</span> scans
+                    </p>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary font-bold text-xs">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container transition-all text-xs">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container transition-all text-xs">3</button>
+<span class="px-xs text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container transition-all text-xs">125</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Quick Insights Asymmetric Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mt-xl">
+<div class="col-span-1 md:col-span-2 bg-gradient-to-br from-primary to-primary-dim p-lg rounded-xl text-on-primary shadow-lg flex justify-between items-center relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-headline-lg font-bold mb-xs">Cải thiện độ chính xác 15%</h4>
+<p class="opacity-80 text-sm max-w-sm mb-md">Trong tuần qua, nhờ vào việc cập nhật model OCR mới, tỷ lệ thành công trung bình đã tăng vọt lên mức kỷ lục.</p>
+<button class="bg-surface-container-lowest text-primary px-md py-sm rounded-lg text-xs font-bold hover:bg-white transition-all shadow-md">Xem báo cáo chi tiết</button>
+</div>
+<div class="opacity-20 absolute -right-4 -bottom-4">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'wght' 700;">auto_graph</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg flex flex-col justify-center gap-md shadow-sm">
+<div class="flex items-center gap-md">
+<div class="p-sm bg-secondary-container rounded-lg text-on-secondary-container">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm">Thời gian xử lý TB</p>
+<p class="text-headline-lg font-bold text-on-surface">1.4s <span class="text-xs font-normal text-primary">↓ 0.2s</span></p>
+</div>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-md">
+<div class="p-sm bg-tertiary-container rounded-lg text-on-tertiary-container">
+<span class="material-symbols-outlined">database</span>
+</div>
+<div>
+<p class="text-xs text-on-surface-variant font-label-sm">Dữ liệu lưu trữ</p>
+<p class="text-headline-lg font-bold text-on-surface">42.8 GB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Hidden as per rule: Suppressed on Details/Scans lists unless primary action matches) -->
+<!-- But shown here since "New Scan" is a primary action for this management page -->
+<div class="fixed bottom-margin right-margin group">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+</button>
+<span class="absolute right-16 top-1/2 -translate-y-1/2 bg-on-background text-white px-md py-sm rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+            Quét mới ngay lập tức
+        </span>
+</div>
+</body></html>

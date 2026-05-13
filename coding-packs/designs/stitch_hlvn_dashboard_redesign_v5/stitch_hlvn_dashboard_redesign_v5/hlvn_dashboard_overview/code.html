@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Dashboard Overview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error-dim": "#9f0519",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "surface-container-high": "#dfe3e6",
+                      "surface-bright": "#f5f7f9",
+                      "on-tertiary": "#f0f2ff",
+                      "surface-container": "#e5e9eb",
+                      "tertiary-dim": "#004ca6",
+                      "secondary-container": "#6df5e1",
+                      "surface": "#f5f7f9",
+                      "secondary-fixed": "#6df5e1",
+                      "outline": "#747779",
+                      "primary-container": "#69f6b8",
+                      "on-secondary": "#c0fff3",
+                      "on-primary-fixed-variant": "#006544",
+                      "surface-dim": "#d0d5d8",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#d9dde0",
+                      "primary": "#006947",
+                      "on-background": "#2c2f31",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "on-error-container": "#570008",
+                      "tertiary-fixed": "#8ab0ff",
+                      "on-secondary-fixed": "#00463e",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "surface-container-low": "#eef1f3",
+                      "outline-variant": "#abadaf",
+                      "on-error": "#ffefee",
+                      "inverse-on-surface": "#9a9d9f",
+                      "error-container": "#fb5151",
+                      "on-tertiary-fixed": "#00163b",
+                      "surface-tint": "#006947",
+                      "on-primary": "#c8ffe0",
+                      "error": "#b31b25",
+                      "background": "#f5f7f9",
+                      "secondary": "#00675d",
+                      "tertiary-container": "#8ab0ff",
+                      "on-primary-container": "#005a3c",
+                      "on-tertiary-container": "#002e6a",
+                      "on-primary-fixed": "#00452d",
+                      "primary-fixed-dim": "#58e7ab",
+                      "on-surface-variant": "#595c5e",
+                      "surface-variant": "#d9dde0",
+                      "inverse-surface": "#0b0f10",
+                      "secondary-dim": "#005a50",
+                      "on-secondary-container": "#005b51",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "primary-dim": "#005c3d",
+                      "inverse-primary": "#69f6b8",
+                      "on-surface": "#2c2f31",
+                      "primary-fixed": "#69f6b8",
+                      "tertiary": "#0057bd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "label-sm": ["Public Sans"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex overflow-hidden">
+<!-- Side Navigation Shell (from JSON) -->
+<aside class="hidden md:flex flex-col h-screen py-lg px-md border-r border-outline-variant bg-surface-container-low shadow-sm w-64 shrink-0">
+<div class="mb-xl px-sm">
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary">HLVN Dashboard</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">v5 Analytics</p>
+</div>
+<nav class="flex-1 space-y-xs">
+<!-- Active Tab: Dashboard -->
+<a class="flex items-center gap-md bg-primary-container text-on-primary-container rounded-lg px-md py-sm Active: scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-md py-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="barcode_scanner">barcode_scanner</span>
+<span class="font-label-sm">Scans</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-md py-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-sm">Users</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-md py-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-sm">Analytics</span>
+</a>
+</nav>
+<button class="mb-lg w-full py-sm px-md bg-primary text-on-primary rounded-lg font-label-sm hover:opacity-90 transition-opacity">
+            Generate Report
+        </button>
+<div class="pt-lg border-t border-outline-variant space-y-xs">
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-md py-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high px-md py-sm transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-sm">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- Top Navigation Shell (from JSON) -->
+<header class="flex justify-between items-center h-16 px-margin w-full sticky top-0 z-50 bg-surface-bright border-b border-outline-variant">
+<div class="flex items-center gap-lg flex-1">
+<div class="md:hidden">
+<h2 class="text-headline-lg font-extrabold text-primary">HLVN</h2>
+</div>
+<div class="relative w-full max-w-md hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-full text-body-md focus:outline-none focus:ring-2 focus:ring-primary-container" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-highest rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-surface-container-highest rounded-full p-2 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant ml-sm">
+<img alt="User Profile" data-alt="A clean, professional headshot of a young professional person in a light gray studio environment. The lighting is soft and even, highlighting clear skin and a confident, subtle smile. The image has a modern corporate aesthetic, following a light-mode color palette with neutral tones and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDndgjLr8-KSCer9t52ZATjLkTo79akzTsONKxfLcRzmjRaAgZPB6BlBMJBOWECKhc512glTRANnT8ki1HG0Y3QVvt9qlW_jKvL3ezffSMc9YoG9cimbwVWMjBW0las3opC4_TFK-E3pe_vD3Lr7ckMmY0xRgfmNzGRJx1AzAtBZ9ZeBb9p8ZhzuLtQQDgsYUsZRLswnZe9T3cW4liqFmT6b3dE3y4KDy1IzFKYNTfTsYWf69tbJxQlo2JOyBQiHEVQo8Lk-3zCOgLp"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-margin space-y-gutter">
+<!-- KPI Cards Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Total Scans -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="text-on-surface-variant text-label-sm uppercase tracking-wider">Total Scans</span>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full text-xs font-bold">+12%</span>
+</div>
+<div class="mt-md">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">12,847</h3>
+</div>
+</div>
+<!-- Active Users -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<span class="text-on-surface-variant text-label-sm uppercase tracking-wider">Active Users</span>
+<div class="mt-md flex items-baseline gap-xs">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">1,284</h3>
+<span class="text-on-surface-variant text-xs">Live now</span>
+</div>
+</div>
+<!-- Success Rate -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<span class="text-on-surface-variant text-label-sm uppercase tracking-wider">Success Rate</span>
+<div class="mt-md">
+<div class="flex justify-between items-end mb-xs">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">94.2%</h3>
+</div>
+<div class="w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[94.2%]"></div>
+</div>
+</div>
+</div>
+<!-- Total Products -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col justify-between">
+<span class="text-on-surface-variant text-label-sm uppercase tracking-wider">Total Products</span>
+<div class="mt-md">
+<h3 class="text-headline-lg font-headline-lg text-on-surface">328</h3>
+</div>
+</div>
+</div>
+<!-- Main Section: Scan Volume Area Chart -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Scan Volume</h2>
+<p class="text-body-md text-on-surface-variant">Weekly performance tracking and comparisons</p>
+</div>
+<div class="flex items-center gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm">Current Period</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full border-2 border-secondary border-dashed"></span>
+<span class="text-label-sm">Previous Period</span>
+</div>
+</div>
+</div>
+<!-- Mock Chart Canvas -->
+<div class="relative h-64 w-full flex flex-col justify-end">
+<div class="absolute inset-0 flex items-end justify-between px-md pb-xs">
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 border-r border-outline-variant/20 h-full"></div>
+<div class="flex-1 h-full"></div>
+</div>
+<!-- Primary Line Visual Representation -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 700 200">
+<path class="text-primary" d="M0,180 Q100,140 200,160 T400,80 T600,100 T700,40" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="opacity-20" d="M0,180 Q100,140 200,160 T400,80 T600,100 T700,40 V200 H0 Z" fill="url(#grad1)"></path>
+<defs>
+<lineargradient id="grad1" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:var(--tw-text-opacity); stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:var(--tw-text-opacity); stop-opacity:0"></stop>
+</lineargradient>
+</defs>
+<!-- Comparison Line -->
+<path class="text-secondary" d="M0,190 Q100,170 200,180 T400,120 T600,130 T700,80" fill="none" stroke="currentColor" stroke-dasharray="6,4" stroke-width="2"></path>
+</svg>
+<div class="flex justify-between w-full pt-md text-label-sm text-on-surface-variant font-medium">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Top Products & Top Users -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Top Products Table -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Top Products</h2>
+<button class="text-primary font-label-sm flex items-center gap-xs">View all <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="border-b border-outline-variant text-label-sm text-on-surface-variant">
+<tr>
+<th class="pb-sm font-medium">Rank</th>
+<th class="pb-sm font-medium">Product Name</th>
+<th class="pb-sm font-medium text-right">Total Scans</th>
+<th class="pb-sm font-medium text-right">Success</th>
+<th class="pb-sm font-medium text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-md text-on-surface-variant">01</td>
+<td class="py-md font-semibold">GreenTech Core</td>
+<td class="py-md text-right">4,281</td>
+<td class="py-md text-right text-secondary font-medium">98.2%</td>
+<td class="py-md text-right">
+<div class="inline-flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-md text-on-surface-variant">02</td>
+<td class="py-md font-semibold">Emerald Sensor v2</td>
+<td class="py-md text-right">3,104</td>
+<td class="py-md text-right text-secondary font-medium">96.5%</td>
+<td class="py-md text-right">
+<div class="inline-flex items-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="py-md text-on-surface-variant">03</td>
+<td class="py-md font-semibold">BioScale Matrix</td>
+<td class="py-md text-right">2,842</td>
+<td class="py-md text-right text-secondary font-medium">91.4%</td>
+<td class="py-md text-right">
+<div class="inline-flex items-center text-error">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Top Users List -->
+<div class="glass-card p-lg rounded-xl border border-outline-variant shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Top Users</h2>
+<button class="text-primary font-label-sm flex items-center gap-xs">Manage Users <span class="material-symbols-outlined text-sm" data-icon="group">group</span></button>
+</div>
+<div class="space-y-md">
+<!-- User Item 1 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high rounded-lg transition-all">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img alt="Alex Rivera" data-alt="Close-up portrait of a male data analyst wearing glasses, looking at a screen with a serious yet engaged expression. The background is a soft-focus office environment with cool blue and green ambient lighting. High contrast and premium finish consistent with high-end SaaS branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQ4pIGFs0FGM75sRWjp4yDlcJ-VFcMf_1C_TLuB7L5OfHYTUZDwkvxJ1HHsckJiVUgkCRvvKh4CbR1ZkpWbiPw7UAueVEDidDI59f7cgZqPaM1KHxlXsAWXBVIYmTLde7OcV4xHdtC5ub4QkDbgy1l35htRQF6j8l6rQPHqipUjCjiHyW7zeRK6ixb8Mn0-_-uiuzyG0_CFp9M30dqLmNsPRL72UXHWpoNKvukXX1AZI3veomClxYIPehQhqwEQvpziNBYgpx0zedN"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Alex Rivera</p>
+<span class="text-label-sm bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full">Admin</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">1,482</p>
+<p class="text-xs text-on-surface-variant">Scans</p>
+</div>
+</div>
+<!-- User Item 2 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high rounded-lg transition-all">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img alt="Sarah Chen" data-alt="A portrait of a woman in a bright, modern creative workspace. She has a confident expression, symbolizing leadership and growth. The overall image has a vibrant, lush emerald green color tone and high-key lighting to emphasize clarity and professional quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn1n6R1zzqm2D7RkKq7Zai2cQBuJmF2eZR6ND4QjCm_dd39FuRUfzxlPWUHrC96ETTz9eKeS6VfzKnokJKTbC2Czs7Kj82Dhsolx_1IaabcnBg4vneuRl3X_kDqBxXZ6glag23L9YLYbo34ORA3LUJLtoA6To7EXzwyxKf55nEGvL43cV9-0xvEjJcF9tX9-6zMYF5lbqWhlmthHLPwrYqAn8_iF6tI44Z8yrnaZg9OptDWPFVjuusPaAF_fHylYNh7pRO6ZEONybt"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Sarah Chen</p>
+<span class="text-label-sm bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">1,209</p>
+<p class="text-xs text-on-surface-variant">Scans</p>
+</div>
+</div>
+<!-- User Item 3 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container-high rounded-lg transition-all">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img alt="Marcus Thorne" data-alt="Professional studio portrait of a man in a dark polo shirt against a light gray backdrop. The lighting is crisp and modern, highlighting the professional atmosphere. The visual aesthetic is clean, sophisticated, and fits the lush emerald green branding of a modern tech dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGs9L8jCCCsX0pWWVNaKYTX9CZZ81OLqptfnSafCOKkHnTwEuK8JMOER8vCBj78sKfVNDVYmnQcwg25TrEnyJtRjuZk3dG-ykgYyBFp6LZcaUeABj5sNcxQJRRkG0QiwMshQOZXLBhWzy8S0OFzD7xZGtqpSDCxwEFYJq1LGHI7KKyAo1ta_e4yA-A-MLAVpLgsNsdk_ETue9_pjBNm3HxB9yVLNRi2ttIj1TRol3F81CkVXekDZdCdkgeIBhiv01FlxkcoWp4sY6Y"/>
+</div>
+<div>
+<p class="font-semibold text-on-surface">Marcus Thorne</p>
+<span class="text-label-sm bg-surface-container-highest text-on-surface-variant px-2 py-0.5 rounded-full">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">954</p>
+<p class="text-xs text-on-surface-variant">Scans</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB (Suppressed on Dashboard as per logic unless high relevance, but let's add one as a 'Quick Scan' since it fits the product) -->
+<button class="fixed bottom-lg right-lg w-14 h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</body></html>

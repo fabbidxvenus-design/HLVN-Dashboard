@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lịch sử quét - HLVN Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed-dim": "#58e7ab",
+                      "primary-dim": "#005c3d",
+                      "on-surface-variant": "#595c5e",
+                      "inverse-on-surface": "#9a9d9f",
+                      "surface-container-high": "#dfe3e6",
+                      "tertiary-fixed": "#8ab0ff",
+                      "tertiary-container": "#8ab0ff",
+                      "surface-bright": "#f5f7f9",
+                      "surface": "#f5f7f9",
+                      "on-tertiary-container": "#002e6a",
+                      "on-background": "#2c2f31",
+                      "on-primary-fixed": "#00452d",
+                      "on-primary-fixed-variant": "#006544",
+                      "surface-tint": "#006947",
+                      "primary": "#006947",
+                      "on-tertiary-fixed": "#00163b",
+                      "on-secondary": "#c0fff3",
+                      "surface-container-highest": "#d9dde0",
+                      "outline-variant": "#abadaf",
+                      "inverse-primary": "#69f6b8",
+                      "on-secondary-container": "#005b51",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "surface-container-low": "#eef1f3",
+                      "on-error-container": "#570008",
+                      "background": "#f5f7f9",
+                      "tertiary-dim": "#004ca6",
+                      "tertiary": "#0057bd",
+                      "surface-variant": "#d9dde0",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-container": "#6df5e1",
+                      "on-error": "#ffefee",
+                      "on-primary-container": "#005a3c",
+                      "secondary-fixed": "#6df5e1",
+                      "on-secondary-fixed": "#00463e",
+                      "on-primary": "#c8ffe0",
+                      "error-container": "#fb5151",
+                      "surface-container": "#e5e9eb",
+                      "secondary-dim": "#005a50",
+                      "secondary": "#00675d",
+                      "error": "#b31b25",
+                      "on-tertiary": "#f0f2ff",
+                      "on-surface": "#2c2f31",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "outline": "#747779",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "surface-dim": "#d0d5d8",
+                      "error-dim": "#9f0519",
+                      "primary-container": "#69f6b8",
+                      "primary-fixed": "#69f6b8",
+                      "inverse-surface": "#0b0f10",
+                      "on-tertiary-fixed-variant": "#00377b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "margin": "24px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "base": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Public Sans"],
+                      "headline-lg": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "headline-xl": ["Manrope"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f5f7f9;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- SideNavBar (from JSON) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-r border-outline-variant/20 dark:border-outline/20 shadow-sm dark:shadow-none z-50">
+<div class="flex flex-col h-full p-md space-y-sm">
+<div class="flex items-center gap-md px-md py-lg mb-base">
+<img alt="HLVN Brand Icon" class="w-10 h-10 rounded-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd9-w4dthtmGs-srSbtcTcXUDcaNkz23EzkgpVM5Dg3ItZMlOkIkOpYCuve9T6l-VtwvyiYdWqUlbgXh2POphODlFq8Km7VwA_GIhUQUO3BC7AWc_1zZ6IbdvuRBP2CnfFKnGM34JjdZEAa__cYOkGahYy5mJ83NFuZ1XOtiV8af4xo87dlXOWlKX-iKzPX6BEvW7SmtHdwPsbAw8wioQ2HW-QnDapP1AGFkBqDv6RRSrTgUmPO09ahOsla7Q3sSRUPHI6OBDkWqR7"/>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim leading-none">HLVN Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Analytics Dashboard v5</p>
+</div>
+</div>
+<nav class="space-y-xs flex-1">
+<a class="flex items-center gap-md text-on-surface-variant dark:text-inverse-on-surface hover:bg-surface-container-high dark:hover:bg-surface-dim rounded-lg px-md py-sm hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md bg-primary-container dark:bg-primary-dim text-on-primary-container dark:text-primary-fixed-dim font-bold rounded-lg px-md py-sm active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md">Scans</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-inverse-on-surface hover:bg-surface-container-high dark:hover:bg-surface-dim rounded-lg px-md py-sm hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md">Users</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant dark:text-inverse-on-surface hover:bg-surface-container-high dark:hover:bg-surface-dim rounded-lg px-md py-sm hover:bg-surface-container-highest dark:hover:bg-surface-variant transition-colors duration-200 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto pt-md border-t border-outline-variant/10">
+<a class="flex items-center gap-md text-on-surface-variant hover:bg-surface-container-highest rounded-lg px-md py-sm transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (from JSON) -->
+<header class="sticky top-0 z-40 w-full bg-surface/90 dark:bg-inverse-surface/90 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/30 shadow-sm dark:shadow-none">
+<div class="flex items-center justify-between px-margin py-base ml-0">
+<div class="flex items-center flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full pl-xl pr-md py-sm text-body-md focus:ring-2 focus:ring-primary outline-none transition-all" placeholder="Tìm kiếm mã quét, sản phẩm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-sm text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-dim rounded-full transition-all cursor-pointer focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-sm text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-dim rounded-full transition-all cursor-pointer focus:ring-2 focus:ring-primary">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-px bg-outline-variant/30 mx-xs"></div>
+<div class="flex items-center gap-sm cursor-pointer hover:bg-surface-container p-xs pr-sm rounded-full transition-all">
+<img alt="Administrator Avatar" class="w-8 h-8 rounded-full border border-outline-variant/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTKjdT6crrTC9lniiTuMmehjlGg2auFrOQpw4YNVeaxpzr2801jI02CDBevcT7iiNeEDQHwM93w7fXdCCt1NsJX5aemk_SJXuvxq341jdbaHlqX65FwJ8h_tji_alyYXK498ANEw56wOdiYZiXCNa9UlY3ihIf8H08JV8QWDDgov2b_rz8wjXXotITNxErVK5iLQqJZeprb7YJ7gzx-fPCnnGuJz7HU_3OhpwMc1g_seKc8LhrRdKx8XgVExDJ3LEYjZwpFgmb5BaV"/>
+<span class="font-label-sm hidden lg:block">Admin HLVN</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 p-margin space-y-lg">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface">Lịch sử quét</h2>
+<p class="font-body-md text-on-surface-variant mt-xs">Quản lý và theo dõi các lần quét hệ thống</p>
+</div>
+<button class="flex items-center gap-sm bg-primary text-white font-bold px-lg py-md rounded-lg shadow-md hover:bg-primary-dim active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span>+ Lượt quét mới</span>
+</button>
+</div>
+<!-- Dashboard Stats / Filters Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Filters Card -->
+<div class="md:col-span-12 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-md flex flex-wrap items-center gap-md shadow-sm">
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">filter_list</span>
+<select class="w-full bg-transparent border border-outline-variant rounded-lg pl-xl pr-md py-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none appearance-none">
+<option>Tất cả trạng thái</option>
+<option>Thành công</option>
+<option>Đang chờ</option>
+<option>Thất bại</option>
+</select>
+</div>
+<div class="flex-1 min-w-[240px] relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">calendar_today</span>
+<input class="w-full bg-transparent border border-outline-variant rounded-lg pl-xl pr-md py-sm text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Phạm vi ngày" type="text"/>
+</div>
+<button class="flex items-center gap-xs px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">restart_alt</span>
+<span>Đặt lại</span>
+</button>
+</div>
+<!-- Main Data Table Container -->
+<div class="md:col-span-12 bg-surface-container-lowest rounded-lg border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/30">
+<tr>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">ID</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Sản phẩm</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Trạng thái</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Trường dữ liệu</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Độ chính xác</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Người thực hiện</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Ngày quét</th>
+<th class="px-lg py-md font-label-sm text-on-surface-variant uppercase tracking-wider">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1: Success -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-label-sm text-primary font-bold">#SCN-8821</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Product icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr7GSH5zN9KWRtSrBAfHVjnfldX5fBQvfwbPrifnSX9cfQOuvAS4iP_4Pi-UAzbq5XMMoP_xsMnLDqj0PlSKI8eUYoOKG6PWE2VFMNe1Sp55s1Oa1o1sFmJn8Mo9_oqMWSftVi67bG0PdoeYHnxdP96e1zG4nBggZetfeZGYMNYvBBchMs0DBNnQk8OgcM3lw0-xvhZP-Rnurm5Cy4fa5LgKKFB2WVD6VURxtOU6sSvtofS-dK5Sc2aNONx9mwAuaWxXi7vK-FgjFv"/>
+</div>
+<span class="font-bold">iPhone 15 Pro Max</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                            Thành công
+                                        </span>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Serial, SKU, IME...</td>
+<td class="px-lg py-md min-w-[120px]">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98%"></div>
+</div>
+<span class="font-label-sm text-primary">98%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<img class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1BuWEpMh0o9uOoCHSJqvb41dhn7y421vEtUt7jWcvj8x4HQW1X9tk_BAW_pgQuStzJ3v6tCrEwW6PAThISCpjBXHi4PIMF4wQNX53FfrCQ2Z0voFhfnvKApwIJugRAY_PabiloBREbsIHsC9CUZJ3wOlQIrXL6-r2nSQBmh3T5NfoUM9GGrMFTfDVMWlYGG0ID-iM-R356lYDsVG6dGk3ewzXG4MEF9P2KxOXEVAOjA0YLJyY6kMEIHqf_Ho2meH-z-0RKFvtpUXD"/>
+<span class="font-label-sm">John D.</span>
+</div>
+</td>
+<td class="px-lg py-md font-label-sm text-on-surface-variant">24/10/2023 14:30</td>
+<td class="px-lg py-md">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Pending -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-label-sm text-primary font-bold">#SCN-8822</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Product icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAISNtuiaTG2Fj869UdQImuG3pvmy1aEHt_hjJYj48NfhX60SS1PGDbU1JC6budrdJxzWIhZUz6-nq7SW7IUgo1BaAvvoHmqT9CQ83sdZTSHPLaEZNrTEy82MqCAdaveJujXnVeYeSV-VU7FH9NvUCNwjYqeinwUq1V_D03cKeDyv2PTayR7e-UqZfOtQ-PwB6zLsp_sIv-JouOYfAa2tMtwnqIIxVADiQuAEOaVv7FfBIhi4Ugrr-q8kfasN1qzWyJ55ZZLckMF-cs"/>
+</div>
+<span class="font-bold">MacBook Air M2</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-tertiary-container text-on-tertiary-container font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            Đang chờ
+                                        </span>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Batch No, Date...</td>
+<td class="px-lg py-md min-w-[120px]">
+<div class="flex items-center gap-sm italic text-outline font-label-sm">
+                                            Đang xử lý...
+                                        </div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<img class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZcgBCAQ8t019yRtO0iTjrDFbi3PzHDPsRywmrXO7Yk8xyp-vfCSbZW_U4Iu4WVXGmf56NZyId7E4H9xFMGQClcGTATiurCcBHeZl-TZsyp-bD81EDzWKouwH6kIlacEuK2rPjpKkEIwFOHPH9-x4cbeMtmaOpcvOcC9NvESmPju08PlRccGUfC4huQyreuQ7GDkRKj_Z7cH9a9rLTQ4kEzvvwjH2niQEHnwQ1I2KcC5P24f2xc8WIP6_L_vA8kt6xLvP4sEYVOc7z"/>
+<span class="font-label-sm">Sarah L.</span>
+</div>
+</td>
+<td class="px-lg py-md font-label-sm text-on-surface-variant">24/10/2023 14:15</td>
+<td class="px-lg py-md">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Failure -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-label-sm text-primary font-bold">#SCN-8820</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Product icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8DKtcC9H1Wg0Rvf7Cy1hVwyV8f9f7-ZEJvgryeeQx3ztcUi-NrrgBrdLPTh5s1iV3SksywM0r2XOmI85zPYI150M4La9XJNKVUljBtJ3w_ZSXA0fOcLHg7z32FLE5yQ-0uBlVpzKeAhqp28vvb_OTAHdXpP1Ssgn-YIsnMqu397eXZv4X1LjoHVSA2NhehxIO7jBijGXKcdBjF6k3vL2HkzjM7TFvjaAOFWdHO4Oatdn1JWrzSaw27ikskoB7Ve55R0v9pohHq8q5"/>
+</div>
+<span class="font-bold">AirPods Max</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-error-container text-on-error-container font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                            Thất bại
+                                        </span>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Product Code</td>
+<td class="px-lg py-md min-w-[120px]">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 42%"></div>
+</div>
+<span class="font-label-sm text-error">42%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<img class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdV6WCFycUMtRuOarwC44KCIPnnrNdgRV_3Xp7YX5zjr1XFtESyFwuj2biPuz7Dml54W4DKVTkTvs058WPrQmMnXg6JR9UF82OmOJabOa3_CSGxuzKle6izX0_Dfi_aK6PrNVTRU83imw1LTxHepfhzwrsCOSTla1TD5Wi9DNGT8_HTvumgBt-q2RxPLQDc_8OS6KK0wQCnU227ooo2fiPUoWdYeHyo5ws5VycgX5ZXreHbsD3po25qhn2aU9NK1U0omRxjQ85YOJG"/>
+<span class="font-label-sm">Mike R.</span>
+</div>
+</td>
+<td class="px-lg py-md font-label-sm text-on-surface-variant">24/10/2023 13:45</td>
+<td class="px-lg py-md">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Success -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-label-sm text-primary font-bold">#SCN-8819</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Product icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD62rTFuiHG6SGV6HQ0evLbPVXizIGXhmuh5ymz-1TGb8mM9J9qEMOPyE1b9Enfj2ViLxdJBC1nHwrXh9noEndacnb4kusfyuJPsaSYEy-vSbrMtkgDCYeYvyGV44qXN1XXhHq2h0TY0gxC-VzUd0B6PsLncOzSunW-l4hBDSQ_naGzlm46Qkm5iA0ly9Sb_KzcQtDZCxkNy_jl0iSL0gOsXGGv9vemIVCgKnIWGM09P-S4xUOUegWi8dKUP22HGsDJT9xTOB_qCS3"/>
+</div>
+<span class="font-bold">iPad Pro 12.9</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                            Thành công
+                                        </span>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Serial, SKU</td>
+<td class="px-lg py-md min-w-[120px]">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 100%"></div>
+</div>
+<span class="font-label-sm text-primary">100%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<img class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeV2SknG1OVB_JvaIy3zZIlA2DprL2xs3gv0rryl5TbYVgX6zase8lNwIkMBD6fPQtyLT-98LnqVduR9m45_0RNMkKFrefjAs_fiqnNoTEPjD2rpUd_7jZiEODbLIp2oOkjCLyAng1-K6ua0DwnWUrjeJMquzbHtbOvmmnV7C5QswT3rbT0AJDe5slIiGlIMvqKT4efGyN4aD8DcdKV-2FnB2fST0ZZCERiQfDseXwD5yiKhbQraaS7DTzppWecD_VctX-vnrqQiMj"/>
+<span class="font-label-sm">Auto-Bot</span>
+</div>
+</td>
+<td class="px-lg py-md font-label-sm text-on-surface-variant">24/10/2023 12:20</td>
+<td class="px-lg py-md">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: Success -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-md font-label-sm text-primary font-bold">#SCN-8818</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Product icon" class="w-6 h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi0tf98mrJN3Zm7p5b-gy7XjGmrI6oRFfr_b_KoQ_7w-qHs8TzfBCcvmJeORmrmmq42FCqzsUaY-MjmLlc5IZ6evq9_-vW0bhczVTyEYGpbKdQ-7mSeJJCnQWPjOqEVLOYXpbtB4i40lpzcJZiWu_zqb0yWJwGwSKWlwzGXqwbWvCjmih3d9JNRQQUM8_S_83FDgY4Wt3bGv_0bgPVX72cODoS5_HngdHBHqZwCzn1E5j2PlCeuSteTRdndpAc1jLsoW57Tk8yPP0g"/>
+</div>
+<span class="font-bold">Galaxy S23 Ultra</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center gap-xs px-md py-xs rounded-full bg-secondary-container text-on-secondary-container font-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                            Thành công
+                                        </span>
+</td>
+<td class="px-lg py-md font-body-md text-on-surface-variant">Warranty Tag</td>
+<td class="px-lg py-md min-w-[120px]">
+<div class="flex items-center gap-sm">
+<div class="flex-1 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 94%"></div>
+</div>
+<span class="font-label-sm text-primary">94%</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<img class="w-6 h-6 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSBEq4mT1l-sNzI92Hm7berMkJJ8AG3buuEWMz4aqhZtWOodbwKQjtWbtkrdCzubPiAtzP49cahEZpKjD9baPcJQsdrpLuWT0ag4jopuhgZf1cYsVD4u6CJEcs_ddCmgiDv35ba5zQmz_vHXKexy_9wQ6PNLzSN6IL7RrEOLYNlukBxfhiuyQc_QL8RHW7ygyrLDsFJz4fU2jW4lMb7TIA8UBYrvvfpjguXnTNtqC3xEdhTGvGkKlUVJBV-3jjbvTpx-YURPdYyBjB"/>
+<span class="font-label-sm">Emma W.</span>
+</div>
+</td>
+<td class="px-lg py-md font-label-sm text-on-surface-variant">24/10/2023 11:05</td>
+<td class="px-lg py-md">
+<button class="p-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between px-lg py-md border-t border-outline-variant/30 bg-surface-container-low/50">
+<div class="font-label-sm text-on-surface-variant">
+                            Hiển thị <span class="font-bold text-on-surface">1 - 5</span> trên <span class="font-bold text-on-surface">120</span> kết quả
+                        </div>
+<div class="flex items-center gap-xs">
+<button class="p-sm rounded border border-outline-variant hover:bg-surface-container transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-white font-bold font-label-sm">1</button>
+<button class="w-8 h-8 rounded border border-outline-variant hover:bg-surface-container font-label-sm text-on-surface-variant transition-all">2</button>
+<button class="w-8 h-8 rounded border border-outline-variant hover:bg-surface-container font-label-sm text-on-surface-variant transition-all">3</button>
+<span class="px-xs text-outline">...</span>
+<button class="w-8 h-8 rounded border border-outline-variant hover:bg-surface-container font-label-sm text-on-surface-variant transition-all">24</button>
+<button class="p-sm rounded border border-outline-variant hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bento-style Summary Cards (High-End UI Pattern) -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-lg shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-bold text-on-surface-variant">Tổng lượt quét hôm nay</h3>
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div class="text-[32px] font-bold text-primary mb-xs">1,248</div>
+<div class="flex items-center gap-xs text-secondary font-label-sm">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span>+12% so với hôm qua</span>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-lg shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-bold text-on-surface-variant">Tỷ lệ thành công</h3>
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div class="text-[32px] font-bold text-secondary mb-xs">96.4%</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 96.4%"></div>
+</div>
+</div>
+<div class="md:col-span-4 bg-surface-container-lowest rounded-lg border border-outline-variant/30 p-lg shadow-sm relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 pointer-events-none transition-opacity group-hover:opacity-20" style="background-image: radial-gradient(circle at top right, #006947 0%, transparent 70%);"></div>
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-bold text-on-surface-variant">Dung lượng bộ nhớ</h3>
+<span class="material-symbols-outlined text-tertiary">storage</span>
+</div>
+<div class="text-[32px] font-bold text-on-surface mb-xs">4.2 <span class="text-label-sm font-normal text-on-surface-variant">/ 10 GB</span></div>
+<div class="flex items-center gap-xs text-on-surface-variant font-label-sm">
+<span>Đã sử dụng 42% tài nguyên</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Info -->
+<footer class="p-margin text-center">
+<p class="font-label-sm text-outline">© 2023 HLVN Analytics Dashboard. All rights reserved. Version 5.0.2</p>
+</footer>
+</div>
+</body></html>

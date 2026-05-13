@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Dashboard - Lịch sử quét</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-dim": "#005c3d",
+                      "inverse-primary": "#69f6b8",
+                      "on-surface": "#2c2f31",
+                      "tertiary": "#0057bd",
+                      "primary-fixed": "#69f6b8",
+                      "inverse-surface": "#0b0f10",
+                      "secondary-dim": "#005a50",
+                      "on-secondary-container": "#005b51",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "primary-fixed-dim": "#58e7ab",
+                      "surface-variant": "#d9dde0",
+                      "on-surface-variant": "#595c5e",
+                      "background": "#f5f7f9",
+                      "secondary": "#00675d",
+                      "on-tertiary-container": "#002e6a",
+                      "tertiary-container": "#8ab0ff",
+                      "on-primary-container": "#005a3c",
+                      "on-primary-fixed": "#00452d",
+                      "outline-variant": "#abadaf",
+                      "surface-container-low": "#eef1f3",
+                      "on-error": "#ffefee",
+                      "inverse-on-surface": "#9a9d9f",
+                      "on-tertiary-fixed": "#00163b",
+                      "error-container": "#fb5151",
+                      "surface-tint": "#006947",
+                      "on-primary": "#c8ffe0",
+                      "error": "#b31b25",
+                      "primary-container": "#69f6b8",
+                      "outline": "#747779",
+                      "on-primary-fixed-variant": "#006544",
+                      "on-secondary": "#c0fff3",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#d9dde0",
+                      "surface-dim": "#d0d5d8",
+                      "on-background": "#2c2f31",
+                      "primary": "#006947",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "on-error-container": "#570008",
+                      "tertiary-fixed": "#8ab0ff",
+                      "on-secondary-fixed": "#00463e",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "surface": "#f5f7f9",
+                      "secondary-container": "#6df5e1",
+                      "secondary-fixed": "#6df5e1",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "error-dim": "#9f0519",
+                      "surface-container-high": "#dfe3e6",
+                      "surface-bright": "#f5f7f9",
+                      "on-tertiary": "#f0f2ff",
+                      "surface-container": "#e5e9eb",
+                      "tertiary-dim": "#004ca6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin": "24px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "sm": "8px",
+                      "xs": "4px",
+                      "base": "8px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "label-sm": ["Public Sans"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-sidebar {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            background-color: #f5f7f9;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased">
+<!-- SideNavBar (Shared Component JSON Mapping) -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 glass-sidebar bg-surface-container-lowest/70 border-r border-outline-variant/20 shadow-lg flex flex-col py-lg space-y-sm">
+<div class="px-lg pb-xl">
+<h1 class="font-headline-lg text-headline-lg font-black text-primary">Enterprise v5</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Precision Growth</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<!-- Active Navigation Logic: "Scans" would map to Inventory or Operations. Choosing "Operations" as active for this flow -->
+<a class="flex items-center px-lg py-3 bg-primary-container text-on-primary-container font-semibold rounded-lg mx-2 group" href="#">
+<span class="material-symbols-outlined mr-3">precision_manufacturing</span>
+<span class="font-body-md">Operations</span>
+</a>
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">groups</span>
+<span class="font-body-md">Teams</span>
+</a>
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">monitoring</span>
+<span class="font-body-md">Insights</span>
+</a>
+</nav>
+<div class="mt-auto pt-lg border-t border-outline-variant/10 space-y-1">
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">support_agent</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center px-lg py-3 text-on-surface-variant hover:bg-primary/10 transition-all duration-300 mx-2 rounded-lg group hover:translate-x-1" href="#">
+<span class="material-symbols-outlined mr-3">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component JSON Mapping) -->
+<header class="fixed top-0 right-0 left-64 z-40 h-16 bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm px-margin flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 w-80 outline-none" placeholder="Tìm kiếm quét..." type="text"/>
+</div>
+<nav class="hidden md:flex gap-lg">
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Reports</a>
+<a class="font-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHTNeNs_1P8JZgSKmE37ith2OH43c-OYt6XyweZEA_N9N_PkHdIZ8xDmUKWCfOHRZojxDxgxf_lnv32XguHyGT-cjKg0MiKSvK2IlxCGYKyUartI_B8lRSCD6Eeju8-2Vv3dJtN8LHxzfiJATzIMOUjptmOfQKfz09PGoBYPTMnRVid7s5RjCK3xUd749JfqKmYW_UjOHYODZU0Uhsz319t9vMfEp72H0PCrBNIXrIzJUfn7Lb-kW374l1R0GpSNCMG3463SrxFJtI"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="mt-16 p-margin flex-1 flex flex-col gap-lg">
+<!-- Page Header -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-xl text-headline-xl text-primary font-bold">Lịch sử quét</h2>
+<p class="text-on-surface-variant font-body-md mt-1">Quản lý và theo dõi các bản quét dữ liệu hệ thống.</p>
+</div>
+<button class="bg-primary hover:bg-primary-dim text-on-primary font-semibold px-lg py-3 rounded-lg flex items-center gap-2 shadow-sm transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">add</span>
+                    + New Scan
+                </button>
+</div>
+<!-- Controls & Filters -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border border-outline-variant/20 flex flex-wrap gap-md items-center">
+<div class="flex-1 min-w-[300px] relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-10 pr-4 py-3 bg-background border border-outline-variant/30 rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Tìm tên sản phẩm hoặc mã quét..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-on-surface-variant font-label-sm">Trạng thái:</span>
+<select class="bg-background border border-outline-variant/30 rounded-lg px-md py-3 text-body-md focus:ring-2 focus:ring-primary/20 outline-none min-w-[160px] appearance-none">
+<option>Tất cả trạng thái</option>
+<option>Thành công</option>
+<option>Đang chờ</option>
+<option>Thất bại</option>
+</select>
+</div>
+<button class="flex items-center gap-sm px-lg py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-colors border border-outline-variant/20">
+<span class="material-symbols-outlined">filter_list</span>
+<span>Lọc nâng cao</span>
+</button>
+</div>
+<!-- Table Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/20 overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant/30">
+<tr>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">MÃ QUÉT</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">SẢN PHẨM</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">TRẠNG THÁI</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">TỔNG TRƯỜNG</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">ĐỘ CHÍNH XÁC</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">NGƯỜI QUÉT</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">NGÀY QUÉT</th>
+<th class="px-lg py-4 font-label-sm text-on-surface-variant">HÀNH ĐỘNG</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-lg py-4 font-semibold text-primary">#SCN-1024</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">inventory</span>
+<span>Máy phát điện K20</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Thành công
+                                </span>
+</td>
+<td class="px-lg py-4">42</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-semibold">98%</span>
+<div class="flex-1 h-1.5 w-24 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 98%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_BcHpcacKhVTUChL1snwrUA-LMo-1oMHZEVIJkbghti_-b_75sjHp3wH5osVGke5zToUW30kNYzZzMKUo2OoDuqBrMK2G1mDAqFudHEDxBYk7VeSi-sb3nKzgLXK-_RpbEXh3eOrOsct_qz_bJ8nEdN5geyJOLkEcn4TDUtFgxqoFAMwfJnSuhl03xg8Ao75BB03Vme73N96vBakJLvH2gbjb_cDsOffHO1W1dIir9RHJVtT0sLnOWzulUs35OxxcmUUJeC_zZ3F9"/>
+</div>
+<span class="text-body-md">An Nguyễn</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">12/10/2024</td>
+<td class="px-lg py-4">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-lg py-4 font-semibold text-primary">#SCN-1023</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">package_2</span>
+<span>Cảm biến áp suất P5</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full font-label-sm flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                    Đang chờ
+                                </span>
+</td>
+<td class="px-lg py-4">15</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-semibold">82%</span>
+<div class="flex-1 h-1.5 w-24 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary" style="width: 82%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSHPK13qbIf0iX7m7i0BJc-AC_xT1VDb6eNrkK3iM15q7Qox_cZP6kiij2D0BOuM9NyBQQN3-bXEy3H0hwoGCRPo1kgV3__W3LqajsWXqaCOv174-20teMPR2zjvo_UcToSry69MWmXROWq4iZSnW2UTgYJsBdGaOEE6uTA6iMpbiCTPhOGjiQqnZU7_XfAM6aTWIq3O2JYt6KrDg2nsyTWanCc7ECHkfsNEMgH9jzg0B-CKrN65kWWZg8FLcbmbcnFhCnAQFbNYIp"/>
+</div>
+<span class="text-body-md">Minh Trần</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">11/10/2024</td>
+<td class="px-lg py-4">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-lg py-4 font-semibold text-primary">#SCN-1022</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error">precision_manufacturing</span>
+<span>Trục khuỷu S-Type</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="bg-error-container/20 text-error px-3 py-1 rounded-full font-label-sm flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                                    Thất bại
+                                </span>
+</td>
+<td class="px-lg py-4">0</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-semibold">0%</span>
+<div class="flex-1 h-1.5 w-24 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 0%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdklIJSCi5P8UvrGEFxPaIj0IRJQGWYs8bYbbr3xBw0cwwP3u8zwIjNFFsMqAg47aSLTPm0astPGwtjGY33ir5xQWidtfVfMbUMTNJCr7Qj9OsZMRR0hRppPMN94ZSvbJjCmV-iByaI3eb-jOMFdAZkUxDDX_apwQrbiKocffHUROmklLO9LKPsnrpdAIzeFxkvTF0VC-PIKW62wBVZsGupY8OjbxJgjDNSqKM2OBtCWIlnnSF-r62AhVHqrclzpo5XLLcMkgwE0Ex"/>
+</div>
+<span class="text-body-md">Hoàng Lê</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">11/10/2024</td>
+<td class="px-lg py-4">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container/30 transition-colors">
+<td class="px-lg py-4 font-semibold text-primary">#SCN-1021</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">inventory</span>
+<span>Bơm thủy lực V2</span>
+</div>
+</td>
+<td class="px-lg py-4">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm flex items-center w-fit gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                                    Thành công
+                                </span>
+</td>
+<td class="px-lg py-4">28</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-semibold">95%</span>
+<div class="flex-1 h-1.5 w-24 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 95%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img alt="Avatar User" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByhTe8vHyXZyR8yMV4K9uZrE_qSnDCr6tJqDiqCfNvHRnJ5rhBmGLBs59XiOBveAtaDiO0gEqMyxSNAnPao1EwYAn0vAr4L4g8X1UHRbc5ujQkrjkFvCk7UgKGeXETPz1YFtkYiPWJ0y_YYL1k6yBXADcyNFZzWrJ-1ibr7a1Mb247DIVcKjAugWFcZ4nkzA5GQtyAuzQdsvAtEbub6WQ7pxxV61kztCsYBG4nAyxptUv0kvHYs6VFxmCj6VQVntPTggyPGGfVLQVh"/>
+</div>
+<span class="text-body-md">An Nguyễn</span>
+</div>
+</td>
+<td class="px-lg py-4 text-on-surface-variant">10/10/2024</td>
+<td class="px-lg py-4">
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bento Summary Grid for High-End feel -->
+<div class="grid grid-cols-12 gap-gutter mt-2">
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low/50 rounded-xl p-lg border border-outline-variant/10">
+<h3 class="font-headline-lg text-lg text-on-surface font-bold mb-md">Hiệu suất quét hệ thống</h3>
+<div class="h-48 flex items-end gap-md px-md">
+<div class="flex-1 bg-primary/20 h-[60%] rounded-t-lg relative group transition-all hover:bg-primary/40">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label-sm opacity-0 group-hover:opacity-100 transition-opacity">85%</span>
+</div>
+<div class="flex-1 bg-primary/20 h-[75%] rounded-t-lg relative group transition-all hover:bg-primary/40">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label-sm opacity-0 group-hover:opacity-100 transition-opacity">92%</span>
+</div>
+<div class="flex-1 bg-primary h-[90%] rounded-t-lg relative group transition-all">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label-sm">98%</span>
+</div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-t-lg relative group transition-all hover:bg-primary/40">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label-sm opacity-0 group-hover:opacity-100 transition-opacity">70%</span>
+</div>
+<div class="flex-1 bg-primary/20 h-[65%] rounded-t-lg relative group transition-all hover:bg-primary/40">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 font-label-sm opacity-0 group-hover:opacity-100 transition-opacity">88%</span>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-md font-label-sm text-on-surface-variant">
+<span>Tháng 6</span>
+<span>Tháng 7</span>
+<span>Tháng 8</span>
+<span>Tháng 9</span>
+<span>Tháng 10</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<div class="flex-1 bg-secondary/10 rounded-xl p-lg border border-secondary/20 flex items-center gap-md">
+<div class="p-4 bg-secondary/20 rounded-full text-secondary">
+<span class="material-symbols-outlined text-3xl">check_circle</span>
+</div>
+<div>
+<span class="block font-label-sm text-secondary font-bold uppercase tracking-wider">Tỷ lệ thành công</span>
+<span class="text-3xl font-bold text-on-surface">94.2%</span>
+</div>
+</div>
+<div class="flex-1 bg-surface-container-highest/30 rounded-xl p-lg border border-outline-variant/20 flex items-center gap-md">
+<div class="p-4 bg-primary/10 rounded-full text-primary">
+<span class="material-symbols-outlined text-3xl">speed</span>
+</div>
+<div>
+<span class="block font-label-sm text-on-surface-variant font-bold uppercase tracking-wider">Thời gian trung bình</span>
+<span class="text-3xl font-bold text-on-surface">1.2s</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component JSON Mapping) -->
+<footer class="w-full py-md mt-auto bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-row justify-between items-center px-margin max-w-7xl mx-auto w-full">
+<div class="flex flex-col items-start">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 HLVN Systems Inc. All rights reserved.</p>
+<div class="flex items-center gap-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-[10px] font-semibold text-secondary uppercase tracking-tight">System Operational</span>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<!-- Pagination Controls as requested in Footer Task -->
+<div class="flex items-center gap-2">
+<button class="p-1 hover:bg-surface-variant rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<span class="font-label-sm text-on-surface-variant">Trang 1/12</span>
+<button class="p-1 hover:bg-surface-variant rounded transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="flex gap-md">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Legal</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Compliance</a>
+</div>
+</div>
+</div>
+</footer>
+</main>
+<!-- FAB Suppression: Not rendering FAB on this details/transactional dashboard screen per policy -->
+</body></html>

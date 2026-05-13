@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics - Lịch sử quét</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Public+Sans:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "tertiary": "#0057bd",
+                "surface-container-highest": "#d9dde0",
+                "error-dim": "#9f0519",
+                "inverse-on-surface": "#9a9d9f",
+                "surface-container-high": "#dfe3e6",
+                "secondary-fixed": "#6df5e1",
+                "primary": "#006947",
+                "surface-tint": "#006947",
+                "surface-container-low": "#eef1f3",
+                "on-surface": "#2c2f31",
+                "error-container": "#fb5151",
+                "on-primary-container": "#005a3c",
+                "primary-dim": "#005c3d",
+                "on-error-container": "#570008",
+                "error": "#b31b25",
+                "tertiary-fixed-dim": "#73a2ff",
+                "primary-fixed": "#69f6b8",
+                "on-secondary-fixed": "#00463e",
+                "secondary-dim": "#005a50",
+                "inverse-primary": "#69f6b8",
+                "on-tertiary-container": "#002e6a",
+                "tertiary-dim": "#004ca6",
+                "surface-container-lowest": "#ffffff",
+                "on-error": "#ffefee",
+                "on-tertiary-fixed": "#00163b",
+                "on-tertiary": "#f0f2ff",
+                "background": "#f5f7f9",
+                "on-tertiary-fixed-variant": "#00377b",
+                "on-primary-fixed-variant": "#006544",
+                "surface-container": "#e5e9eb",
+                "outline-variant": "#abadaf",
+                "on-surface-variant": "#595c5e",
+                "tertiary-container": "#8ab0ff",
+                "on-primary-fixed": "#00452d",
+                "secondary": "#00675d",
+                "surface-variant": "#d9dde0",
+                "on-primary": "#c8ffe0",
+                "surface-dim": "#d0d5d8",
+                "surface-bright": "#f5f7f9",
+                "surface": "#f5f7f9",
+                "on-secondary-fixed-variant": "#00655b",
+                "primary-fixed-dim": "#58e7ab",
+                "secondary-container": "#6df5e1",
+                "on-secondary-container": "#005b51",
+                "outline": "#747779",
+                "primary-container": "#69f6b8",
+                "tertiary-fixed": "#8ab0ff",
+                "on-background": "#2c2f31",
+                "inverse-surface": "#0b0f10",
+                "secondary-fixed-dim": "#5de7d3",
+                "on-secondary": "#c0fff3"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+              },
+              "spacing": {
+                "xl": "32px",
+                "sm": "8px",
+                "lg": "24px",
+                "base": "8px",
+                "xs": "4px",
+                "md": "16px",
+                "margin": "24px",
+                "gutter": "16px"
+              },
+              "fontFamily": {
+                "headline-xl": ["Manrope"],
+                "label-sm": ["Public Sans"],
+                "body-md": ["Inter"],
+                "headline-lg": ["Manrope"]
+              },
+              "fontSize": {
+                "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f5f7f9;
+            color: #2c2f31;
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- SideNavBar Shell -->
+<aside class="flex flex-col h-screen fixed left-0 top-0 docked left-0 h-full w-64 bg-surface-container-low/80 backdrop-blur-md border-r border-outline-variant shadow-sm z-50">
+<div class="px-lg py-xl flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">HLVN Analytics</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Enterprise Dashboard</span>
+</div>
+</div>
+<nav class="flex-1 px-md space-y-xs mt-sm">
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-primary font-bold border-r-4 border-primary bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">barcode_scanner</span>
+<span class="font-body-md">Scans</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">inventory_2</span>
+<span class="font-body-md">Products</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">group</span>
+<span class="font-body-md">Users</span>
+</a>
+<a class="flex items-center gap-md p-md rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 group mt-auto" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="p-lg border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-sm">
+<img alt="User Avatar" class="w-8 h-8 rounded-full bg-surface-container-highest" data-alt="A professional headshot of a corporate executive in their late 30s, featuring soft studio lighting and a clean, blurred office background. The person has a friendly, confident expression, wearing a smart casual blazer. The color palette is neutral and refined, maintaining the professional high-key aesthetic of an enterprise dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8rFsp5fTDpe9Ga4Uiyf4Lg7VaQwymxM2Qb60ux6gltGcYtj240JFiy3b3VSWxsxcb_BnxDSjaHuaFj0Rt-fpGmEdejaA96ci0tHisBg9mnOXgqZmA-N5NB8AjRyjARJl94-SL6zVcfVwURfir4FNPPjCHm76PsWd5rvM1uIlUzUq3IMxLZMArENOux2t1fnLRZmMpp3NFABEIbC-dH5967nyUMIIZFH15iOBiGEF3z4LxAV4i-lWZwX5WlvKOCXTacI3_4ryHV8eK"/>
+<div class="flex flex-col">
+<span class="text-label-sm font-bold text-on-surface">Admin User</span>
+<span class="text-[10px] text-on-surface-variant">admin@hlvn.ai</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center h-16 px-margin w-full sticky top-0 z-40 bg-surface/95 backdrop-blur-sm border-b border-outline-variant">
+<div class="flex items-center gap-lg flex-1">
+<div class="relative w-full max-w-md group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container rounded-full py-2 pl-12 pr-md border-none focus:ring-2 focus:ring-primary/20 text-body-md placeholder:text-on-surface-variant/60" placeholder="Tìm kiếm theo ID, sản phẩm..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full border-2 border-surface"></span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant mx-xs"></div>
+<div class="flex items-center gap-sm ml-sm">
+<div class="text-right hidden lg:block">
+<p class="text-label-sm font-bold leading-tight">HLVN Analytics</p>
+<p class="text-[10px] text-on-surface-variant">v5.2.0-stable</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-margin max-w-[1440px] mx-auto w-full space-y-lg">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface">Lịch sử quét</h1>
+<p class="text-on-surface-variant mt-xs">Quản lý và theo dõi hiệu suất quét dữ liệu trong toàn hệ thống.</p>
+</div>
+<button class="flex items-center gap-sm bg-primary text-white px-lg py-3 rounded-lg font-bold shadow-lg shadow-primary/20 hover:bg-primary-dim transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span>New Scan</span>
+</button>
+</section>
+<!-- Filters Bar -->
+<section class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 shadow-sm flex flex-wrap gap-md items-center">
+<div class="flex flex-col gap-1 min-w-[200px]">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Bộ lọc trạng thái</label>
+<select class="bg-surface-container-low border-outline-variant/30 rounded-lg text-body-md py-2 px-md focus:border-primary focus:ring-primary">
+<option>Tất cả trạng thái</option>
+<option>Success</option>
+<option>Pending</option>
+<option>Failed</option>
+</select>
+</div>
+<div class="flex flex-col gap-1 min-w-[200px]">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Khoảng thời gian</label>
+<select class="bg-surface-container-low border-outline-variant/30 rounded-lg text-body-md py-2 px-md focus:border-primary focus:ring-primary">
+<option>7 ngày qua</option>
+<option>30 ngày qua</option>
+<option>Tháng này</option>
+<option>Tùy chọn...</option>
+</select>
+</div>
+<div class="ml-auto flex items-center gap-sm">
+<button class="flex items-center gap-xs px-md py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span class="font-label-sm">Nâng cao</span>
+</button>
+<button class="flex items-center gap-xs px-md py-2 rounded-lg border border-outline-variant text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span class="font-label-sm">Xuất báo cáo</span>
+</button>
+</div>
+</section>
+<!-- Data Table Section -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/50 shadow-sm overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant/50">
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase">ID &amp; DATE</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase">Product</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase text-center">Status</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase text-center">Fields</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase">Accuracy</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase">Scanned By</th>
+<th class="px-lg py-md font-bold text-label-sm text-on-surface-variant uppercase text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Row 1: Success -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-lg py-lg">
+<div class="flex flex-col">
+<span class="font-bold text-primary">#SCAN-49210</span>
+<span class="text-[12px] text-on-surface-variant">24 Oct, 2023 • 14:20</span>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold">Dược phẩm A102</span>
+<span class="text-[12px] text-on-surface-variant">SKU: PHARMA-772</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="inline-flex items-center gap-xs px-sm py-1 bg-primary/10 text-primary rounded-full font-bold text-[11px] border border-primary/20">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                    Success
+                                </span>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="font-headline-lg text-body-md font-bold">42</span>
+</td>
+<td class="px-lg py-lg">
+<div class="w-32">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[11px] font-bold text-primary">98.5%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 98.5%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<img class="w-7 h-7 rounded-full" data-alt="A high-quality avatar portrait of a professional data analyst. The character is portrayed with detailed facial features, short-cropped hair, and a modern style. The lighting is soft and even, typical of a corporate directory photo, with a neutral studio background that fits a clean light-mode dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE9yyIZAvz6ONrIIH0F_enQ4Wl_RKALwrp5RYblN7NJ6KluZVED3_AP70rOp6ne-nkuwUhJZ3jhivg_7bPF8GXymYwax3VjD_F0orBYWlHiqJJ-vHaE_ugHUDs6fT1y9pox-LUEQDtPuEuTvl9_xtVbqcB2HxnK22kWbXZuBuK6j12hg2sUvaRPVHELvjvwNVcwhqizZwufehFs4CLA-BYBNUA0mSTCcXclv1vDZwlGK8tp0WS1Nw8CJSnmodiDOSE4Fxz-cHAPbNp"/>
+<span class="text-label-sm font-medium">John Doe</span>
+</div>
+</td>
+<td class="px-lg py-lg text-right">
+<button class="p-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Pending -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-lg py-lg">
+<div class="flex flex-col">
+<span class="font-bold text-primary">#SCAN-49209</span>
+<span class="text-[12px] text-on-surface-variant">24 Oct, 2023 • 14:15</span>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">package_2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold">Thực phẩm đóng hộp K9</span>
+<span class="text-[12px] text-on-surface-variant">SKU: FOOD-112</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="inline-flex items-center gap-xs px-sm py-1 bg-amber-100 text-amber-700 rounded-full font-bold text-[11px] border border-amber-200">
+<span class="w-1.5 h-1.5 bg-amber-500 rounded-full animate-pulse"></span>
+                                    Pending
+                                </span>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="font-headline-lg text-body-md font-bold">12</span>
+</td>
+<td class="px-lg py-lg">
+<div class="w-32">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[11px] font-bold text-amber-600">45.0%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-amber-400 rounded-full" style="width: 45%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<img class="w-7 h-7 rounded-full" data-alt="A clean, professional portrait of a female office worker in her late 20s. She has a bright, intelligent expression and is dressed in professional business attire. The image is captured in high resolution with soft, natural lighting, reflecting a modern, optimistic workplace atmosphere suitable for an enterprise web application." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8vQm8JngINtEKrWz6ODX6j_TxQbLlzRKWKDdfQQDvp2NOSSks-cHT1ZVP8pN4haiizSTELDTJGSueTePtamYbYeb_084NPrVXVOqJmzEJWoU_wMR4HwHoPCr0m8mgGjAvR6f8z5L21yWtsYVGVaUJbT82iPrUwCiDUUC09No7JFmiPuSuuu6WZo4DZMkEmg2PUE8ZKX7SSnt7NZQvkgMnMOUnBOgr5YD-ZzWJUMMUI9r9qD7bcUkYKT5euIWFrPgDjfQLI3ZD85uw"/>
+<span class="text-label-sm font-medium">Anna Nguyen</span>
+</div>
+</td>
+<td class="px-lg py-lg text-right">
+<button class="p-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Failed -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-lg py-lg">
+<div class="flex flex-col">
+<span class="font-bold text-primary">#SCAN-49208</span>
+<span class="text-[12px] text-on-surface-variant">24 Oct, 2023 • 13:45</span>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">devices</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold">Linh kiện điện tử X-90</span>
+<span class="text-[12px] text-on-surface-variant">SKU: ELEC-009</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="inline-flex items-center gap-xs px-sm py-1 bg-error-container/10 text-error rounded-full font-bold text-[11px] border border-error/20">
+<span class="w-1.5 h-1.5 bg-error rounded-full"></span>
+                                    Failed
+                                </span>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="font-headline-lg text-body-md font-bold">0</span>
+</td>
+<td class="px-lg py-lg">
+<div class="w-32">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[11px] font-bold text-error">0.0%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-error rounded-full" style="width: 0%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<div class="w-7 h-7 rounded-full bg-surface-container-high flex items-center justify-center text-[10px] font-bold">TV</div>
+<span class="text-label-sm font-medium">Tran Van</span>
+</div>
+</td>
+<td class="px-lg py-lg text-right">
+<button class="p-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Success -->
+<tr class="hover:bg-primary/5 transition-colors group">
+<td class="px-lg py-lg">
+<div class="flex flex-col">
+<span class="font-bold text-primary">#SCAN-49207</span>
+<span class="text-[12px] text-on-surface-variant">24 Oct, 2023 • 12:30</span>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">medical_services</span>
+</div>
+<div class="flex flex-col">
+<span class="font-bold">Vật tư y tế V3</span>
+<span class="text-[12px] text-on-surface-variant">SKU: MED-55</span>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="inline-flex items-center gap-xs px-sm py-1 bg-primary/10 text-primary rounded-full font-bold text-[11px] border border-primary/20">
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+                                    Success
+                                </span>
+</td>
+<td class="px-lg py-lg text-center">
+<span class="font-headline-lg text-body-md font-bold">56</span>
+</td>
+<td class="px-lg py-lg">
+<div class="w-32">
+<div class="flex justify-between items-end mb-1">
+<span class="text-[11px] font-bold text-primary">92.1%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 92.1%"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-lg">
+<div class="flex items-center gap-sm">
+<img class="w-7 h-7 rounded-full" data-alt="A portrait of an Asian professional male in a clean white business shirt, with a minimalist office setting in the background. The aesthetic is bright and high-contrast, following a modern tech company style guide. The person has a neutral but focused expression suitable for a workspace management profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8JuCnDRzmnukN6VE90R2dg8rOI_VBtr8PPnxbU5K59dUUlbrv2m2p9-VvWAp5t-q6w9d5yoKAr2bdPS16YYd_2ZjTlqf59LaSDQ-qaoUtjHhCl-it9hxTwkvh143WEWcqeEm6a-UW6yJK_bkZ4nAsornPNaSz9owAP8wHZrW3eCBLPO-2cEXV3yKjiDmX6iDIB7mEqzO_n_HdmK99E_bFALjGiTnU3QiPvIYQUpRwFe6UAVUSvpOgQMoyaAqjza7SAhl7WyCyfAFV"/>
+<span class="text-label-sm font-medium">Alex Ly</span>
+</div>
+</td>
+<td class="px-lg py-lg text-right">
+<button class="p-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Pagination Footer -->
+<footer class="px-lg py-md bg-surface-container-low/30 border-t border-outline-variant/30 flex items-center justify-between">
+<span class="text-label-sm text-on-surface-variant">Hiển thị 1 - 10 trên 238 kết quả</span>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-bold text-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-bold text-label-sm transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-bold text-label-sm transition-colors">3</button>
+<span class="px-xs text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant font-bold text-label-sm transition-colors">24</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</footer>
+</section>
+<!-- Stats Overview (Asymmetric Layout Example) -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-lg">
+<div class="md:col-span-1 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-label-sm font-bold text-on-surface-variant uppercase tracking-widest">Tổng lượt quét</span>
+<span class="material-symbols-outlined text-primary">show_chart</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-lg font-bold">12,840</span>
+<span class="text-[12px] text-primary font-bold">+12%</span>
+</div>
+</div>
+<div class="md:col-span-1 bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex items-center justify-between mb-sm">
+<span class="text-label-sm font-bold text-on-surface-variant uppercase tracking-widest">Thành công</span>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<span class="text-headline-lg font-bold">98.2%</span>
+<span class="text-[12px] text-primary font-bold">Ổn định</span>
+</div>
+</div>
+<div class="md:col-span-2 bg-gradient-to-br from-primary to-secondary p-lg rounded-xl shadow-lg shadow-primary/20 relative overflow-hidden flex flex-col justify-center">
+<div class="relative z-10">
+<h3 class="text-white font-headline-lg mb-xs">Nâng cấp hệ thống</h3>
+<p class="text-white/80 text-body-md max-w-[300px]">Tính năng nhận diện AI nâng cao hiện đã sẵn sàng cho gói Enterprise.</p>
+<button class="mt-md px-md py-2 bg-white text-primary rounded-lg font-bold text-label-sm hover:bg-surface-container-low transition-all">Khám phá ngay</button>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-[120px] text-white/10 rotate-12" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+</section>
+</div>
+</main>
+</body></html>

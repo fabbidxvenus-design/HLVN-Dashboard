@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Public+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container": "#e5e9eb",
+                      "on-tertiary": "#f0f2ff",
+                      "tertiary": "#0057bd",
+                      "outline-variant": "#abadaf",
+                      "tertiary-container": "#8ab0ff",
+                      "on-surface-variant": "#595c5e",
+                      "surface-container-highest": "#d9dde0",
+                      "primary-dim": "#005c3d",
+                      "surface-bright": "#f5f7f9",
+                      "surface-container-low": "#eef1f3",
+                      "on-error-container": "#570008",
+                      "on-tertiary-fixed": "#00163b",
+                      "tertiary-fixed": "#8ab0ff",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "secondary-dim": "#005a50",
+                      "inverse-on-surface": "#9a9d9f",
+                      "secondary": "#00675d",
+                      "on-primary-fixed": "#00452d",
+                      "inverse-surface": "#0b0f10",
+                      "surface": "#f5f7f9",
+                      "primary-container": "#69f6b8",
+                      "primary": "#006947",
+                      "on-primary-container": "#005a3c",
+                      "inverse-primary": "#69f6b8",
+                      "outline": "#747779",
+                      "on-error": "#ffefee",
+                      "surface-container-high": "#dfe3e6",
+                      "secondary-fixed": "#6df5e1",
+                      "primary-fixed": "#69f6b8",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "surface-variant": "#d9dde0",
+                      "tertiary-dim": "#004ca6",
+                      "on-tertiary-container": "#002e6a",
+                      "on-surface": "#2c2f31",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "on-secondary-container": "#005b51",
+                      "secondary-container": "#6df5e1",
+                      "background": "#f5f7f9",
+                      "surface-tint": "#006947",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#00463e",
+                      "surface-dim": "#d0d5d8",
+                      "error": "#b31b25",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "error-container": "#fb5151",
+                      "primary-fixed-dim": "#58e7ab",
+                      "on-primary": "#c8ffe0",
+                      "on-secondary": "#c0fff3",
+                      "on-background": "#2c2f31",
+                      "on-primary-fixed-variant": "#006544"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "margin": "24px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "gutter": "16px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Manrope"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["Public Sans"],
+                      "headline-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg shadow-sm z-50">
+<div class="px-lg mb-xl">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">HLVN</span>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-wider mt-xs">Analytics Dashboard</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard (Active) -->
+<a class="flex items-center gap-md px-md py-sm bg-primary-container text-on-primary-container border-r-4 border-primary font-bold transition-all opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<!-- Analytics -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<!-- Scans -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-body-md">Scans</span>
+</a>
+<!-- Products -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md">Products</span>
+</a>
+<!-- Users -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md">Users</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto pt-lg border-t border-outline-variant">
+<div class="flex items-center gap-md p-sm rounded-lg bg-surface-container-low">
+<img alt="HLVN Logo" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="A professional headshot of a corporate executive in a modern, brightly lit office environment. The subject is a male in his mid-30s with a warm smile, wearing a clean charcoal blazer over a white shirt. The background features soft bokeh of an emerald green accent wall and minimalist glass office partitions, reflecting a high-end SaaS platform brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAghNZpbMpqvGPxQKVFZKRyW4ObrK0-YgJ09MFaLc2ZDnQIDbivyTROnAuCx7qAxNJlLvuWEzqRi2MPToz_8mM10d24ZituWB0O9gA27uDKQcfghBHiZ0cr4gFWuIyICF--8UVqCF0SV_DeEAp19duuE_LquxJKhgZATT5qZ6tOR06aUre3iYjECS4RqtvAHDzWg6ZjvYm_pB7HQapY7y7ibQzWFWsYekZc_dx_KkP0I4HO7g_Hbpr6QASIGnAh0rraeT2ma4iiYTVk"/>
+<div>
+<p class="text-label-sm font-bold text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant">Admin Access</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-[240px] min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[240px] z-40 bg-surface-container-lowest/80 backdrop-blur-md border-b border-outline-variant flex justify-between items-center px-margin py-md">
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface">Dashboard</h1>
+<div class="flex items-center gap-lg">
+<!-- Date Range Picker -->
+<div class="flex items-center gap-sm px-md py-sm bg-surface-container-low rounded-lg border border-outline-variant cursor-pointer hover:bg-surface-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+<span class="text-body-md font-medium">Oct 1, 2023 - Oct 31, 2023</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="expand_more">expand_more</span>
+</div>
+<!-- Action Icons -->
+<div class="flex items-center gap-md">
+<button class="p-sm rounded-full text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-sm rounded-full text-on-surface-variant hover:text-primary hover:bg-primary-container/20 transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<div class="pt-[88px] p-xl space-y-xl max-w-[1440px] mx-auto">
+<!-- Row 1: KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Total Scans -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant card-shadow group hover:border-primary/40 transition-all">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-medium">Total Scans</p>
+<span class="material-symbols-outlined text-primary" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<h2 class="text-headline-lg font-bold text-on-surface">1,284,502</h2>
+<span class="px-sm py-xs bg-primary-container/30 text-on-primary-container text-label-sm rounded-full font-bold">+12.5%</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-sm">vs. last month</p>
+</div>
+<!-- Active Users -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant card-shadow group hover:border-primary/40 transition-all">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-medium">Active Users</p>
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<h2 class="text-headline-lg font-bold text-on-surface">42,901</h2>
+<span class="px-sm py-xs bg-primary-container/30 text-on-primary-container text-label-sm rounded-full font-bold">+8.2%</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-sm">Active in last 24h</p>
+</div>
+<!-- Success Rate -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant card-shadow group hover:border-primary/40 transition-all">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-medium">Success Rate</p>
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<h2 class="text-headline-lg font-bold text-on-surface">98.4%</h2>
+<span class="px-sm py-xs bg-primary-container/30 text-on-primary-container text-label-sm rounded-full font-bold">+0.2%</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-sm">System integrity stable</p>
+</div>
+<!-- Total Products -->
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant card-shadow group hover:border-primary/40 transition-all">
+<div class="flex justify-between items-start mb-md">
+<p class="text-on-surface-variant font-medium">Total Products</p>
+<span class="material-symbols-outlined text-primary" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="flex items-baseline gap-sm">
+<h2 class="text-headline-lg font-bold text-on-surface">12,480</h2>
+<span class="px-sm py-xs bg-surface-container text-on-surface-variant text-label-sm rounded-full font-bold">FLAT</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mt-sm">Database inventory</p>
+</div>
+</div>
+<!-- Row 2: Scan Volume Trends Chart -->
+<div class="bg-surface-container-lowest p-xl rounded-xl border border-outline-variant card-shadow">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h3 class="text-headline-lg font-bold text-on-surface">Scan Volume Trends</h3>
+<p class="text-body-md text-on-surface-variant">Daily activity comparison across the network</p>
+</div>
+<div class="flex gap-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-label-sm font-medium">Current Week</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-secondary border border-dashed border-primary"></span>
+<span class="text-label-sm font-medium text-on-surface-variant">Previous Week</span>
+</div>
+</div>
+</div>
+<!-- Chart Placeholder Visual -->
+<div class="h-[320px] w-full relative">
+<div class="absolute inset-0 flex items-end justify-between px-md gap-gutter">
+<!-- Monday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[45%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Mon</span>
+</div>
+<!-- Tuesday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[65%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Tue</span>
+</div>
+<!-- Wednesday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[85%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Wed</span>
+</div>
+<!-- Thursday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[55%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Thu</span>
+</div>
+<!-- Friday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[95%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Fri</span>
+</div>
+<!-- Saturday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[40%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Sat</span>
+</div>
+<!-- Sunday -->
+<div class="flex flex-col items-center flex-1 h-full justify-end group">
+<div class="w-full bg-primary/10 rounded-t-lg relative h-[30%] group-hover:bg-primary/20 transition-all">
+<div class="absolute top-0 left-0 right-0 h-1 bg-primary"></div>
+</div>
+<span class="text-label-sm text-on-surface-variant mt-md">Sun</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Row 3: Two-Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-xl">
+<!-- Left: Top Products Table (2/3) -->
+<div class="lg:col-span-2 bg-surface-container-lowest rounded-xl border border-outline-variant card-shadow overflow-hidden">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-bold text-headline-lg text-on-surface">Top Products</h3>
+<button class="text-primary font-bold text-label-sm hover:underline">View All Products</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-label-sm text-on-surface-variant uppercase tracking-wider">
+<tr>
+<th class="px-lg py-md">Product Name</th>
+<th class="px-lg py-md">Scans</th>
+<th class="px-lg py-md">Success Rate</th>
+<th class="px-lg py-md">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-primary-container/10 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-medium text-on-surface">Eco-Bottle Elite V2</td>
+<td class="px-lg py-md">452,103</td>
+<td class="px-lg py-md">99.8%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold">ACTIVE</span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/10 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-medium text-on-surface">Ultra-Light Running Cap</td>
+<td class="px-lg py-md">215,842</td>
+<td class="px-lg py-md">98.2%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold">ACTIVE</span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/10 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-medium text-on-surface">Pro-Series Yoga Mat</td>
+<td class="px-lg py-md">189,401</td>
+<td class="px-lg py-md">97.5%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold">ACTIVE</span>
+</td>
+</tr>
+<tr class="hover:bg-primary-container/10 transition-colors cursor-pointer group">
+<td class="px-lg py-md font-medium text-on-surface">Carbon Fiber Trekking Pole</td>
+<td class="px-lg py-md">92,405</td>
+<td class="px-lg py-md">99.1%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-xs bg-primary-container text-on-primary-container rounded-full text-[10px] font-bold">ACTIVE</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right: Top Users List (1/3) -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant card-shadow">
+<div class="p-lg border-b border-outline-variant">
+<h3 class="font-bold text-headline-lg text-on-surface">Top Users</h3>
+</div>
+<div class="p-lg space-y-lg">
+<!-- User 1 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container/50 group-hover:border-primary transition-all" data-alt="A portrait of a male professional in a smart-casual tech outfit, smiling confidently against a soft-focus studio background with warm, natural daylight. The image has a clean, airy quality that complements the emerald green and slate grey brand palette of the analytics dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx5fLjYEhr7tvnS4PHdTohI3f9UYDUA9hS2CYWWYuk7_UvBCEr9PQmO0AKWQt_PLJeAW0DGvZSR-lDp2zbrzlbAwyBxplNUEDn5dg6HRH7fd74vTvXxDcZimC888nJLRQrinbebPQraXBXoLlWqdxjzGUaEMadbvZLyB1YFIojiCYBaA9benQvAMdFyDbLiRuuDdKnrFzJSJSKx2imVkVQjLWtj4TUTnq70T79XmxXCFpe4TmSlZ_FrARCnPSoDCDxhXIWLG0JezC6"/>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Jordan Smith</p>
+<p class="text-label-sm text-on-surface-variant">Power User</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">8,402</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Scans</p>
+</div>
+</div>
+<!-- User 2 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container/50 group-hover:border-primary transition-all" data-alt="A headshot of a female digital strategist with a bright, professional appearance. She is set against a clean, minimalist interior with subtle touches of lush greenery, maintaining the emerald green brand aesthetic. High-key lighting creates a soft, modern light-mode feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxHkFwMJq88MEPsWNOtGWI-o8Cfrcg7fqZT9YbodRM8SEb8w3TfMkiz5AwKYqnkoKLEj8QcikBnRgIWUab_veYUSzJnnAB3AwiJFxJBH1T4iNMnht0YiSaqu_K-A5ebBnhOmuh-0YIXQfGCHt4GYxmXqmDFH5FtW42KQwXhsBIWFrOKVySagPFOp1OhlfWk1jYI6hSbZqr6_JdnscDFVrS9jKn8e2zUOd5pdTADT9fJZI3KjrmETeD1V-MiJ6a5QMyKR-4M4Npfn9V"/>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Sarah Jenkins</p>
+<p class="text-label-sm text-on-surface-variant">Region Lead</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">6,211</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Scans</p>
+</div>
+</div>
+<!-- User 3 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container/50 group-hover:border-primary transition-all" data-alt="A professional male user with a clean, approachable appearance, set in a modern co-working space with cool-toned grey walls and vibrant green plants in the background. The lighting is crisp and uniform, suggesting a high-fidelity SaaS dashboard environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaxSNAPPjqlbgdIhq0gkEQ31zzXvI0AKITtbwHfQAI4OEtdSqSSBNhE2d4oxLuDi-ydlLUSbEjOtcIa2nj1jmzwig3GcFFElsTZrvuQk16SWBFqVnP2QrXSrCA8m_ZGFlS4PDZbu7968HH7tyM1goQ645Au5Ar93lIlhSCDei0fVgP4nwZIrFFihlO_TDxLCd66gmaJe6byObgvlKlMVUCYU1yUv-xlHnEi5evynozqyWzCwYMbrZGi9XsRAcC5nzP5IExbnqKUVhL"/>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Marcus Wong</p>
+<p class="text-label-sm text-on-surface-variant">Internal Beta</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">5,903</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Scans</p>
+</div>
+</div>
+<!-- User 4 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-md">
+<img alt="User Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container/50 group-hover:border-primary transition-all" data-alt="A high-resolution corporate headshot of a female developer, illuminated by soft studio lighting. The background is a gradient of light slate and white, creating a clinical and professional atmosphere. Touches of emerald green in her accessories subtly echo the corporate branding." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA31zW0wr9Rq-qpOFUdy8qWADQeX_HFzJThGftyYquh8CF-d-X9fjq_XVB4YMV7kMi-woUNjFavZFLIhTF1AA73hcPWvbchRBkA0ddNc9otv3OMsAFlpo15NxBlZ7PJxJoyJYPB9wcZYNiwLKSCixk_sxOLAybm40zpIS66IMSyvC68ksKTKrk5KdkrGrbcQq-GmdgijIljinH4VeSSKHs9kporgRLoSpIBF9I5sQ4ruXIMzEg7FzMwLNko51jMddHYFBHvCOLoCvIV"/>
+<div>
+<p class="font-bold text-on-surface group-hover:text-primary transition-colors">Elena Rodriguez</p>
+<p class="text-label-sm text-on-surface-variant">Dev Ops</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-on-surface">4,882</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold">Scans</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

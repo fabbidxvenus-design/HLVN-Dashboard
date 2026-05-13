@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Dashboard - Admin V5</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error-container": "#570008",
+                      "on-background": "#2c2f31",
+                      "on-tertiary-container": "#002e6a",
+                      "surface-variant": "#d9dde0",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "on-secondary-fixed": "#00463e",
+                      "surface-container-highest": "#d9dde0",
+                      "on-secondary": "#c0fff3",
+                      "secondary-dim": "#005a50",
+                      "error-container": "#fb5151",
+                      "primary-container": "#69f6b8",
+                      "secondary": "#00675d",
+                      "surface-tint": "#006947",
+                      "tertiary-dim": "#004ca6",
+                      "on-error": "#ffefee",
+                      "surface": "#f5f7f9",
+                      "error": "#b31b25",
+                      "primary-fixed-dim": "#58e7ab",
+                      "on-surface": "#2c2f31",
+                      "surface-container": "#e5e9eb",
+                      "secondary-fixed": "#6df5e1",
+                      "tertiary": "#0057bd",
+                      "inverse-primary": "#69f6b8",
+                      "on-primary-container": "#005a3c",
+                      "surface-container-high": "#dfe3e6",
+                      "surface-bright": "#f5f7f9",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "outline": "#747779",
+                      "error-dim": "#9f0519",
+                      "secondary-container": "#6df5e1",
+                      "on-primary-fixed-variant": "#006544",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed-dim": "#73a2ff",
+                      "primary-dim": "#005c3d",
+                      "primary": "#006947",
+                      "on-surface-variant": "#595c5e",
+                      "on-secondary-container": "#005b51",
+                      "primary-fixed": "#69f6b8",
+                      "inverse-on-surface": "#9a9d9f",
+                      "outline-variant": "#abadaf",
+                      "on-tertiary": "#f0f2ff",
+                      "background": "#f5f7f9",
+                      "inverse-surface": "#0b0f10",
+                      "tertiary-container": "#8ab0ff",
+                      "on-primary-fixed": "#00452d",
+                      "tertiary-fixed": "#8ab0ff",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "on-tertiary-fixed": "#00163b",
+                      "on-primary": "#c8ffe0",
+                      "surface-dim": "#d0d5d8",
+                      "surface-container-low": "#eef1f3"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "margin": "24px",
+                      "gutter": "16px",
+                      "md": "16px",
+                      "base": "8px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Public Sans"],
+                      "headline-lg": ["Manrope"],
+                      "headline-xl": ["Manrope"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .sidebar-active-indicator {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 4px;
+            background-color: #006947;
+            border-radius: 0 4px 4px 0;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+      </style>
+</head>
+<body class="bg-background font-body-md text-on-surface">
+<!-- SideNavBar (Authority: JSON & Style Guidance) -->
+<aside class="fixed left-0 top-0 h-screen w-[240px] z-50 bg-surface-container/80 dark:bg-surface-container-highest/80 backdrop-blur-xl border-r border-outline-variant/20 shadow-md flex flex-col py-xl px-md gap-gutter">
+<!-- Brand Logo Header -->
+<div class="px-md mb-lg">
+<h1 class="font-headline-xl text-headline-xl font-bold text-primary dark:text-primary-fixed">HLVN Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant opacity-70">V5 Dashboard</p>
+</div>
+<!-- Navigation Tabs -->
+<nav class="flex-1 flex flex-col gap-xs">
+<!-- Active Tab: Dashboard -->
+<a class="relative bg-primary-container dark:bg-primary-dim text-on-primary-container dark:text-primary-fixed-dim rounded-lg flex items-center gap-md px-md py-sm hover:bg-surface-variant/50 dark:hover:bg-inverse-surface/20 transition-all scale-100 active:scale-98" href="#">
+<div class="sidebar-active-indicator"></div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md font-semibold">Dashboard</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline flex items-center gap-md px-md py-sm hover:bg-surface-variant/50 dark:hover:bg-inverse-surface/20 transition-all scale-100 active:scale-98" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-body-md text-body-md">Scans</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline flex items-center gap-md px-md py-sm hover:bg-surface-variant/50 dark:hover:bg-inverse-surface/20 transition-all scale-100 active:scale-98" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Users</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline flex items-center gap-md px-md py-sm hover:bg-surface-variant/50 dark:hover:bg-inverse-surface/20 transition-all scale-100 active:scale-98" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</nav>
+<!-- Footer Navigation -->
+<div class="mt-auto flex flex-col gap-xs border-t border-outline-variant/10 pt-lg">
+<a class="text-on-surface-variant dark:text-outline flex items-center gap-md px-md py-sm hover:bg-surface-variant/50 dark:hover:bg-inverse-surface/20 transition-all scale-100 active:scale-98" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-body-md text-body-md">Profile</span>
+</a>
+<div class="flex items-center gap-md px-md py-sm mt-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged male administrator with a confident expression, set against a soft, out-of-focus modern office background. The lighting is clean and professional, matching the emerald green and neutral slate aesthetic of the dashboard. High-quality portrait photography style with a shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzJZZeGhN6O-0R9jvmD44gmDRUls3woLn4Rm9zsVfBK3OstuszxuOz3N4GEvyUqmPOYe1lwhVtzURk5lqzOrvTdWif8cRKbreOK-pZFbHYSDqVmd9-4ODTzsTnW1R_mwAt2HCm9mZsY4xe1Fxl3wKG1FkMetf3sMOTOG118k7LRKn0N6uczx3TE9qxkB9oxdVVsXI0R3HzDUyuipTl9RTVEUOwzPuELWf7FWac4T83W18wYBIR2_XQqN0Mt_k2bDQYVlf8q5tLqtX4"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm font-semibold">Admin User</span>
+<span class="text-[10px] text-on-surface-variant">admin@hlvn.app</span>
+</div>
+</div>
+<a class="text-error flex items-center gap-md px-md py-sm hover:bg-error-container/10 transition-all scale-100 active:scale-98" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<!-- TopNavBar Cluster -->
+<header class="fixed top-0 right-0 left-0 ml-[240px] z-40 h-16 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm flex justify-between items-center px-margin">
+<div class="flex items-center gap-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed font-bold">Tổng quan</h2>
+<!-- Breadcrumb / Links -->
+<nav class="hidden md:flex gap-md">
+<a class="text-primary dark:text-primary-fixed font-semibold border-b-2 border-primary px-sm py-1 transition-colors" href="#">Tổng quan</a>
+</nav>
+</div>
+<div class="flex items-center gap-gutter">
+<!-- Glass Date Picker -->
+<div class="glass-card px-md py-base rounded-lg flex items-center gap-sm cursor-pointer hover:bg-white/60 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">calendar_today</span>
+<span class="font-label-sm text-label-sm text-on-surface">Oct 24 - Oct 30, 2023</span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary-container/10 transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-primary-container/10 transition-colors cursor-pointer active:scale-95 duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant/20 mx-xs"></div>
+<div class="flex items-center gap-sm hover:bg-surface-container-low p-sm rounded-lg transition-colors cursor-pointer">
+<div class="w-8 h-8 bg-primary-container rounded-full flex items-center justify-center">
+<span class="text-on-primary-container font-bold text-xs">AD</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-16 min-h-screen">
+<div class="p-xl max-w-[1440px] mx-auto">
+<!-- Top Section: Metric Placeholders -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm h-32 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-primary">qr_code_2</span>
+</div>
+<span class="text-primary font-bold text-label-sm">+12%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Total Scans</span>
+<span class="font-headline-lg text-headline-lg">---</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm h-32 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-tertiary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-tertiary">group</span>
+</div>
+<span class="text-tertiary font-bold text-label-sm">+5%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">New Users</span>
+<span class="font-headline-lg text-headline-lg">---</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm h-32 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+</div>
+<span class="text-secondary font-bold text-label-sm">+8%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Engagement</span>
+<span class="font-headline-lg text-headline-lg">---</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm h-32 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-error-container/10 rounded-lg">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<span class="text-error font-bold text-label-sm">-2%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Error Rate</span>
+<span class="font-headline-lg text-headline-lg">---</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout for Future Content -->
+<div class="grid grid-cols-12 grid-rows-2 gap-gutter h-[600px]">
+<!-- Main Analytics Area -->
+<div class="col-span-8 row-span-2 border-2 border-dashed border-outline-variant/30 rounded-xl bg-surface-container-low/30 flex items-center justify-center flex-col gap-md relative overflow-hidden">
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#006947 1px, transparent 1px); background-size: 24px 24px;"></div>
+<span class="material-symbols-outlined text-outline-variant text-4xl">monitoring</span>
+<p class="text-outline-variant font-label-sm text-label-sm">Primary Visualization Area</p>
+</div>
+<!-- Secondary Side Area 1 -->
+<div class="col-span-4 row-span-1 border-2 border-dashed border-outline-variant/30 rounded-xl bg-surface-container-low/30 flex items-center justify-center flex-col gap-md">
+<span class="material-symbols-outlined text-outline-variant text-3xl">list_alt</span>
+<p class="text-outline-variant font-label-sm text-label-sm">Recent Activity</p>
+</div>
+<!-- Secondary Side Area 2 -->
+<div class="col-span-4 row-span-1 border-2 border-dashed border-outline-variant/30 rounded-xl bg-surface-container-low/30 flex items-center justify-center flex-col gap-md">
+<span class="material-symbols-outlined text-outline-variant text-3xl">pie_chart</span>
+<p class="text-outline-variant font-label-sm text-label-sm">Distribution Summary</p>
+</div>
+</div>
+<!-- Bottom Row: Task Focus -->
+<div class="mt-xl grid grid-cols-3 gap-gutter">
+<div class="col-span-2 bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-lg text-body-md font-bold text-on-surface">Scanning Locations</h3>
+<button class="text-primary font-label-sm text-label-sm hover:underline">View All Map</button>
+</div>
+<div class="aspect-video w-full rounded-lg bg-surface-container overflow-hidden">
+<img alt="Regional Map" class="w-full h-full object-cover grayscale brightness-105 contrast-75 opacity-80" data-alt="A clean, minimalist vector-style map of a metropolitan city area. The map uses a sophisticated color palette of light slates, whites, and emerald green highlights to indicate active scanning zones. The lighting is bright and modern, suggesting a high-tech data visualization interface with subtle shadows and depth." data-location="Ho Chi Minh City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATKw-MPR0t8eT6kIRw3-M433Ml5SCubgga-H0nz0SuknOMQCXHbR0z80zEoY0xjpYrrILW1R8bPD0QW_F-72wLHBhcCAjdR_MeKOda0VArhKy337uJHMFBAPGAerD1qu7-hcc85aBDwfB3aXK9cdsOimQArMaisC2EPXlgqbCM1wcKvHUhxWSrl17mpdGIKUSC9idBBDruP2zfVPqbQsGjPcrDAWQD5hvVe0z1d5UmTNGGDh1Y-2IY5yoG6E9dae470--nJZTovnMJ"/>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-gutter">
+<div class="bg-primary p-lg rounded-xl shadow-md text-on-primary">
+<h4 class="font-headline-lg text-body-md font-bold mb-xs">Quick Action</h4>
+<p class="text-label-sm mb-lg opacity-80">Generate a new administrative report for the current week.</p>
+<button class="w-full bg-white text-primary font-bold py-md rounded-lg flex items-center justify-center gap-sm hover:bg-primary-fixed-dim transition-all active:scale-95">
+<span class="material-symbols-outlined">add_circle</span>
+                            Generate Report
+                        </button>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-lg shadow-sm flex-1">
+<h4 class="font-headline-lg text-body-md font-bold mb-md">System Health</h4>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="text-label-sm text-on-surface-variant">Uptime</span>
+<span class="text-label-sm font-bold text-secondary">99.9%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[99.9%] h-full bg-secondary"></div>
+</div>
+<div class="flex justify-between items-center pt-sm">
+<span class="text-label-sm text-on-surface-variant">API Latency</span>
+<span class="text-label-sm font-bold text-primary">24ms</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[30%] h-full bg-primary"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Contextual Rule (Suppressed on Admin Dashboard per JSON logic) -->
+</body></html>

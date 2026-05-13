@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Public+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#69f6b8",
+                        "tertiary-dim": "#004ca6",
+                        "on-background": "#2c2f31",
+                        "on-tertiary-fixed": "#00163b",
+                        "tertiary-fixed": "#8ab0ff",
+                        "inverse-on-surface": "#9a9d9f",
+                        "primary-container": "#69f6b8",
+                        "secondary-container": "#6df5e1",
+                        "on-secondary": "#c0fff3",
+                        "error": "#b31b25",
+                        "surface-container": "#e5e9eb",
+                        "on-error": "#ffefee",
+                        "on-surface-variant": "#595c5e",
+                        "primary-fixed-dim": "#58e7ab",
+                        "outline-variant": "#abadaf",
+                        "on-primary-fixed-variant": "#006544",
+                        "on-primary-container": "#005a3c",
+                        "primary-fixed": "#69f6b8",
+                        "primary-dim": "#005c3d",
+                        "surface-container-high": "#dfe3e6",
+                        "on-secondary-fixed": "#00463e",
+                        "error-container": "#fb5151",
+                        "on-primary-fixed": "#00452d",
+                        "secondary": "#00675d",
+                        "secondary-dim": "#005a50",
+                        "on-tertiary-container": "#002e6a",
+                        "primary": "#006947",
+                        "background": "#f5f7f9",
+                        "secondary-fixed-dim": "#5de7d3",
+                        "surface-variant": "#d9dde0",
+                        "on-tertiary-fixed-variant": "#00377b",
+                        "surface-container-highest": "#d9dde0",
+                        "tertiary-container": "#8ab0ff",
+                        "error-dim": "#9f0519",
+                        "surface": "#f5f7f9",
+                        "on-error-container": "#570008",
+                        "surface-dim": "#d0d5d8",
+                        "surface-tint": "#006947",
+                        "outline": "#747779",
+                        "on-secondary-container": "#005b51",
+                        "on-primary": "#c8ffe0",
+                        "surface-container-low": "#eef1f3",
+                        "secondary-fixed": "#6df5e1",
+                        "tertiary": "#0057bd",
+                        "on-surface": "#2c2f31",
+                        "tertiary-fixed-dim": "#73a2ff",
+                        "inverse-surface": "#0b0f10",
+                        "on-tertiary": "#f0f2ff",
+                        "surface-bright": "#f5f7f9",
+                        "on-secondary-fixed-variant": "#00655b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin": "24px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Manrope"],
+                        "label-sm": ["Public Sans"],
+                        "headline-lg": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background bg-background m-0 p-0 overflow-x-hidden">
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Panel: Brand Experience -->
+<section class="md:w-1/2 emerald-gradient flex flex-col items-center justify-center p-xl relative min-h-[400px] md:min-h-screen overflow-hidden">
+<!-- Background Abstract Shape -->
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+<img alt="Abstract Handwriting Recognition Pattern" class="w-full h-full object-cover mix-blend-overlay" data-alt="A sophisticated abstract background featuring flowing, organic white line patterns that mimic the rhythm of fluid handwriting and neural network connections. The backdrop is a lush emerald green to teal gradient, creating a professional yet innovative digital atmosphere. The lighting is soft and ambient, emphasizing depth and modern SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBou4y894B_r5bS3s3EbbUJZnzxU4GtOd6rzfw8cHutNvd2oRM9D5UrZISVeAtPeXNEPDUgxxCPntPKSbiuZE8xVFFsI_1nTTKEMiKuSZpdqyG8dlfXv_DF7OQBWnJTAA9McP6Bxl75WAmUVDqz8XrwgNqRM5bBxa7i6dcksr-iLAaJOk4VEe084GALY3q1ejRrEOKZ3pncItdgDzayZEgP6E17gl8pvQtXF1eEQQ0GY7vst6en3IiFS0vENEwcIvPfU7MST65dXOVK"/>
+</div>
+<div class="z-10 text-center flex flex-col items-center max-w-lg">
+<h1 class="font-headline-xl text-white text-6xl md:text-8xl mb-sm tracking-tighter drop-shadow-sm">HLVN</h1>
+<h2 class="font-headline-lg text-white/90 text-2xl md:text-3xl font-medium mb-md">Handwriting Recognition</h2>
+<p class="font-body-md text-white/80 text-lg md:text-xl max-w-sm">Hệ thống nhận dạng chữ viết tay thông minh</p>
+</div>
+<footer class="absolute bottom-xl z-10">
+<span class="font-label-sm text-white/60 uppercase tracking-widest">Dành cho quản trị viên</span>
+</footer>
+</section>
+<!-- Right Panel: Login Canvas -->
+<section class="md:w-1/2 bg-surface-container-low flex items-center justify-center p-lg md:p-xl">
+<div class="w-full max-w-md">
+<!-- Login Card -->
+<div class="glass-card rounded-[24px] p-xl shadow-lg shadow-black/5 animate-fade-in">
+<header class="mb-xl">
+<h3 class="font-headline-lg text-on-background mb-xs">Đăng nhập</h3>
+<p class="font-body-md text-on-surface-variant">Nhập thông tin để tiếp tục</p>
+</header>
+<form class="space-y-lg" onsubmit="return false;">
+<!-- Email Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-on-surface-variant px-1" for="email">Email</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary">mail</span>
+<input class="w-full pl-xl pr-md py-3 rounded-lg border-outline-variant bg-white/50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none font-body-md placeholder:text-on-surface-variant/50" id="email" placeholder="admin@hlvn.com" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-center px-1">
+<label class="font-label-sm text-on-surface-variant" for="password">Mật khẩu</label>
+<a class="font-label-sm text-primary hover:underline transition-all" href="#">Quên mật khẩu?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant transition-colors group-focus-within:text-primary">lock</span>
+<input class="w-full pl-xl pr-xl py-3 rounded-lg border-outline-variant bg-white/50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all outline-none font-body-md placeholder:text-on-surface-variant/50" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Error State -->
+<div class="flex items-start gap-sm bg-error/10 p-md rounded-lg border border-error/20">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+<p class="font-label-sm text-error leading-tight">Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại email hoặc mật khẩu.</p>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-3 bg-[#10B981] hover:bg-primary text-white font-headline-lg text-lg rounded-[6px] shadow-md hover:shadow-xl hover:shadow-primary/20 active:scale-[0.98] transition-all duration-200" type="submit">
+                            Tiếp tục
+                        </button>
+</form>
+<div class="mt-xl pt-xl border-t border-outline-variant/30 text-center">
+<p class="font-label-sm text-on-surface-variant">© 2024 HLVN Dashboard v5 • Enterprise Solution</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Visual Polish: Floating Shapes (Right Side) -->
+<div class="fixed top-0 right-0 -z-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="fixed bottom-0 right-1/4 -z-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -mb-48"></div>
+</body></html>

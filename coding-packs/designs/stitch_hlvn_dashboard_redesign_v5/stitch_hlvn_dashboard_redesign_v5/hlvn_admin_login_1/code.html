@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Đăng nhập | HLVN Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#69f6b8",
+                        "tertiary": "#0057bd",
+                        "secondary-fixed": "#6df5e1",
+                        "surface-container": "#e5e9eb",
+                        "on-surface": "#2c2f31",
+                        "primary-fixed-dim": "#58e7ab",
+                        "error": "#b31b25",
+                        "surface": "#f5f7f9",
+                        "on-error": "#ffefee",
+                        "tertiary-dim": "#004ca6",
+                        "surface-tint": "#006947",
+                        "secondary": "#00675d",
+                        "primary-container": "#69f6b8",
+                        "secondary-container": "#6df5e1",
+                        "on-secondary": "#c0fff3",
+                        "surface-container-highest": "#d9dde0",
+                        "surface-variant": "#d9dde0",
+                        "on-secondary-fixed-variant": "#00655b",
+                        "on-secondary-fixed": "#00463e",
+                        "on-tertiary-container": "#002e6a",
+                        "on-background": "#2c2f31",
+                        "on-error-container": "#570008",
+                        "surface-dim": "#d0d5d8",
+                        "surface-container-low": "#eef1f3",
+                        "on-primary": "#c8ffe0",
+                        "on-tertiary-fixed": "#00163b",
+                        "tertiary-fixed": "#8ab0ff",
+                        "on-tertiary-fixed-variant": "#00377b",
+                        "on-primary-fixed": "#00452d",
+                        "tertiary-container": "#8ab0ff",
+                        "inverse-surface": "#0b0f10",
+                        "background": "#f5f7f9",
+                        "on-tertiary": "#f0f2ff",
+                        "outline-variant": "#abadaf",
+                        "inverse-on-surface": "#9a9d9f",
+                        "primary-fixed": "#69f6b8",
+                        "on-secondary-container": "#005b51",
+                        "on-surface-variant": "#595c5e",
+                        "primary": "#006947",
+                        "primary-dim": "#005c3d",
+                        "tertiary-fixed-dim": "#73a2ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#006544",
+                        "error-dim": "#9f0519",
+                        "outline": "#747779",
+                        "surface-container-high": "#dfe3e6",
+                        "surface-bright": "#f5f7f9",
+                        "secondary-fixed-dim": "#5de7d3",
+                        "on-primary-container": "#005a3c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin": "24px",
+                        "gutter": "16px",
+                        "md": "16px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Public Sans"],
+                        "headline-lg": ["Manrope"],
+                        "headline-xl": ["Manrope"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .emerald-gradient {
+            background: linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
+        }
+        .focus-glow:focus-within {
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<main class="min-h-screen flex flex-col md:flex-row">
+<!-- Left Side: Brand Panel -->
+<section class="emerald-gradient relative w-full md:w-1/2 flex items-center justify-center p-xl md:min-h-screen overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-black/5 rounded-full blur-3xl"></div>
+</div>
+<div class="relative z-10 text-center flex flex-col items-center gap-md max-w-lg">
+<div class="mb-sm">
+<span class="font-headline-xl text-[64px] leading-tight text-white font-extrabold tracking-tighter">HLVN</span>
+</div>
+<div class="flex flex-col gap-xs">
+<h2 class="font-headline-lg text-white/90 font-semibold uppercase tracking-widest text-lg">Handwriting Recognition</h2>
+<p class="font-headline-lg text-white text-2xl md:text-3xl font-bold leading-snug">
+                        Hệ thống nhận dạng chữ viết tay thông minh
+                    </p>
+<span class="font-label-sm text-white/70 uppercase tracking-widest mt-md">Dành cho quản trị viên</span>
+</div>
+<!-- Abstract Visualization Placeholder -->
+<div class="mt-xl w-full max-w-sm rounded-xl overflow-hidden shadow-2xl border border-white/20">
+<img alt="Intelligent Interface" class="w-full h-auto object-cover grayscale brightness-110" data-alt="A sophisticated digital interface displaying complex neural network patterns and flowing lines representing handwriting data processing. The visual uses a monochromatic emerald green and white palette to match the branding, with sharp geometric details and a high-tech laboratory aesthetic. Soft glowing particles float across the frame, suggesting movement and intelligence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByFFT3NMF-3fvSs_aQCjk7gFgeb2DUSx9P0l8uCxYuDKgsN7hdDdYfacmZGU9WfkV2rhZLCM3vszfXzBspCA-VpInqXH0q65FZS63qC_nGgZXrFHcOiqEQDqp61RcQoc75DOEmhzxqryQo8aAr67Zjdj-Be0c5H9IpsEnM10ziFEFoF6d5LYh6bjir_ZLnkQ1qwguH3pwTKv808OeEgDC1HfeZ4BYtDad1KwWUFzZLoXWoxTMtQk18T8wm1nnAcPhpe3I-GcKkNbvr"/>
+</div>
+</div>
+</section>
+<!-- Right Side: Form Panel -->
+<section class="bg-[#F8FAFC] w-full md:w-1/2 flex items-center justify-center p-margin md:p-xl">
+<div class="glass-effect p-xl rounded-[24px] w-full max-w-[480px] shadow-lg border border-outline-variant/20">
+<!-- Form Header -->
+<div class="mb-xl text-center md:text-left">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Đăng nhập</h1>
+<p class="text-on-surface-variant font-body-md opacity-80">Nhập thông tin để tiếp tục</p>
+</div>
+<form class="flex flex-col gap-lg">
+<!-- Email Input -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-sm text-on-surface-variant ml-xs" for="email">Email</label>
+<div class="relative focus-glow rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-[48px] pr-md py-md bg-white/50 border border-outline-variant/30 rounded-lg font-body-md focus:border-primary focus:ring-0 transition-colors outline-none" id="email" name="email" placeholder="admin@hlvn.com" type="email"/>
+</div>
+</div>
+<!-- Password Input -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center px-xs">
+<label class="font-label-sm text-on-surface-variant" for="password">Mật khẩu</label>
+<a class="font-label-sm text-primary hover:underline transition-all" href="#">Quên mật khẩu?</a>
+</div>
+<div class="relative focus-glow rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">lock</span>
+<input class="w-full pl-[48px] pr-[48px] py-md bg-white/50 border border-outline-variant/30 rounded-lg font-body-md focus:border-primary focus:ring-0 transition-colors outline-none" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+<!-- Action Button -->
+<div class="mt-sm">
+<button class="group relative w-full bg-[#10B981] hover:bg-primary py-md px-xl rounded-lg font-headline-lg text-body-md text-white flex items-center justify-center gap-sm transition-all duration-300 shadow-md hover:shadow-[0_0_20px_rgba(16,185,129,0.4)] active:scale-[0.98]" type="submit">
+<span>Đăng nhập</span>
+<!-- Loading Spinner (Hidden by default) -->
+<svg class="animate-spin h-5 w-5 text-white opacity-0 group-hover:opacity-100 transition-opacity absolute right-xl" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</button>
+</div>
+<!-- Error State Message -->
+<div class="flex items-center gap-sm p-md bg-on-error rounded-lg border border-error/10">
+<span class="material-symbols-outlined text-error" data-weight="fill">warning</span>
+<p class="text-error font-label-sm leading-tight">
+                            Thông tin đăng nhập không chính xác. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.
+                        </p>
+</div>
+</form>
+<!-- Footer Support Links -->
+<div class="mt-xl pt-lg border-t border-outline-variant/10 flex flex-wrap justify-center gap-gutter text-on-surface-variant font-label-sm">
+<a class="hover:text-primary transition-colors" href="#">Hỗ trợ kỹ thuật</a>
+<span class="opacity-30">•</span>
+<a class="hover:text-primary transition-colors" href="#">Điều khoản sử dụng</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Shared Component: Footer (Hidden in standard login flow as per shell rules, but including elements for compliance) -->
+<footer class="fixed bottom-0 right-0 w-full md:w-1/2 flex justify-center items-center gap-gutter py-md px-margin pointer-events-none opacity-40">
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 HLVN Dashboard v5. All rights reserved.</span>
+</footer>
+</body></html>

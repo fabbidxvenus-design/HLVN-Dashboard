@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Analytics Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d0d5d8",
+                    "surface-container-low": "#eef1f3",
+                    "on-primary": "#c8ffe0",
+                    "on-tertiary-fixed": "#00163b",
+                    "on-primary-fixed": "#00452d",
+                    "tertiary-fixed": "#8ab0ff",
+                    "on-tertiary-fixed-variant": "#00377b",
+                    "tertiary-container": "#8ab0ff",
+                    "inverse-surface": "#0b0f10",
+                    "on-tertiary": "#f0f2ff",
+                    "background": "#f5f7f9",
+                    "inverse-on-surface": "#9a9d9f",
+                    "outline-variant": "#abadaf",
+                    "primary-fixed": "#69f6b8",
+                    "on-surface-variant": "#595c5e",
+                    "on-secondary-container": "#005b51",
+                    "primary": "#006947",
+                    "primary-dim": "#005c3d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#73a2ff",
+                    "secondary-container": "#6df5e1",
+                    "on-primary-fixed-variant": "#006544",
+                    "error-dim": "#9f0519",
+                    "surface-container-high": "#dfe3e6",
+                    "surface-bright": "#f5f7f9",
+                    "secondary-fixed-dim": "#5de7d3",
+                    "outline": "#747779",
+                    "on-primary-container": "#005a3c",
+                    "inverse-primary": "#69f6b8",
+                    "tertiary": "#0057bd",
+                    "surface-container": "#e5e9eb",
+                    "secondary-fixed": "#6df5e1",
+                    "on-surface": "#2c2f31",
+                    "primary-fixed-dim": "#58e7ab",
+                    "error": "#b31b25",
+                    "on-error": "#ffefee",
+                    "surface": "#f5f7f9",
+                    "surface-tint": "#006947",
+                    "tertiary-dim": "#004ca6",
+                    "secondary": "#00675d",
+                    "primary-container": "#69f6b8",
+                    "secondary-dim": "#005a50",
+                    "error-container": "#fb5151",
+                    "on-secondary": "#c0fff3",
+                    "surface-container-highest": "#d9dde0",
+                    "surface-variant": "#d9dde0",
+                    "on-secondary-fixed-variant": "#00655b",
+                    "on-secondary-fixed": "#00463e",
+                    "on-tertiary-container": "#002e6a",
+                    "on-error-container": "#570008",
+                    "on-background": "#2c2f31"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "base": "8px",
+                    "sm": "8px",
+                    "margin": "24px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Public Sans"],
+                    "headline-lg": ["Manrope"],
+                    "headline-xl": ["Manrope"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .green-glow-hover:hover {
+            box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.2);
+            transform: translateY(-4px);
+            transition: all 0.3s ease;
+        }
+        .zebra-row:nth-child(even) {
+            background-color: rgba(209, 250, 229, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- Side Navigation Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col h-full p-lg bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-xl border-r border-outline-variant/30 shadow-lg z-50">
+<div class="mb-xl px-md">
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed">HLVN Analytics</h1>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Admin Console</p>
+</div>
+<nav class="flex-1 space-y-sm">
+<div class="flex items-center gap-md bg-primary-container/50 text-on-primary-container font-semibold rounded-lg px-md py-sm cursor-pointer active:scale-95 transition-colors duration-200">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50 px-md py-sm rounded-lg transition-colors duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50 px-md py-sm rounded-lg transition-colors duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50 px-md py-sm rounded-lg transition-colors duration-200 cursor-pointer active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</div>
+</nav>
+<div class="mt-auto p-md glass-panel rounded-xl flex items-center gap-md">
+<img alt="Admin Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a corporate administrator in a modern office setting. The lighting is soft and natural, emphasizing a bright and welcoming atmosphere. The subject is wearing a crisp white shirt, fitting the clean, minimalist light-mode aesthetic of the dashboard. Background is slightly blurred, showing hints of lush indoor green plants to match the brand color palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCf5OWJlxWiyfk6WlM1lhY6K2Hm6fp1-dchb7iwhZoO_jtsucOyBBR_prcQutFnzOVC_Q4Am5JB8cqKigDJ9lEGFrO3iF14UtTJgcGkksn38PspnDknBYMypH2GOU3V3QBwPzbPXavFZH6aHHWXaScDknM7J33MyFHqwq-3-gRoZ6RWQPgvDIm9hGENKnNLb39vR2hHCJV4H-gFWh9as2UFr3J7uP7nIacqUG_S4uIMV24XsUsEx30nmVNgJ_c7Nc69vBA03aWHy9au"/>
+<div>
+<p class="font-label-sm text-label-sm font-bold text-on-surface">Minh Nguyen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">System Admin</p>
+</div>
+</div>
+</aside>
+<!-- Header Shell -->
+<header class="fixed top-0 right-0 left-64 h-16 flex justify-between items-center px-margin bg-surface-bright/70 backdrop-blur-md border-b border-outline-variant/20 shadow-sm z-40">
+<div class="flex items-center gap-md flex-1 max-w-xl">
+<div class="relative w-full focus-within:ring-2 focus-within:ring-primary rounded-lg transition-all">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-2 pl-10 pr-4 text-body-md placeholder:text-on-surface-variant focus:ring-0" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all p-2 rounded-full hover:bg-surface-container">calendar_today</button>
+</div>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Status:</span>
+<span class="flex items-center gap-1 text-primary font-bold">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    Live
+                </span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-margin pb-xl">
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-lg">
+<!-- Card 1 -->
+<div class="glass-panel p-lg rounded-lg green-glow-hover flex flex-col gap-base">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<span class="flex items-center text-primary text-label-sm font-bold">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12%
+                    </span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-medium uppercase tracking-tight">Total Scans</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">12,847</h3>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-panel p-lg rounded-lg green-glow-hover flex flex-col gap-base">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">group</span>
+</div>
+<span class="flex items-center text-on-surface-variant text-label-sm font-medium">vs last month</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-medium uppercase tracking-tight">Active Users</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">1,284</h3>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="glass-panel p-lg rounded-lg green-glow-hover flex flex-col gap-base">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="text-primary text-label-sm font-bold">Excellent</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-medium uppercase tracking-tight">Success Rate</p>
+<div class="flex items-center gap-md">
+<h3 class="font-headline-lg text-headline-lg text-on-surface whitespace-nowrap">94.2%</h3>
+<div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 94.2%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="glass-panel p-lg rounded-lg green-glow-hover flex flex-col gap-base">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">inventory</span>
+</div>
+<span class="text-on-surface-variant text-label-sm font-medium">+14 new</span>
+</div>
+<div>
+<p class="text-on-surface-variant text-label-sm font-medium uppercase tracking-tight">Total Products</p>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">328</h3>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<section class="glass-panel p-lg rounded-lg mb-lg">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Scan Volume</h2>
+<p class="text-on-surface-variant text-body-md">Real-time scan frequency tracking across all active hubs.</p>
+</div>
+<div class="flex bg-surface-container-low p-1 rounded-lg">
+<button class="px-md py-1 rounded-md bg-surface-bright shadow-sm text-label-sm font-bold text-primary">Daily</button>
+<button class="px-md py-1 rounded-md text-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Weekly</button>
+<button class="px-md py-1 rounded-md text-label-sm text-on-surface-variant hover:text-on-surface transition-colors">Monthly</button>
+</div>
+</div>
+<div class="relative h-80 w-full">
+<!-- Visual Placeholder for Area Chart -->
+<svg class="w-full h-full preserve-3d" viewbox="0 0 1000 300">
+<!-- Grid Lines -->
+<line stroke="#e2e8f0" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="#e2e8f0" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#e2e8f0" stroke-dasharray="4" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<!-- Main Area Fill (Primary Green) -->
+<path d="M0,280 L0,220 C100,200 200,240 300,180 C400,120 500,160 600,80 C700,60 800,120 900,90 C950,75 1000,110 1000,110 L1000,280 Z" fill="url(#grad-green)" opacity="0.15"></path>
+<!-- Main Line -->
+<path d="M0,220 C100,200 200,240 300,180 C400,120 500,160 600,80 C700,60 800,120 900,90 C950,75 1000,110" fill="none" stroke="#10B981" stroke-linecap="round" stroke-width="4"></path>
+<!-- Secondary Line (Teal) -->
+<path d="M0,250 C100,230 200,210 300,240 C400,200 500,210 600,150 C700,180 800,140 900,160 C950,150 1000,180" fill="none" opacity="0.6" stroke="#14B8A6" stroke-dasharray="8 4" stroke-linecap="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="300" cy="180" fill="#10B981" r="6" stroke="white" stroke-width="2"></circle>
+<circle cx="600" cy="80" fill="#10B981" r="6" stroke="white" stroke-width="2"></circle>
+<defs>
+<lineargradient id="grad-green" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#10B981"></stop>
+<stop offset="100%" stop-color="#10B981" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-between mt-md px-base text-label-sm text-on-surface-variant font-medium">
+<span>08:00 AM</span>
+<span>10:00 AM</span>
+<span>12:00 PM</span>
+<span>02:00 PM</span>
+<span>04:00 PM</span>
+<span>06:00 PM</span>
+<span>08:00 PM</span>
+</div>
+</div>
+</section>
+<!-- Two Column Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-10 gap-gutter">
+<!-- Top Products (60%) -->
+<div class="lg:col-span-6 glass-panel rounded-lg overflow-hidden flex flex-col">
+<div class="p-lg border-b border-outline-variant/10 flex justify-between items-center">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Top Products</h3>
+<button class="text-primary font-bold text-label-sm hover:underline">View Full Report</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container/50 text-label-sm text-on-surface-variant uppercase tracking-wider">
+<tr>
+<th class="px-lg py-md font-bold">#</th>
+<th class="px-lg py-md font-bold">Product Name</th>
+<th class="px-lg py-md font-bold text-right">Total Scans</th>
+<th class="px-lg py-md font-bold text-center">Success Rate</th>
+<th class="px-lg py-md font-bold text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="text-body-md text-on-surface">
+<tr class="zebra-row border-b border-outline-variant/10">
+<td class="px-lg py-md font-bold">01</td>
+<td class="px-lg py-md">Cà phê Phin Giấy</td>
+<td class="px-lg py-md text-right">2,481</td>
+<td class="px-lg py-md text-center">
+<span class="px-sm py-1 bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full">98.5%</span>
+</td>
+<td class="px-lg py-md text-right text-primary">
+<span class="material-symbols-outlined text-sm align-middle">trending_up</span> 14%
+                                </td>
+</tr>
+<tr class="zebra-row border-b border-outline-variant/10">
+<td class="px-lg py-md font-bold">02</td>
+<td class="px-lg py-md">Trà Đào Túi Lọc</td>
+<td class="px-lg py-md text-right">1,902</td>
+<td class="px-lg py-md text-center">
+<span class="px-sm py-1 bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full">96.2%</span>
+</td>
+<td class="px-lg py-md text-right text-primary">
+<span class="material-symbols-outlined text-sm align-middle">trending_up</span> 8%
+                                </td>
+</tr>
+<tr class="zebra-row border-b border-outline-variant/10">
+<td class="px-lg py-md font-bold">03</td>
+<td class="px-lg py-md">Nước Suối Khoáng</td>
+<td class="px-lg py-md text-right">1,654</td>
+<td class="px-lg py-md text-center">
+<span class="px-sm py-1 bg-primary-container text-on-primary-container text-[11px] font-bold rounded-full">99.8%</span>
+</td>
+<td class="px-lg py-md text-right text-on-surface-variant">
+<span class="material-symbols-outlined text-sm align-middle">trending_flat</span> 2%
+                                </td>
+</tr>
+<tr class="zebra-row border-b border-outline-variant/10">
+<td class="px-lg py-md font-bold">04</td>
+<td class="px-lg py-md">Sữa Đặc Ngôi Sao</td>
+<td class="px-lg py-md text-right">1,211</td>
+<td class="px-lg py-md text-center">
+<span class="px-sm py-1 bg-surface-container-high text-on-surface-variant text-[11px] font-bold rounded-full">89.4%</span>
+</td>
+<td class="px-lg py-md text-right text-error">
+<span class="material-symbols-outlined text-sm align-middle">trending_down</span> 4%
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Top Users (40%) -->
+<div class="lg:col-span-4 glass-panel rounded-lg overflow-hidden flex flex-col">
+<div class="p-lg border-b border-outline-variant/10">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Top Users</h3>
+</div>
+<div class="p-md space-y-md">
+<!-- User 1 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container/30 rounded-lg transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Close-up portrait of a young Vietnamese tech professional smiling at the camera. He is in a brightly lit, modern co-working space with clean architectural lines. The image follows a high-key lighting style with a professional corporate look. The background features soft blurs of office greenery, complementing the dashboard's emerald green theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCE1U0SgHQ0EPjkAoZHLk2inmDWJc5BgmYRCYFS3FCilZTI8ZzcT1WGX_5vrRHrrJdgXT1NsAKBBtxVyFxAMtxyULlOU7Xo8xazPW42jr0EWOlpz7b5KTLUHWfDHD97oxIJJpVhL0NvNuCFulrlEFkNPpJciTZdcphnvUa8N1IxcGXbmaTghUD9SEWcJ2A9iJltSNcOAqdX-13Qu-XCAFSKYpih80K-6EkPwDmRWQ0vLqm4ENfXpMdODYwA0C170XsGTNnVz_D8KSiU"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-primary border-2 border-surface rounded-full"></span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-semibold">Tuan Anh</p>
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded uppercase">Admin</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-on-surface font-bold">428 scans</p>
+<p class="text-[10px] text-on-surface-variant">Active 2m ago</p>
+</div>
+</div>
+<!-- User 2 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container/30 rounded-lg transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="A professional headshot of a female data analyst with a friendly expression. She is set against a clean, minimalist workspace with soft ambient lighting. The aesthetic is modern and corporate, utilizing a bright palette that matches the dashboard's light mode. The color scheme is professional, emphasizing clarity and focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCzzRNj4ACkdTfXk3LfE2tNc9o5tB0xCiIYOhmQ0ym7UBoxxpf0WEemvHpd8WzGEgNNzTamsvo4cao3q0toqCpv_et2mhQuEeKIv5Vg1UucN-AzzQAZTLD6RJRIqHF31W9X-7kkABDR_12KOA145TeVnZVbE37Shucd8ZmsstSmNQ3pq6kA1beY3GUMy5sG6BAUbbomMytden_qFW73whz3osrI3F-Tr4rQAANyAHGyP2_TGPEjXG9BI30oM79EiaaLVFb8lFyDJHB"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-primary border-2 border-surface rounded-full"></span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-semibold">Linh Pham</p>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded uppercase">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-on-surface font-bold">312 scans</p>
+<p class="text-[10px] text-on-surface-variant">Active 15m ago</p>
+</div>
+</div>
+<!-- User 3 -->
+<div class="flex items-center justify-between p-sm hover:bg-surface-container/30 rounded-lg transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="User Avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a senior developer in a sleek, glass-walled office environment. The lighting is bright and evenly distributed, creating a crisp and professional atmosphere. The subject is calm and confident, projecting an image of reliability and technical expertise. The scene is clean and modern, consistent with high-end SaaS platform visuals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALg-xCCBch7HXLKnYMT7fXZaVCRMaoFelnkAN3gQtyZQHGKN1ZCsl_nYCkXFhVhlSd0I_WgayYvTMcDFGX3NJONNVKJTYYJoAMlFi6WLllSlS5X64WNhwUxJkgCCU9ev-MaXUqpdOujv3hoeC0UCPzyI5iPRgTsOHeMLBYuN-3bkn4U7q_NmiMCMexok36XQs0dZLEo5KiZr-R6ntzdvmnU0_DJ9TOYz3fQSji_tU8NTRDAUgqmBeqAaq33-u1pjAUfJfAsxujyz-y"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-surface-dim border-2 border-surface rounded-full"></span>
+</div>
+<div>
+<p class="font-body-md text-on-surface font-semibold">Bao Hoang</p>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold rounded uppercase">Member</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-on-surface font-bold">285 scans</p>
+<p class="text-[10px] text-on-surface-variant">Active 1h ago</p>
+</div>
+</div>
+</div>
+<div class="mt-auto p-lg bg-surface-container-low/50">
+<button class="w-full py-2 bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-base">
+<span class="material-symbols-outlined text-sm">person_add</span>
+                        Manage All Users
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

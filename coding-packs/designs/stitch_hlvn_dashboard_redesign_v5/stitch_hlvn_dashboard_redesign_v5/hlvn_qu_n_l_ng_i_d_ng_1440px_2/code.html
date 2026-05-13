@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HLVN Admin - Quản lý người dùng</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=Public+Sans:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#00452d",
+                      "on-tertiary-container": "#002e6a",
+                      "primary-fixed": "#69f6b8",
+                      "surface-bright": "#f5f7f9",
+                      "on-secondary": "#c0fff3",
+                      "inverse-primary": "#69f6b8",
+                      "on-tertiary-fixed-variant": "#00377b",
+                      "primary": "#006947",
+                      "tertiary-fixed": "#8ab0ff",
+                      "primary-container": "#69f6b8",
+                      "surface-tint": "#006947",
+                      "on-secondary-fixed": "#00463e",
+                      "on-background": "#2c2f31",
+                      "on-surface-variant": "#595c5e",
+                      "background": "#f5f7f9",
+                      "error": "#b31b25",
+                      "surface-variant": "#d9dde0",
+                      "primary-fixed-dim": "#58e7ab",
+                      "on-surface": "#2c2f31",
+                      "on-primary": "#c8ffe0",
+                      "on-error-container": "#570008",
+                      "inverse-surface": "#0b0f10",
+                      "error-dim": "#9f0519",
+                      "on-tertiary-fixed": "#00163b",
+                      "secondary": "#00675d",
+                      "surface-container-highest": "#d9dde0",
+                      "on-primary-fixed-variant": "#006544",
+                      "secondary-fixed-dim": "#5de7d3",
+                      "secondary-container": "#6df5e1",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#e5e9eb",
+                      "on-tertiary": "#f0f2ff",
+                      "on-secondary-container": "#005b51",
+                      "on-secondary-fixed-variant": "#00655b",
+                      "inverse-on-surface": "#9a9d9f",
+                      "primary-dim": "#005c3d",
+                      "on-error": "#ffefee",
+                      "secondary-fixed": "#6df5e1",
+                      "tertiary": "#0057bd",
+                      "surface-container-high": "#dfe3e6",
+                      "outline-variant": "#abadaf",
+                      "tertiary-dim": "#004ca6",
+                      "error-container": "#fb5151",
+                      "surface": "#f5f7f9",
+                      "tertiary-container": "#8ab0ff",
+                      "secondary-dim": "#005a50",
+                      "on-primary-container": "#005a3c",
+                      "surface-container-low": "#eef1f3",
+                      "outline": "#747779",
+                      "tertiary-fixed-dim": "#73a2ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "margin": "24px",
+                      "base": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Public Sans"],
+                      "headline-xl": ["Manrope"],
+                      "headline-lg": ["Manrope"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-xl": ["36px", {"lineHeight": "44px", "fontWeight": "700"}],
+                      "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .glass-sidebar {
+            background: rgba(238, 241, 243, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background font-body-md text-on-background min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 z-50 glass-sidebar border-r border-outline-variant/20 flex flex-col h-full py-xl px-md">
+<div class="mb-xl flex items-center gap-sm">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary leading-tight">HLVN</h1>
+<p class="font-label-sm text-label-sm text-outline">v5.0.2 Admin</p>
+</div>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high/40 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high/40 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="font-label-sm text-label-sm">Scans</span>
+</a>
+<!-- Active Tab: Users -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg bg-primary-container/30 text-on-primary-container border-r-4 border-primary font-bold transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label-sm text-label-sm">Users</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high/40 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Analytics</span>
+</a>
+</nav>
+<div class="pt-md border-t border-outline-variant/20 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high/40 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-error hover:bg-error-container/10 hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-sm text-label-sm">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 h-16 flex justify-between items-center w-full px-margin bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 shadow-sm">
+<div class="flex items-center gap-md">
+<h2 class="font-headline-lg text-headline-lg font-bold text-primary">Quản lý người dùng</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary hover:bg-primary-dim text-white flex items-center gap-xs px-lg py-sm rounded-lg font-label-sm text-label-sm transition-all active:scale-95 shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Thêm người dùng
+                </button>
+<div class="w-px h-6 bg-outline-variant/30 mx-xs"></div>
+<button class="text-on-surface-variant hover:bg-surface-container-high/50 p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high/50 p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Page Canvas -->
+<div class="p-margin flex-1 flex flex-col gap-lg max-w-[1440px] mx-auto w-full">
+<!-- Filter Bar -->
+<section class="flex flex-wrap items-center justify-between gap-md bg-surface-container-lowest p-md rounded-xl border border-outline-variant/30 shadow-sm">
+<div class="flex flex-1 min-w-[300px] items-center gap-sm bg-surface-container-low px-md py-sm rounded-lg border border-outline-variant/20 focus-within:ring-2 focus-within:ring-primary/20 transition-all">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md placeholder:text-outline/60" placeholder="Tìm theo tên, email..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative">
+<select class="appearance-none bg-surface-container-low border border-outline-variant/20 pl-md pr-xl py-sm rounded-lg text-label-sm font-label-sm focus:ring-primary focus:border-primary cursor-pointer min-w-[140px]">
+<option>Vai trò</option>
+<option>Admin</option>
+<option>Member</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-outline text-[20px]">expand_more</span>
+</div>
+<button class="flex items-center gap-xs px-md py-sm rounded-lg border border-outline-variant/30 text-on-surface-variant hover:bg-surface-container-high/50 transition-colors font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Thêm bộ lọc
+                    </button>
+</div>
+</section>
+<!-- Main Table Card -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 shadow-sm overflow-hidden flex flex-col flex-1">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant/30">
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider">Người dùng</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider">Email</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider">Vai trò</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider">Trạng thái</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider">Lần cuối</th>
+<th class="px-lg py-md font-label-sm text-label-sm text-outline uppercase tracking-wider text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container/30 transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Alex Nguyen" class="w-10 h-10 rounded-full object-cover border-2 border-primary/20" data-alt="A professional headshot of a young male executive named Alex Nguyen with a confident smile. He is set against a clean, blurred office background with soft daylight. The image has a polished, corporate modern feel consistent with a high-end emerald green and slate grey UI palette." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3h4Eqb9EQeHBHJUrck35DE7dsamBRUaIhC-ghk7QXmbf0VnAf8mk1Bu11WXZjFt81GMUOtTp5wl48RD6lpeFinLrbC5tU9OfwHyFXrd76QStZUhDpJvq-wLS_h1ApHi80shYmBTSfGr2dBToPU6icxkJJntTe6fE-QPrC8dHr2MVQ4RBeqGxUC17aITvdrtgD0uEe_QKT0_F3w9G9KxwWJOMFFwUWF6jmETMhcA-9a8Yh-XZURjmyPHs4oxHTU2mDjBNMX9NNE51G"/>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Alex Nguyen</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-body-md">alex.n@hlvn.tech</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-primary-container/20 text-on-primary-container text-label-sm font-bold border border-primary/20">Admin</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,105,71,0.5)]"></span>
+<span class="text-body-md text-body-md text-on-surface-variant">Active</span>
+</div>
+</td>
+<td class="px-lg py-md text-outline font-body-md text-body-md">2 mins ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-xs text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container/30 transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Minh Tran" class="w-10 h-10 rounded-full object-cover border-2 border-outline-variant/20" data-alt="A portrait of an Asian professional male named Minh Tran wearing modern glasses. The lighting is soft and neutral, capturing a calm and reliable expression. The background is a minimalist studio setting with subtle hints of corporate green and cool greys, aligning with a professional dashboard aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnrEiFPaf0n2jqd4WmgkRY4sK0874zG75Z5WQClucz_JpanAVvyzlEdgR1LWAYuTd-89ivz2rfbZQPqRTqP6A8OkQXfPp_ni5iRBzvqxa68Qp9H5qfOHUNyNQDB3MDZSmLfl2dUYMiE9pRi8kijaJ4WYUlnc37Qg7qZkkRRw7rVk53sPsPLRSU_EQS1B5gcXmIKsLc5RBINgX-Y_O2SqpMVCqq_8Vc_vcy3Hmjmk7998730jNu0eLRXCJACe2toxZZobOShzV5Ahfu"/>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Minh Tran</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-body-md">minh.tran@hlvn.tech</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container/20 text-on-secondary-container text-label-sm font-bold border border-secondary/20">Member</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-body-md text-on-surface-variant">Offline</span>
+</div>
+</td>
+<td class="px-lg py-md text-outline font-body-md text-body-md">1 hour ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-xs text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container/30 transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Quang Le" class="w-10 h-10 rounded-full object-cover border-2 border-outline-variant/20" data-alt="A clean, minimalist portrait of a young man named Quang Le with a friendly demeanor. He is photographed in a high-key lighting environment that emphasizes clarity and professionalism. The color palette is bright and fresh, reflecting the emerald green brand identity of the software dashboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRrbjxXfHdjaPNSVBDp4IPD8sZy7fYaKSk9NUC8Ds1eQ3OFUqzn6y4hBhNQ_fyM87MxSZwd06sNm6rcWG4DkYZ7FbBCiD5prz8fSx9GMV9imK8imVerPZRyUEpNzpYAKL9QVmqcfIuNl6W1_ErNJf-16Td7XeJkofkaq8EpeF5TUkJzD4_U_vWpKGQOo1shFtY5mdCisOOyqC2z5TBKIXR1QZJWNHsbrWP_rxa-cCFubHOHxW0MktevZAHPYNY6KxeUtwOFT1eS1L4"/>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Quang Le</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-body-md">quang.le@hlvn.tech</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container/20 text-on-secondary-container text-label-sm font-bold border border-secondary/20">Member</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(0,105,71,0.5)]"></span>
+<span class="text-body-md text-body-md text-on-surface-variant">Active</span>
+</div>
+</td>
+<td class="px-lg py-md text-outline font-body-md text-body-md">5 mins ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-xs text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container/30 transition-colors group">
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<img alt="Hieu Nguyen" class="w-10 h-10 rounded-full object-cover border-2 border-outline-variant/20" data-alt="A portrait of a male professional named Hieu Nguyen with a serious yet approachable look. The setting is a modern workspace with soft focus elements of technology and glass. The visual style is crisp and clean, using a sophisticated mix of white space and deep forest green accents from the design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC5RNVBwZSR9Uzoy2n-c4W_aOlknj3vFf29gcJEpZA5DqjEgOoXNiukFQLGZl6wFgyrjCQdKaxF4CjTaIqHScVRdb_abwy3NRvVVvaRkWS2qzp1fW71LS65KTBQecnP5xU_gGLOC8TBgA1nuH4VwPVP1VHv9pz6VploP6GS52ArJoC6lL8j5Fii0HriuXWJxhYzo34fCgStBgBHC8Bawn94v8L24iQ2vKqHX_wDEunNg6aYg_Y_oEnC_vLoQwZO8hYn8O5anmMJkc3"/>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Hieu Nguyen</span>
+</div>
+</td>
+<td class="px-lg py-md text-on-surface-variant font-body-md text-body-md">hieu.n@hlvn.tech</td>
+<td class="px-lg py-md">
+<span class="inline-flex items-center px-sm py-xs rounded-full bg-secondary-container/20 text-on-secondary-container text-label-sm font-bold border border-secondary/20">Member</span>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-body-md text-body-md text-on-surface-variant">Offline</span>
+</div>
+</td>
+<td class="px-lg py-md text-outline font-body-md text-body-md">3 hours ago</td>
+<td class="px-lg py-md text-right">
+<div class="flex items-center justify-end gap-sm opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-xs text-outline hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-xs text-outline hover:text-error transition-colors"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Footer Pagination -->
+<div class="mt-auto border-t border-outline-variant/30 px-lg py-md flex items-center justify-between bg-surface-container-low/30">
+<span class="font-label-sm text-label-sm text-outline">Đang hiển thị 1-10 trong tổng số 24 người dùng</span>
+<div class="flex items-center gap-sm">
+<button class="p-xs rounded-lg border border-outline-variant/30 text-outline hover:bg-surface-container-high/50 disabled:opacity-40 transition-colors" disabled="">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-white font-label-sm text-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high/50 text-on-surface font-label-sm text-label-sm transition-colors">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container-high/50 text-on-surface font-label-sm text-label-sm transition-colors">3</button>
+</div>
+<button class="p-xs rounded-lg border border-outline-variant/30 text-outline hover:bg-surface-container-high/50 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>
